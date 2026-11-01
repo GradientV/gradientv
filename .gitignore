@@ -10,9 +10,6 @@
 .env.*
 !.env.example
 
-# Claude Code local config
-.claude/
-
 # OS junk
 .DS_Store
 Thumbs.db
@@ -21,3 +18,10 @@ Thumbs.db
 node_modules/
 dist/
 dist-server/
+
+# Notes, research and AI agent files: kept on this computer, never pushed
+AGENTS.md
+AGENTS-TEMPLATE/
+RESEARCH.md
+/context/
+/Context/
