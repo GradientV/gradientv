@@ -12,8 +12,8 @@ the portal: a client sets a password from an invite link, signs in, sends reques
 changes to their site, and sees their site's visitors and page views. i sign in with an
 admin login and see everyone's requests in one list.
 
-a client's own website can also send things here, and that client sees them in their portal.
-InfoReporting Solutions is the first: the self-assessments finished on their site, and their newsletter signups.
+a client's own website can also send things here (like form results and newsletter signups),
+and that client sees them in their portal.
 
 ---
 
@@ -34,7 +34,7 @@ is it alive? open http://localhost:5173/api/health and you get `{"ok":true,"data
 to make a login (for a client, or a test one for me):
 
 ```
-npm run add-client -- "Bukas Cafe" owner@bukascafe.com bukascafe
+npm run add-client -- "Client Name" owner@example.com client-project
 ```
 
 it prints a link. whoever opens it picks their own password and lands in the portal.
@@ -51,7 +51,7 @@ npm run add-client -- "GradientV" me@example.com --admin
 all of that makes logins in the database on my laptop, for testing. for a real one, add `--live`:
 
 ```
-npm run add-client -- "Bukas Cafe" owner@bukascafe.com bukascafe --live
+npm run add-client -- "Client Name" owner@example.com client-project --live
 ```
 
 `--live` reads `server/.env.production` in place of `server/.env`: the Atlas address (`MONGODB_URI`)
@@ -60,7 +60,7 @@ and the real site's address (`SITE_URL`). it says which database it used before 
 to let a client's website send things to the portal, give their login a site key:
 
 ```
-npm run site-key -- owner@inforeportingsolutions.com --live
+npm run site-key -- owner@example.com --live
 ```
 
 it prints the key once. it goes in that client's own project on Vercel as `PORTAL_SITE_KEY`
@@ -71,8 +71,8 @@ unless `--replace` is added, and the old key stops working that second.
 to bring over rows from the database a client's site used before (a CSV export of the old table):
 
 ```
-npm run import-site-data -- owner@inforeportingsolutions.com assessments "C:\path\to\assessment_results_rows.csv" --live
-npm run import-site-data -- owner@inforeportingsolutions.com subscribers "C:\path\to\subscribers_rows.csv" --live
+npm run import-site-data -- owner@example.com assessments "C:\path\to\assessment_results_rows.csv" --live
+npm run import-site-data -- owner@example.com subscribers "C:\path\to\subscribers_rows.csv" --live
 ```
 
 by itself it only says what it would do. add `--save` at the end to do it. it only ever adds,
@@ -80,7 +80,6 @@ and running it twice doesn't double anything.
 
 old assessment rows only carry the site's short name (`quick-check`). to give them the proper one the
 portal shows, put a JSON file of names after the CSV, like `{ "quick-check": "Casino Quick Check" }`.
-InfoReporting's is in `Desktop\InfoReporting-planning\assessment-names.json`.
 
 to get a Slack message when a client sends a request, make an Incoming Webhook at
 api.slack.com/apps and put its address after `SLACK_WEBHOOK_URL=` in `server/.env`
@@ -211,7 +210,7 @@ changes to their site, and their site's visitors and page views.
 2. ~~login: invite links, passwords, sessions, the first page behind the login~~ done
 3. ~~the request box, and the admin login that sees everyone's requests~~ done
 4. ~~the stats card, pulled from Vercel Web Analytics~~ done
-5. later: an admin page, saving daily numbers (Hobby only keeps a month), and fields clients can edit themselves
+5. later: an admin page, saving daily numbers so the history goes back further, and fields clients can edit themselves
 
 how the stats work, short version:
 - every client site is a project on my Vercel account, and Vercel already counts its visitors.
@@ -225,14 +224,14 @@ how the stats work, short version:
 - days are UTC days, because that's how Vercel cuts them
 
 how a client's website sends things here, short version:
-- their site keeps its own small functions (for InfoReporting: `api/submit-assessment.js` and `api/subscribe.js`).
+- their site keeps its own small functions (for example `api/submit-assessment.js` and `api/subscribe.js`).
   those check what the visitor sent, then pass it on to `/api/collect/...` here, with the site key in a header
 - the key says which client it is (`requireSiteKey` puts the account on `req.account`, like `requireAuth` does
   for a browser). there is no field for naming a client, so one site can't write into another's
 - the key lives in that site's Vercel settings, never in a page or a browser. only a hash of it is saved here
 - it can add and nothing else. reading happens in the portal, signed in, through `/api/site-data/...`
 - an assessment result is anonymous: which assessment, the score, the risk level, the date. nothing about
-  who took it, and no link to a newsletter signup. InfoReporting's privacy policy promises exactly that,
+  who took it, and no link to a newsletter signup. the client's privacy policy promises exactly that,
   so don't add a field that joins the two
 - each client can save 500 of each kind a day. that's a flood stopper, not a real limit
 - the two cards show up by themselves for a login that has a site key (`siteSendsData` on the account the browser gets)
@@ -246,17 +245,9 @@ how login works, short version:
 - the portal pages are English only for now
 
 what the deployed site runs on (all set up, under the gradientv project on Vercel):
-- the database is MongoDB Atlas, free tier, made through Vercel's Storage tab. Vercel keeps its
+- the database is MongoDB Atlas, made through Vercel's Storage tab. Vercel keeps its
   address in `MONGODB_URI`. my laptop has its own local database, so testing never touches real data
 - `VERCEL_TOKEN` and `VERCEL_TEAM` in Environment Variables are for the stats. the token
   expires after a year: make a new one and paste it in, or the stats card stops loading
 - `SLACK_WEBHOOK_URL` there too, if i want the Slack message
 - a changed variable only reaches the site on the next build (push, or Redeploy in the dashboard)
-
-still to do:
-- move the Vercel account to Pro, since the free plan is for non-commercial projects
-- the free Atlas tier has no backups. write a small export script and run it now and then
-- the privacy policy doesn't mention client logins or requests yet, or that i hold what clients' sites collect
-- the stats chart cuts days in UTC, so in the evening it shows an empty bar for "tomorrow"
-- there's no command to change a login's email. the results and signups hang off the login,
-  so making a second login with the new email would start it empty
