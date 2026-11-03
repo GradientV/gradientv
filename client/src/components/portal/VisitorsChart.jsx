@@ -21,10 +21,10 @@ function DayTooltip({ active, payload, words }) {
     const day = payload[0].payload;
 
     return (
-        <div className="rounded-xl border border-line bg-paper-bright px-3 py-2 text-sm shadow-lg">
+        <div className="border border-line bg-paper-bright px-3 py-2 text-sm">
             <div className="font-medium">{dayLabel(day.date, { weekday: 'long' })}</div>
             <div className="mt-1 flex items-center gap-2 text-ink-soft">
-                <span className="h-2 w-2 rounded-sm" style={{ backgroundColor: ACCENT }} />
+                <span className="h-2 w-2" style={{ backgroundColor: ACCENT }} />
                 <span>{words.visitors}:</span>
                 <span className="font-medium text-ink tabular-nums">{day.visitors.toLocaleString('en-US')}</span>
             </div>

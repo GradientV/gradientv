@@ -39,10 +39,10 @@ export default function RequestInbox() {
     }
 
     return (
-        <section className="rounded-[1.5rem] border border-line bg-paper-bright p-6 sm:p-8">
+        <section className="border border-line bg-paper-bright p-6 sm:p-8">
             <h2 className="display-md">{words.inboxHeading}</h2>
 
-            {error && <p role="alert" className="mt-4 rounded-xl border border-line bg-paper px-4 py-3 text-sm">{error}</p>}
+            {error && <p role="alert" className="mt-4 border border-line bg-paper px-4 py-3 text-sm">{error}</p>}
             {requests === null && <p role="status" className="mt-4 text-ink-soft">{words.loading}</p>}
             {requests?.length === 0 && !error && <p className="mt-4 text-ink-soft">{words.inboxEmpty}</p>}
 
@@ -60,7 +60,7 @@ export default function RequestInbox() {
                                     aria-label={`${words.statusLabel}: ${request.businessName}, ${shortDate(request.createdAt)}`}
                                     value={request.status}
                                     onChange={(event) => handleStatus(request.id, event.target.value)}
-                                    className="cursor-pointer rounded-full border border-line bg-paper px-3 py-1.5 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/25"
+                                    className="cursor-pointer border border-line bg-paper px-3 py-1.5 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/25"
                                 >
                                     {Object.entries(words.status).map(([status, label]) => (
                                         <option key={status} value={status}>{label}</option>

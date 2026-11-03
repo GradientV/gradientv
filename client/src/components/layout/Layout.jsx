@@ -15,7 +15,7 @@ export default function Layout() {
             {/* invisible until someone tabs to it. lets keyboard users jump past the nav */}
             <a
                 href="#main"
-                className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-paper"
+                className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-paper"
             >
                 {t.nav.skip}
             </a>

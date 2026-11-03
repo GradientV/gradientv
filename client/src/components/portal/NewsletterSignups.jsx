@@ -51,12 +51,12 @@ export default function NewsletterSignups() {
     return (
         // md:col-span-2: full width of the portal's two-column grid, same as the assessments card.
         // inside, the number and the button sit on the left and the list on the right
-        <section className="grid gap-x-12 rounded-[1.5rem] border border-line bg-paper-bright p-6 sm:p-8 md:col-span-2 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+        <section className="grid gap-x-12 border border-line bg-paper-bright p-6 sm:p-8 md:col-span-2 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
             <div>
                 <h2 className="display-md">{words.heading}</h2>
                 <p className="mt-3 text-ink-soft">{words.intro}</p>
 
-                {error && <p role="alert" className="mt-6 rounded-xl border border-line bg-paper px-4 py-3 text-sm">{error}</p>}
+                {error && <p role="alert" className="mt-6 border border-line bg-paper px-4 py-3 text-sm">{error}</p>}
                 {signups === null && !error && <p role="status" className="mt-6 text-ink-soft">{words.loading}</p>}
                 {signups?.total === 0 && <p className="mt-6 text-ink-soft">{words.empty}</p>}
 

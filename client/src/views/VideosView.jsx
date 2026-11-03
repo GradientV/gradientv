@@ -20,7 +20,7 @@ export default function VideosView() {
                 {/* the video has no narration, its only audio is instrumental music. so introduction.vtt
                     has one cue naming the music instead of a transcript, and there's no "default" on the
                     track: captions stay off until the viewer turns them on */}
-                <video controls preload="metadata" className="aspect-video w-full rounded-3xl bg-night">
+                <video controls preload="metadata" className="aspect-video w-full bg-night">
                     <source src="/videos/introduction.mp4" type="video/mp4" />
                     <track kind="captions" srcLang="en" label={videos.captions} src="/videos/introduction.vtt" />
                     {videos.unsupported}

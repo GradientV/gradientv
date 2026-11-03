@@ -14,7 +14,7 @@ import { useLocale } from '../context/LocaleContext.jsx';
 import * as api from '../api/api.js';
 import { pagePath } from '../data/pages.js';
 
-const INPUT_CLASS = 'mt-1.5 w-full rounded-xl border border-line bg-paper px-3.5 py-2.5 text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/25';
+const INPUT_CLASS = 'mt-1.5 w-full border border-line bg-paper px-3.5 py-2.5 text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/25';
 // the server checks this too (server/src/services/passwords.js). here it just saves a round trip
 const PASSWORD_MIN = 10;
 
@@ -83,7 +83,7 @@ export default function SetPasswordView() {
                 <div className="tx tx-waves" aria-hidden="true" />
 
                 <div className="wrap relative py-12 md:py-20">
-                    <div className="mx-auto max-w-xl rounded-[2rem] border border-line bg-paper-bright p-7 shadow-[0_24px_60px_rgba(31,26,23,0.10)] sm:p-10 md:p-12">
+                    <div className="mx-auto max-w-xl border border-line bg-paper-bright p-7 sm:p-10 md:p-12">
                         <Eyebrow>{words.label}</Eyebrow>
                         <h1 className="display-lg mt-4">{words.heading}</h1>
 
@@ -92,7 +92,7 @@ export default function SetPasswordView() {
                         )}
 
                         {linkStatus === 'bad' && (
-                            <div role="alert" className="mt-6 rounded-xl border border-line bg-paper px-4 py-3 text-sm">
+                            <div role="alert" className="mt-6 border border-line bg-paper px-4 py-3 text-sm">
                                 <p>{notice || words.badLink}</p>
                                 <Link to={to('contact')} className="mt-2 inline-block font-medium underline underline-offset-4">
                                     {words.contact}
@@ -160,7 +160,7 @@ export default function SetPasswordView() {
                                     </button>
 
                                     {notice && (
-                                        <p id="set-notice" role="alert" className="rounded-xl border border-line bg-paper px-4 py-3 text-sm">
+                                        <p id="set-notice" role="alert" className="border border-line bg-paper px-4 py-3 text-sm">
                                             {notice}
                                         </p>
                                     )}

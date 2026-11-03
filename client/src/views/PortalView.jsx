@@ -16,7 +16,7 @@ import Eyebrow from '../components/ui/Eyebrow.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useLocale } from '../context/LocaleContext.jsx';
 
-const CARD_CLASS = 'rounded-[1.5rem] border border-line bg-paper-bright p-6 sm:p-8';
+const CARD_CLASS = 'border border-line bg-paper-bright p-6 sm:p-8';
 
 // the stats card brings the chart library (Recharts) with it, and that's a big file.
 // lazy() makes Vite put it in a separate file that the browser only downloads when

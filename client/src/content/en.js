@@ -43,14 +43,13 @@ export default {
     home: {
         seo: {
             title: 'GradientV',
-            description: 'GradientV builds custom software, websites, AI-powered dashboards, and workflow automation for growing small businesses. Practical AI implementation without unnecessary complexity.'
+            description: 'GradientV builds websites, internal tools, and automations for small businesses. Tell us what’s slowing you down, and we’ll help you figure out what to build.'
         },
-        eyebrow: 'Custom software and AI for growing businesses',
-        // two lines, the second one is drawn quieter
-        headline: ['Modernize your business.', 'Build competitive advantage.'],
-        lead: 'GradientV builds custom software that reduces repetitive work, improves decision-making, and helps you operate smarter than your competition.',
-        primaryCta: 'Start a conversation',
-        secondaryCta: 'Read our story',
+        // the line under the big logo at the top of the page
+        tagline: 'Software built around how you work.',
+        lead: 'We build websites, internal tools, and automations for small businesses. Tell us what’s slowing you down, and we’ll help you figure out what to build.',
+        primaryCta: 'Tell us about your project',
+        secondaryCta: 'See our work',
         buildLabel: 'What we build',
         builds: ['Websites', 'Internal tools', 'AI-powered dashboards', 'Workflow automation'],
         clientsLabel: 'Selected clients',
@@ -60,11 +59,11 @@ export default {
     contact: {
         seo: {
             title: 'Contact - GradientV',
-            description: 'Get in touch with GradientV about custom software, websites, AI dashboards, and workflow automation for your business. Call (917) 907-1034 or email contact@gradientv.com.'
+            description: 'Call (917) 907-1034 or email contact@gradientv.com to tell us about your project. We build websites, internal tools, and automations for small businesses.'
         },
         label: 'Contact',
-        heading: "Let's build a smarter operating system for your business.",
-        text: 'GradientV is focused on practical AI implementation for companies that want modern systems without unnecessary complexity.',
+        heading: 'Tell us how your business runs today.',
+        text: 'Start with the work that takes too long or keeps going wrong. We’ll go through it with you, including whether software is the right fix.',
         phone: 'Phone',
         email: 'Email',
         linkedin: 'LinkedIn'
@@ -129,7 +128,7 @@ export default {
     team: {
         seo: {
             title: 'Team - GradientV',
-            description: 'Meet the team behind GradientV, an AI consulting studio based in New York City and Stony Brook, New York.'
+            description: 'Meet the people behind GradientV.'
         },
         label: 'Team',
         heading: 'Meet the team.',
@@ -310,7 +309,7 @@ export default {
     videos: {
         seo: {
             title: 'Videos - GradientV',
-            description: 'A short introduction to GradientV, an AI consulting studio helping growing businesses adopt AI through modern websites, workflow automation, and AI-powered dashboards.'
+            description: 'A short introduction to GradientV, which builds websites, internal tools, and automations for small businesses.'
         },
         heading: 'Videos',
         title: 'GradientV Introduction',

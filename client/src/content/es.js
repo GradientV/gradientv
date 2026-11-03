@@ -38,14 +38,13 @@ export default {
 
     home: {
         seo: {
-            title: 'GradientV - Integración tecnológica para negocios en crecimiento',
-            description: 'GradientV crea software a medida, sitios web, paneles con inteligencia artificial y automatización de procesos para pequeños negocios en crecimiento. Implementación práctica de IA, sin complejidad innecesaria.'
+            title: 'GradientV',
+            description: 'GradientV crea sitios web, herramientas internas y automatizaciones para pequeñas empresas. Cuéntenos qué le está frenando y le ayudaremos a decidir qué construir.'
         },
-        eyebrow: 'Software a medida e IA para negocios en crecimiento',
-        headline: ['Modernice su negocio.', 'Construya una ventaja competitiva.'],
-        lead: 'GradientV construye software a medida que reduce el trabajo repetitivo, mejora la toma de decisiones y le ayuda a operar de forma más inteligente que su competencia.',
-        primaryCta: 'Inicie una conversación',
-        secondaryCta: 'Lea nuestra historia',
+        tagline: 'Software a la medida de cómo trabaja.',
+        lead: 'Creamos sitios web, herramientas internas y automatizaciones para pequeñas empresas. Cuéntenos qué le está frenando y le ayudaremos a decidir qué construir.',
+        primaryCta: 'Cuéntenos sobre su proyecto',
+        secondaryCta: 'Vea nuestro trabajo',
         buildLabel: 'Lo que construimos',
         builds: ['Sitios web', 'Herramientas internas', 'Paneles con inteligencia artificial', 'Automatización de procesos'],
         clientsLabel: 'Clientes destacados',
@@ -55,11 +54,11 @@ export default {
     contact: {
         seo: {
             title: 'Contacto - GradientV',
-            description: 'Comuníquese con GradientV sobre software a medida, sitios web, paneles con inteligencia artificial y automatización de procesos para su negocio. Llame al (917) 907-1034 o escriba a contact@gradientv.com.'
+            description: 'Llame al (917) 907-1034 o escriba a contact@gradientv.com para contarnos sobre su proyecto. Creamos sitios web, herramientas internas y automatizaciones para pequeñas empresas.'
         },
         label: 'Contacto',
-        heading: 'Construyamos un sistema operativo más inteligente para su negocio.',
-        text: 'GradientV se dedica a la implementación práctica de IA para empresas que quieren sistemas modernos sin complejidad innecesaria.',
+        heading: 'Cuéntenos cómo funciona hoy su negocio.',
+        text: 'Empiece por el trabajo que toma demasiado tiempo o que siempre sale mal. Lo revisamos con usted, incluida la pregunta de si el software es la solución adecuada.',
         phone: 'Teléfono',
         email: 'Correo electrónico',
         linkedin: 'LinkedIn'
@@ -123,7 +122,7 @@ export default {
     team: {
         seo: {
             title: 'Equipo - GradientV',
-            description: 'Conozca al equipo detrás de GradientV, un estudio de consultoría en IA con sede en la ciudad de Nueva York y Stony Brook, Nueva York.'
+            description: 'Conozca a las personas detrás de GradientV.'
         },
         label: 'Equipo',
         heading: 'Conozca al equipo.',

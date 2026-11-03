@@ -28,7 +28,7 @@ export default function ContactBand({ as: Heading = 'h2' }) {
                     <p className="mt-5 max-w-[36rem] text-chalk/75">{t.contact.text}</p>
                 </div>
 
-                <ul className="self-end rounded-2xl border border-white/12 bg-night/70 px-5 backdrop-blur-sm sm:px-6 lg:col-span-5">
+                <ul className="self-end border border-white/12 bg-night/70 px-5 backdrop-blur-sm sm:px-6 lg:col-span-5">
                     {rows.map((row) => {
                         const Arrow = row.external ? ArrowOutIcon : ArrowRightIcon;
                         return (

@@ -1,4 +1,4 @@
-// the Story page: why GradientV exists, in three numbered chapters
+// the Story page: why GradientV exists, in three chapters
 // with the dark "what we do" band in the middle
 import { Link } from 'react-router';
 import Chapter from '../components/Chapter.jsx';
@@ -30,15 +30,15 @@ export default function StoryView() {
 
             <PageHero label={t.story.label} heading={t.story.heading} lead={t.story.lead} texture="ribs" />
 
-            {/* ---------- 01: the gap, and the two options a small business gets ---------- */}
-            <Chapter number="01" heading={gap.heading}>
+            {/* ---------- the gap, and the two options a small business gets ---------- */}
+            <Chapter heading={gap.heading}>
                 <div className={PROSE_CLASS}>
                     {gap.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 </div>
 
                 <div className="mt-10 grid gap-4 sm:grid-cols-2">
                     {gap.options.map((option, index) => (
-                        <article key={option.title} className="relative overflow-hidden rounded-3xl border border-line bg-paper-bright p-6 sm:p-7">
+                        <article key={option.title} className="relative overflow-hidden border border-line bg-paper-bright p-6 sm:p-7">
                             {/* the second card flips its texture so the two don't look like copies */}
                             <div className={`tx tx-card ${index === 1 ? 'tx-card-flip' : ''}`} aria-hidden="true" />
                             <div className="relative">
@@ -62,15 +62,15 @@ export default function StoryView() {
                 </div>
             </NightBand>
 
-            {/* ---------- 02: AI ---------- */}
-            <Chapter number="02" heading={ai.heading}>
+            {/* ---------- AI ---------- */}
+            <Chapter heading={ai.heading}>
                 <div className={PROSE_CLASS}>
                     {ai.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 </div>
             </Chapter>
 
-            {/* ---------- 03: the founder ---------- */}
-            <Chapter id="founder" number="03" heading={founder.heading}>
+            {/* ---------- the founder ---------- */}
+            <Chapter id="founder" heading={founder.heading}>
                 <div className="grid gap-8 sm:grid-cols-[minmax(0,15rem)_1fr]">
                     <img
                         src={FOUNDER.photo.src}
@@ -78,7 +78,7 @@ export default function StoryView() {
                         width={FOUNDER.photo.width}
                         height={FOUNDER.photo.height}
                         loading="lazy"
-                        className="aspect-[4/5] w-full max-w-xs rounded-3xl object-cover"
+                        className="aspect-[4/5] w-full max-w-xs object-cover"
                     />
                     <div>
                         <Eyebrow>{founder.role}</Eyebrow>

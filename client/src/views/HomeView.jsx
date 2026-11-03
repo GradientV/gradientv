@@ -1,70 +1,76 @@
-// the home page: the hero, the client tiles, and the contact band
+// the home page: the logo up front, what we build, the client tiles, and the contact band
+import { Link } from 'react-router';
 import ClientGrid from '../components/ClientGrid.jsx';
 import ContactBand from '../components/ContactBand.jsx';
 import Seo from '../components/Seo.jsx';
 import ButtonLink from '../components/ui/ButtonLink.jsx';
 import Eyebrow from '../components/ui/Eyebrow.jsx';
-import { ArrowRightIcon } from '../components/ui/Icons.jsx';
 import { useLocale } from '../context/LocaleContext.jsx';
 import { homeSchema } from '../data/schema.js';
 
 export default function HomeView() {
     const { t, to } = useLocale();
-    const [firstLine, secondLine] = t.home.headline;
 
     return (
         <>
             <Seo pageId="home" title={t.home.seo.title} description={t.home.seo.description} schema={homeSchema(t)} />
 
-            {/* ---------- hero ---------- */}
-            <section className="relative">
-                <div className="tx tx-waves" aria-hidden="true" />
-                {/* the logo mark, huge and faint, running off the right edge. it gets its own box
-                    so the part that runs off is cut cleanly. wide screens only: on a phone all
-                    that fits is its flat top edge, which just looks like a stray band */}
-                <div className="pointer-events-none absolute inset-0 hidden overflow-hidden md:block" aria-hidden="true">
-                    <img
-                        src="/images/brand/mark_black_t.png"
-                        alt=""
-                        width="847"
-                        height="689"
-                        loading="lazy"
-                        className="absolute top-10 -right-20 w-[48rem] max-w-none opacity-[0.07]"
-                    />
-                </div>
+            {/* ---------- hero ----------
+                brand first, like a firm's front door: the logo big in the middle of a dark band,
+                the tagline under it, and the two ways in. it fills most of the first screen and
+                leaves a strip of the next section showing, so it's clear the page keeps going */}
+            <section className="on-night slope-bottom relative overflow-hidden bg-night text-chalk">
+                <div className="tx tx-hero" aria-hidden="true" />
 
-                <div className="wrap relative pt-14 pb-20 md:pt-24 md:pb-28">
-                    <Eyebrow>{t.home.eyebrow}</Eyebrow>
-
-                    <h1 className="display-xl mt-6">
-                        <span className="block">{firstLine}</span>
-                        <span className="block text-ink-mute">{secondLine}</span>
+                <div className="wrap relative flex min-h-[clamp(30rem,calc(100svh-9rem),48rem)] flex-col items-center justify-center pt-16 pb-24 text-center md:pb-28">
+                    {/* the logo is part of the heading, so a screen reader hears
+                        "GradientV, software built around how you work" */}
+                    <h1>
+                        <img
+                            src="/images/brand/stacked_white_t.png"
+                            alt="GradientV"
+                            width="1196"
+                            height="1128"
+                            className="mx-auto w-32 sm:w-40 lg:w-48"
+                        />
+                        <span className="mt-10 block font-display text-[clamp(1.3rem,2.3vw,1.75rem)] leading-snug font-medium tracking-[-0.01em] text-balance md:mt-12">
+                            {t.home.tagline}
+                        </span>
                     </h1>
 
-                    <div className="mt-12 grid gap-12 md:mt-16 md:grid-cols-12 md:gap-10">
-                        <div className="md:col-span-6">
-                            <p className="max-w-[34rem] text-lg leading-relaxed text-ink-soft">{t.home.lead}</p>
-                            <div className="mt-8 flex flex-wrap gap-3">
-                                <ButtonLink to={to('contact')} variant="solid">
-                                    {t.home.primaryCta}
-                                    <ArrowRightIcon className="h-4 w-4" />
-                                </ButtonLink>
-                                <ButtonLink to={to('story')}>{t.home.secondaryCta}</ButtonLink>
-                            </div>
-                        </div>
+                    <div className="mt-9 flex flex-wrap items-center justify-center gap-x-8 gap-y-5">
+                        <ButtonLink to={to('contact')} variant="light">{t.home.primaryCta}</ButtonLink>
+                        <Link
+                            to={`${to('home')}#clients`}
+                            className="text-sm font-medium text-chalk underline decoration-chalk/40 underline-offset-[6px] transition-colors hover:decoration-chalk"
+                        >
+                            {t.home.secondaryCta}
+                        </Link>
+                    </div>
+                </div>
+            </section>
 
-                        {/* the four things the lead used to list in one long sentence */}
-                        <div className="md:col-span-5 md:col-start-8">
-                            <Eyebrow>{t.home.buildLabel}</Eyebrow>
-                            <ol className="mt-4 border-t border-ink/25">
-                                {t.home.builds.map((build, index) => (
-                                    <li key={build} className="flex items-baseline justify-between gap-4 border-b border-ink/25 py-3.5">
-                                        <span className="font-display text-xl font-medium">{build}</span>
-                                        <span aria-hidden="true" className="tabular-nums text-sm text-ink-mute">0{index + 1}</span>
-                                    </li>
-                                ))}
-                            </ol>
-                        </div>
+            {/* ---------- what we build ----------
+                the plain version, right after the logo. the pitch sits to the right and the list
+                is a small index on the left. on a phone it's the pitch first, then the list.
+                it tucks up under the hero's diagonal so its texture fills the corner the slant
+                cuts away, and the extra top padding keeps the text clear of the edge */}
+            <section className="relative -mt-(--slant) overflow-hidden">
+                <div className="tx tx-waves" aria-hidden="true" />
+                <div className="wrap relative grid gap-12 pt-[calc(4rem+var(--slant))] pb-20 md:grid-cols-12 md:gap-10 md:pt-[calc(6rem+var(--slant))] md:pb-28">
+                    <p className="max-w-[38ch] text-[1.2rem] leading-[1.55] text-ink md:col-span-7 md:col-start-6 md:row-start-1 md:text-[1.375rem]">
+                        {t.home.lead}
+                    </p>
+
+                    <div className="md:col-span-4 md:col-start-1 md:row-start-1 lg:col-span-3">
+                        <Eyebrow>{t.home.buildLabel}</Eyebrow>
+                        <ul className="mt-4 border-t border-ink/20">
+                            {t.home.builds.map((build) => (
+                                <li key={build} className="border-b border-ink/20 py-2.5 text-[0.95rem]">
+                                    {build}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </section>

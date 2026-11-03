@@ -12,7 +12,7 @@ import { useLocale } from '../context/LocaleContext.jsx';
 import { PORTAL_CLOSED } from '../api/api.js';
 import { pagePath } from '../data/pages.js';
 
-const INPUT_CLASS = 'mt-1.5 w-full rounded-xl border border-line bg-paper px-3.5 py-2.5 text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/25';
+const INPUT_CLASS = 'mt-1.5 w-full border border-line bg-paper px-3.5 py-2.5 text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/25';
 
 export default function LoginView() {
     const { t, to } = useLocale();
@@ -51,7 +51,7 @@ export default function LoginView() {
                 <div className="tx tx-waves" aria-hidden="true" />
 
                 <div className="wrap relative py-12 md:py-20">
-                    <div className="grid overflow-hidden rounded-[2rem] border border-line bg-paper-bright shadow-[0_24px_60px_rgba(31,26,23,0.10)] md:grid-cols-2">
+                    <div className="grid overflow-hidden border border-line bg-paper-bright md:grid-cols-2">
 
                         {/* ---------- the form. first in the code so the page heading comes first,
                              but drawn on the right on wide screens ---------- */}
@@ -100,7 +100,7 @@ export default function LoginView() {
                                 </button>
 
                                 {notice && (
-                                    <div id="login-notice" role="alert" className="rounded-xl border border-line bg-paper px-4 py-3 text-sm">
+                                    <div id="login-notice" role="alert" className="border border-line bg-paper px-4 py-3 text-sm">
                                         <p>{notice}</p>
                                         <Link to={to('contact')} className="mt-2 inline-block font-medium underline underline-offset-4">
                                             {t.login.contact}

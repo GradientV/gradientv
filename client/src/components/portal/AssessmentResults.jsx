@@ -15,10 +15,10 @@ const FIRST_ROWS = 6;
 const RISKS = ['low', 'medium', 'high'];
 
 // three looks, so the levels can be told apart at a glance. the loudest one is the one that matters most
-const RISK_PILLS = {
-    low: 'border-line bg-paper-dim text-ink-soft',
-    medium: 'border-ink/70 text-ink',
-    high: 'border-accent bg-accent text-paper'
+const RISK_TEXT = {
+    low: 'text-ink-soft',
+    medium: 'text-ink',
+    high: 'font-semibold text-accent'
 };
 // the same three as the pieces of the thin bar under each assessment
 const RISK_FILLS = { low: 'bg-line', medium: 'bg-ink-mute', high: 'bg-accent' };
@@ -61,7 +61,7 @@ export default function AssessmentResults() {
     return (
         // md:col-span-2: on a wide screen this card takes the full width of the portal's
         // two-column grid. there's a lot in it, and half the width made it very tall
-        <section className="rounded-[1.5rem] border border-line bg-paper-bright p-6 sm:p-8 md:col-span-2">
+        <section className="border border-line bg-paper-bright p-6 sm:p-8 md:col-span-2">
             <div className="flex flex-wrap items-end justify-between gap-x-12 gap-y-6">
                 <div className="max-w-xl">
                     <h2 className="display-md">{words.heading}</h2>
@@ -83,7 +83,7 @@ export default function AssessmentResults() {
                 )}
             </div>
 
-            {error && <p role="alert" className="mt-6 rounded-xl border border-line bg-paper px-4 py-3 text-sm">{error}</p>}
+            {error && <p role="alert" className="mt-6 border border-line bg-paper px-4 py-3 text-sm">{error}</p>}
 
             {summary !== null && (
                 <>
@@ -102,13 +102,13 @@ export default function AssessmentResults() {
                                 {/* how the risk levels split, as a bar. the list under it says the same in numbers */}
                                 <div className="mt-2.5 flex h-1.5 gap-0.5" aria-hidden="true">
                                     {RISKS.filter((level) => row[level] > 0).map((level) => (
-                                        <div key={level} className={`rounded-full ${RISK_FILLS[level]}`} style={{ flex: row[level] }} />
+                                        <div key={level} className={`${RISK_FILLS[level]}`} style={{ flex: row[level] }} />
                                     ))}
                                 </div>
                                 <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-soft">
                                     {RISKS.map((level) => (
                                         <li key={level} className="flex items-center gap-1.5">
-                                            <span className={`size-2 rounded-full ${RISK_FILLS[level]}`} aria-hidden="true" />
+                                            <span className={`size-2 ${RISK_FILLS[level]}`} aria-hidden="true" />
                                             {words.risk[level]}
                                             <span className="font-medium text-ink tabular-nums">{count(row[level])}</span>
                                         </li>
@@ -138,7 +138,7 @@ export default function AssessmentResults() {
                                     <td className="py-3 pr-3">{names.get(result.type)}</td>
                                     <td className="py-3 pr-3 text-right font-medium tabular-nums">{result.score}</td>
                                     <td className="py-3 text-right">
-                                        <span className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-medium whitespace-nowrap ${RISK_PILLS[result.riskLevel]}`}>
+                                        <span className={`font-medium whitespace-nowrap ${RISK_TEXT[result.riskLevel]}`}>
                                             {words.risk[result.riskLevel]}
                                         </span>
                                     </td>

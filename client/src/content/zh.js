@@ -38,14 +38,13 @@ export default {
 
     home: {
         seo: {
-            title: 'GradientV - 为成长型企业提供技术整合',
-            description: 'GradientV 为成长中的中小企业打造定制软件、网站、AI 智能仪表盘与工作流自动化。务实的 AI 落地方案，不做多余的复杂设计。'
+            title: 'GradientV',
+            description: 'GradientV 为小企业打造网站、内部工具和自动化流程。告诉我们是什么在拖慢您，我们会帮您想清楚该做什么。'
         },
-        eyebrow: '为成长型企业提供定制软件与 AI 整合',
-        headline: ['让企业焕然一新，', '建立真正的竞争优势。'],
-        lead: 'GradientV 为您打造定制软件，减少重复性工作，提升决策质量，助您比同行运营得更聪明。',
-        primaryCta: '开始沟通',
-        secondaryCta: '阅读我们的故事',
+        tagline: '围绕您的工作方式打造的软件。',
+        lead: '我们为小企业打造网站、内部工具和自动化流程。告诉我们是什么在拖慢您，我们会帮您想清楚该做什么。',
+        primaryCta: '告诉我们您的项目',
+        secondaryCta: '看看我们的作品',
         buildLabel: '我们打造什么',
         builds: ['网站', '内部工具', 'AI 智能仪表盘', '工作流自动化'],
         clientsLabel: '部分客户',
@@ -55,11 +54,11 @@ export default {
     contact: {
         seo: {
             title: '联系我们 - GradientV',
-            description: '就定制软件、网站建设、AI 智能仪表盘与工作流自动化联系 GradientV。致电 (917) 907-1034 或发送邮件至 contact@gradientv.com。'
+            description: '致电 (917) 907-1034 或发送邮件至 contact@gradientv.com，告诉我们您的项目。GradientV 为小企业打造网站、内部工具和自动化流程。'
         },
         label: '联系我们',
-        heading: '为您的企业打造更聪明的运营系统。',
-        text: 'GradientV 专注于务实的 AI 落地，服务那些希望拥有现代化系统、又不想背负多余复杂度的企业。',
+        heading: '告诉我们您的业务现在是怎么运转的。',
+        text: '从那些耗时太久或总是出错的工作说起。我们会和您一起梳理，也包括软件到底是不是合适的解决办法。',
         phone: '电话',
         email: '电子邮箱',
         linkedin: '领英'
@@ -123,7 +122,7 @@ export default {
     team: {
         seo: {
             title: '团队 - GradientV',
-            description: '认识 GradientV 背后的团队。GradientV 是一家位于纽约市和纽约州石溪的 AI 咨询工作室。'
+            description: '认识 GradientV 背后的团队。'
         },
         label: '团队',
         heading: '认识我们的团队。',

@@ -52,7 +52,7 @@ export default function RequestBox() {
     }
 
     return (
-        <section className="rounded-[1.5rem] border border-line bg-paper-bright p-6 sm:p-8">
+        <section className="border border-line bg-paper-bright p-6 sm:p-8">
             <h2 className="display-md">{words.heading}</h2>
             <p className="mt-3 text-ink-soft">{words.intro}</p>
 
@@ -67,7 +67,7 @@ export default function RequestBox() {
                     placeholder={words.placeholder}
                     value={message}
                     onChange={(event) => { setMessage(event.target.value); setNotice(null); }}
-                    className="mt-1.5 w-full rounded-xl border border-line bg-paper px-3.5 py-2.5 text-ink outline-none placeholder:text-ink-mute focus:border-accent focus:ring-2 focus:ring-accent/25"
+                    className="mt-1.5 w-full border border-line bg-paper px-3.5 py-2.5 text-ink outline-none placeholder:text-ink-mute focus:border-accent focus:ring-2 focus:ring-accent/25"
                 />
                 <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
                     <button

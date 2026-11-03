@@ -15,7 +15,7 @@ export default function ClientGrid() {
                         href={client.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex h-full flex-col rounded-3xl border border-line bg-paper-bright/70 p-5 transition duration-200 hover:-translate-y-1 hover:border-ink/40 hover:shadow-[0_18px_40px_rgba(31,26,23,0.10)]"
+                        className="group flex h-full flex-col border border-line bg-paper-bright/70 p-5 transition-colors hover:border-ink/40"
                     >
                         <div className="flex h-44 items-center justify-center sm:h-52">
                             <img

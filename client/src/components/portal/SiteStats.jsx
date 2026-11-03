@@ -24,8 +24,8 @@ function BarList({ rows }) {
                         <span className="min-w-0 truncate" title={row.label}>{row.label}</span>
                         <span className="font-medium tabular-nums">{count(row.value)}</span>
                     </div>
-                    <div className="mt-1.5 h-1 rounded-full bg-paper-dim">
-                        <div className="h-1 rounded-full bg-accent" style={{ width: `${(row.value / biggest) * 100}%` }} />
+                    <div className="mt-1.5 h-1 bg-paper-dim">
+                        <div className="h-1 bg-accent" style={{ width: `${(row.value / biggest) * 100}%` }} />
                     </div>
                 </li>
             ))}
@@ -72,20 +72,21 @@ export default function SiteStats() {
     })) ?? [];
 
     return (
-        <section className="rounded-[1.5rem] border border-line bg-paper-bright p-6 sm:p-8">
+        <section className="border border-line bg-paper-bright p-6 sm:p-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
                 <h2 className="display-md">{words.heading}</h2>
 
                 {/* ---------- 7 days or 30 ---------- */}
-                <div role="group" aria-label={words.periodLabel} className="flex gap-0.5 rounded-full border border-line bg-paper p-1">
+                {/* plain words. the one showing is underlined */}
+                <div role="group" aria-label={words.periodLabel} className="flex gap-5">
                     {Object.entries(words.periods).map(([value, label]) => (
                         <button
                             key={value}
                             type="button"
                             aria-pressed={days === Number(value)}
                             onClick={() => setDays(Number(value))}
-                            className={`cursor-pointer rounded-full px-3 py-1 text-sm transition-colors ${
-                                days === Number(value) ? 'bg-ink font-medium text-paper' : 'text-ink-soft hover:bg-paper-dim hover:text-ink'
+                            className={`cursor-pointer py-1 text-sm underline-offset-[6px] transition-colors ${
+                                days === Number(value) ? 'font-medium text-ink underline decoration-ink' : 'text-ink-soft hover:text-ink'
                             }`}
                         >
                             {label}
@@ -94,7 +95,7 @@ export default function SiteStats() {
                 </div>
             </div>
 
-            {error && <p role="alert" className="mt-6 rounded-xl border border-line bg-paper px-4 py-3 text-sm">{error}</p>}
+            {error && <p role="alert" className="mt-6 border border-line bg-paper px-4 py-3 text-sm">{error}</p>}
             {stats === null && !error && <p role="status" className="mt-6 text-ink-soft">{words.loading}</p>}
 
             {stats !== null && (

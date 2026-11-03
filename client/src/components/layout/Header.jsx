@@ -34,20 +34,20 @@ export default function Header() {
                     <img src="/images/brand/stacked_black_t.png" alt="" width="1174" height="1106" className="h-11 w-auto" />
                 </Link>
 
-                {/* ---------- wide screens: the links sit in one pill ---------- */}
+                {/* ---------- wide screens: plain text links in a row ---------- */}
                 <nav aria-label={t.nav.label} className="hidden md:block">
-                    <ul className="flex items-center gap-0.5 rounded-full border border-line bg-paper-bright/60 p-1">
+                    <ul className="flex items-center gap-8">
                         {links.map((link) => (
                             <li key={link.to}>
                                 <Link
                                     to={link.to}
                                     aria-current={isCurrent(link) ? 'page' : undefined}
-                                    // the page you're on is filled in. hover only tints, so you can't
+                                    // the page you're on is underlined. hover only darkens, so you can't
                                     // mistake the one you're hovering for the one you're on
-                                    className={`block rounded-full px-4 py-1.5 text-sm transition-colors ${
+                                    className={`block py-1.5 text-sm underline-offset-[7px] transition-colors ${
                                         isCurrent(link)
-                                            ? 'bg-ink font-medium text-paper'
-                                            : 'text-ink-soft hover:bg-paper-dim hover:text-ink'
+                                            ? 'font-medium text-ink underline decoration-ink decoration-1'
+                                            : 'text-ink-soft hover:text-ink'
                                     }`}
                                 >
                                     {link.label}
@@ -69,7 +69,7 @@ export default function Header() {
                         aria-expanded={isMenuOpen}
                         aria-controls="phone-menu"
                         aria-label={isMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
-                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-paper-bright/60 md:hidden"
+                        className="inline-flex h-11 w-11 items-center justify-center border border-line bg-paper-bright/60 md:hidden"
                     >
                         {isMenuOpen ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
                     </button>

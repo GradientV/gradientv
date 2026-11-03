@@ -97,9 +97,20 @@ body {
 }
 
 /* ---------- the slant ----------
-   dark bands start on a diagonal instead of a straight edge, echoing the V */
+   dark bands start on a diagonal instead of a straight edge, echoing the V.
+   --slant is how far the diagonal drops from one side of the screen to the other */
+:root {
+    --slant: clamp(1.75rem, 5.5vw, 5rem);
+}
+
 .slope-top {
-    clip-path: polygon(0 0, 100% clamp(1.75rem, 5.5vw, 5rem), 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% var(--slant), 100% 100%, 0 100%);
+}
+
+/* the home page's dark front band ends on the same diagonal, so the two dark bands
+   on that page (this one and the contact band) run parallel */
+.slope-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - var(--slant)));
 }
 
 /* ---------- textures ----------
@@ -144,6 +155,17 @@ body {
     opacity: 0.42;
     -webkit-mask-image: linear-gradient(102deg, transparent 38%, rgba(0, 0, 0, 0.45) 66%, #000 100%);
     mask-image: linear-gradient(102deg, transparent 38%, rgba(0, 0, 0, 0.45) 66%, #000 100%);
+}
+
+/* the Oculus ribs behind the logo at the top of the home page. the middle stays
+   darker than the edges so the logo and the white text sit on a quiet bed */
+.tx-hero {
+    inset: 0;
+    background-image: url("/images/textures/texture-oculus.webp");
+    background-position: center 30%;
+    opacity: 0.5;
+    -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0, 0, 0, 0.25) 0%, #000 100%);
+    mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0, 0, 0, 0.25) 0%, #000 100%);
 }
 
 /* a corner of waves on a light card. the second card flips it so two cards
