@@ -105,7 +105,7 @@ function people(t) {
             ...(person.photo && { image: `${SITE_URL}${person.photo.src}` }),
             ...(website && { url: website.href }),
             ...(profiles.length > 0 && { sameAs: profiles }),
-            ...(person.id === 'ashton' && { alumniOf: { '@type': 'CollegeOrUniversity', name: 'Stony Brook University' } })
+            ...(person.id === 'ashton' && { affiliation: { '@type': 'CollegeOrUniversity', name: 'Stony Brook University' } })
         };
     });
 }
