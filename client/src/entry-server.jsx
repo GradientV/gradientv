@@ -9,9 +9,12 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import App from './App.jsx';
 
-// the prerender script needs the list of pages and each language's <html lang>
+// the prerender script needs the list of pages, each language's <html lang>,
+// and the builders for the two files written next to the pages
 export { CONTENT } from './content/index.js';
 export { PAGES, pagePath } from './data/pages.js';
+export { buildSitemap } from './data/sitemap.js';
+export { buildLlmsTxt } from './data/llms.js';
 
 /** @param {string} path like '/es/story' @return {string} that page's HTML */
 export function render(path) {

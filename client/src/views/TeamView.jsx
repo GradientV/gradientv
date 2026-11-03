@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import PageHero from '../components/PageHero.jsx';
 import { PersonCard, PersonFeature, PersonRow } from '../components/Person.jsx';
 import Seo from '../components/Seo.jsx';
+import UnderBand from '../components/UnderBand.jsx';
 import { ArrowRightIcon } from '../components/ui/Icons.jsx';
 import { useLocale } from '../context/LocaleContext.jsx';
 import { pageUrl } from '../data/pages.js';
@@ -26,9 +27,9 @@ export default function TeamView() {
                 schema={teamSchema(t, pageUrl('team', locale))}
             />
 
-            <PageHero label={t.team.label} heading={t.team.heading} />
+            <PageHero title={t.team.label} />
 
-            <section className="wrap pb-24 md:pb-32">
+            <UnderBand className="pb-24 md:pb-32">
                 {featured.map((person) => (
                     <PersonFeature key={person.id} person={person}>
                         <Link
@@ -48,7 +49,7 @@ export default function TeamView() {
                 <ul className="mt-4 grid gap-4">
                     {rows.map((person) => <PersonRow key={person.id} person={person} />)}
                 </ul>
-            </section>
+            </UnderBand>
         </>
     );
 }

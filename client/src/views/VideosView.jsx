@@ -2,9 +2,9 @@
 // to bring it back: add it to `links` in Header.jsx and take noindex off it in src/data/pages.js
 import PageHero from '../components/PageHero.jsx';
 import Seo from '../components/Seo.jsx';
+import UnderBand from '../components/UnderBand.jsx';
 import { useLocale } from '../context/LocaleContext.jsx';
 import { videoSchema } from '../data/schema.js';
-import { COMPANY } from '../data/site.js';
 
 export default function VideosView() {
     const { t } = useLocale();
@@ -12,11 +12,11 @@ export default function VideosView() {
 
     return (
         <>
-            <Seo pageId="videos" title={videos.seo.title} description={videos.seo.description} schema={videoSchema()} />
+            <Seo pageId="videos" title={videos.seo.title} description={videos.seo.description} schema={videoSchema(t)} />
 
-            <PageHero label={COMPANY.name} heading={videos.heading} />
+            <PageHero title={videos.heading} />
 
-            <section className="wrap pb-24 md:pb-32">
+            <UnderBand className="pb-24 md:pb-32">
                 {/* the video has no narration, its only audio is instrumental music. so introduction.vtt
                     has one cue naming the music instead of a transcript, and there's no "default" on the
                     track: captions stay off until the viewer turns them on */}
@@ -38,7 +38,7 @@ export default function VideosView() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </UnderBand>
         </>
     );
 }

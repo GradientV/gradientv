@@ -93,7 +93,7 @@ export function PersonRow({ person }) {
             </span>
             <div className="min-w-0 flex-1">
                 <h2 className="font-display text-lg leading-tight font-semibold">{person.name}</h2>
-                <p className="text-sm text-ink-soft">{words.role}</p>
+                {words.role && <p className="text-sm text-ink-soft">{words.role}</p>}
             </div>
             <PersonLinks person={person} />
         </li>

@@ -6,6 +6,7 @@ import NightBand from '../components/NightBand.jsx';
 import PageHero from '../components/PageHero.jsx';
 import { PersonLinks } from '../components/Person.jsx';
 import Seo from '../components/Seo.jsx';
+import UnderBand from '../components/UnderBand.jsx';
 import Eyebrow from '../components/ui/Eyebrow.jsx';
 import { ArrowRightIcon } from '../components/ui/Icons.jsx';
 import { useLocale } from '../context/LocaleContext.jsx';
@@ -28,7 +29,12 @@ export default function StoryView() {
                 schema={storySchema(t, pageUrl('story', locale))}
             />
 
-            <PageHero label={t.story.label} heading={t.story.heading} lead={t.story.lead} texture="ribs" />
+            <PageHero title={t.story.label} subtitle={t.story.heading} />
+
+            {/* ---------- the short version, lined up with the chapters' text column ---------- */}
+            <UnderBand className="grid pb-16 md:grid-cols-12 md:gap-10 md:pb-24">
+                <p className="max-w-[40ch] text-[1.2rem] leading-[1.55] md:col-span-8 md:col-start-5 md:text-[1.375rem]">{t.story.lead}</p>
+            </UnderBand>
 
             {/* ---------- the gap, and the two options a small business gets ---------- */}
             <Chapter heading={gap.heading}>

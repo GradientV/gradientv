@@ -38,7 +38,7 @@ export default {
 
     home: {
         seo: {
-            title: 'GradientV',
+            title: 'GradientV - Sitios web y software para pequeñas empresas',
             description: 'GradientV crea sitios web, herramientas internas y automatizaciones para pequeñas empresas. Cuéntenos qué le está frenando y le ayudaremos a decidir qué construir.'
         },
         tagline: 'Software a la medida de cómo trabaja.',
@@ -48,7 +48,38 @@ export default {
         buildLabel: 'Lo que construimos',
         builds: ['Sitios web', 'Herramientas internas', 'Paneles con inteligencia artificial', 'Automatización de procesos'],
         clientsLabel: 'Clientes destacados',
-        visit: 'Visitar el sitio'
+        visit: 'Visitar el sitio',
+        faqLabel: 'Preguntas frecuentes',
+        faq: [
+            {
+                question: '¿Qué construye GradientV?',
+                answer: 'Sitios web, herramientas internas, paneles con inteligencia artificial y automatización de procesos para pequeñas empresas. Todo se construye en torno a cómo ya funciona su negocio, para que no tenga que adaptarse al producto de otro.'
+            },
+            {
+                question: '¿Con qué tipo de negocios trabajan?',
+                answer: 'Con pequeñas empresas. Entre nuestros clientes están Bukas Cafe, Swabe Food Truck e InfoReporting Solutions, una firma de asesoría fiscal.'
+            },
+            {
+                question: '¿Cómo empieza un proyecto?',
+                answer: 'Con una conversación sobre el trabajo que toma demasiado tiempo o que siempre sale mal. Lo revisamos con usted, incluida la pregunta de si el software es la solución adecuada, antes de construir nada.'
+            },
+            {
+                question: '¿Por qué no contratar a un programador o comprar un software ya hecho?',
+                answer: 'Un ingeniero a tiempo completo es un compromiso de seis cifras antes de saber si hay un año entero de trabajo, y el software ya hecho deja de servir en cuanto necesita algo que sus creadores no previeron. Nosotros construimos y mantenemos software hecho para su negocio, sin que tenga que contratar a un equipo de ingeniería.'
+            },
+            {
+                question: '¿Se ocupan del software después del lanzamiento?',
+                answer: 'Sí. Construimos y mantenemos lo que hacemos, para que usted no tenga que contratar a nadie para ello. Los clientes tienen un portal donde ven cómo va su sitio y nos envían solicitudes de cambios.'
+            },
+            {
+                question: '¿Cómo usan la inteligencia artificial?',
+                answer: 'Donde de verdad le ahorra tiempo. Empezamos por el cuello de botella que más le cuesta, aplicamos lo más pequeño que lo resuelva y nos aseguramos de que entienda qué hace y dónde termina.'
+            },
+            {
+                question: '¿Con quién voy a trabajar?',
+                answer: 'Con las personas que hacen el trabajo. Tendrá un único contacto que le explica todo en lenguaje claro y que responde cuando algo tiene que cambiar.'
+            }
+        ]
     },
 
     contact: {
@@ -125,7 +156,6 @@ export default {
             description: 'Conozca a las personas detrás de GradientV.'
         },
         label: 'Equipo',
-        heading: 'Conozca al equipo.',
         portraitAlt: (name) => `Retrato de ${name}`,
         storyLink: 'Lea la historia completa',
         members: {
@@ -144,7 +174,10 @@ export default {
             emily: {
                 role: 'Directora de Marketing y Finanzas',
                 bio: 'Emily Fisherman dirige el marketing y las finanzas en GradientV, y conecta el trabajo técnico de la empresa con mensajes claros y decisiones financieras sólidas.'
-            }
+            },
+            // no role or bio yet. the row shows just the name until these are filled in
+            brian: { role: '', bio: '' },
+            katie: { role: '', bio: '' }
         }
     },
 

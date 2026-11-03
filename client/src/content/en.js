@@ -42,7 +42,7 @@ export default {
 
     home: {
         seo: {
-            title: 'GradientV',
+            title: 'GradientV - Websites and software for small businesses',
             description: 'GradientV builds websites, internal tools, and automations for small businesses. Tell us what’s slowing you down, and we’ll help you figure out what to build.'
         },
         // the line under the big logo at the top of the page
@@ -53,7 +53,40 @@ export default {
         buildLabel: 'What we build',
         builds: ['Websites', 'Internal tools', 'AI-powered dashboards', 'Workflow automation'],
         clientsLabel: 'Selected clients',
-        visit: 'Visit site'
+        visit: 'Visit site',
+        // every answer here repeats something the site already says (Story, Contact,
+        // the client portal). the same questions go into the structured data and llms.txt
+        faqLabel: 'Common questions',
+        faq: [
+            {
+                question: 'What does GradientV build?',
+                answer: 'Websites, internal tools, AI-powered dashboards, and workflow automation for small businesses. Everything is built around how your business already works, so you don’t have to bend to someone else’s product.'
+            },
+            {
+                question: 'What kinds of businesses do you work with?',
+                answer: 'Small businesses. Our clients include Bukas Cafe, Swabe Food Truck, and InfoReporting Solutions, a tax advisory firm.'
+            },
+            {
+                question: 'How does a project start?',
+                answer: 'With a conversation about the work that takes too long or keeps going wrong. We go through it with you, including whether software is the right fix, before anything gets built.'
+            },
+            {
+                question: 'Why not hire a developer or buy off-the-shelf software?',
+                answer: 'A full-time engineer is a six-figure commitment before anyone knows whether there’s a year of work, and off-the-shelf software stops fitting the moment you need something its makers didn’t plan for. We build and run software made for your business, without you hiring an engineering team.'
+            },
+            {
+                question: 'Do you look after the software after launch?',
+                answer: 'Yes. We build and run what we make, so you don’t have to hire for it. Clients get a portal where they can see how their site is doing and send us change requests.'
+            },
+            {
+                question: 'How do you use AI?',
+                answer: 'Where it actually saves you time. We start with the bottleneck that’s costing you the most, apply the smallest thing that solves it, and make sure you understand what it does and where it stops.'
+            },
+            {
+                question: 'Who will I be working with?',
+                answer: 'The people doing the work. You get one point of contact who explains things in plain language and is accountable when something needs to change.'
+            }
+        ]
     },
 
     contact: {
@@ -131,7 +164,6 @@ export default {
             description: 'Meet the people behind GradientV.'
         },
         label: 'Team',
-        heading: 'Meet the team.',
         portraitAlt: (name) => `Portrait of ${name}`,
         storyLink: 'Read the full story',
         // keyed by the person's id in src/data/team.js
@@ -151,7 +183,10 @@ export default {
             emily: {
                 role: 'Head of Marketing & Finance',
                 bio: "Emily Fisherman leads marketing and finance at GradientV, connecting the company's technical work to clear messaging and sound financial decisions."
-            }
+            },
+            // no role or bio yet. the row shows just the name until these are filled in
+            brian: { role: '', bio: '' },
+            katie: { role: '', bio: '' }
         }
     },
 

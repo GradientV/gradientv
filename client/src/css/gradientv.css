@@ -168,6 +168,21 @@ body {
     mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0, 0, 0, 0.25) 0%, #000 100%);
 }
 
+/* the waves at the top of the section right under a dark band (see UnderBand.jsx).
+   a fixed height instead of the whole section, so a long page doesn't stretch the image */
+.tx-under {
+    top: 0;
+    right: 0;
+    left: 0;
+    height: min(100%, 44rem);
+    background-image: url("/images/textures/texture-waves.webp");
+    background-position: center top;
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.55) 58%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.55) 58%, transparent 100%);
+}
+
 /* a corner of waves on a light card. the second card flips it so two cards
    side by side don't look like copies */
 .tx-card {

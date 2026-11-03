@@ -24,7 +24,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const clientRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(clientRoot, 'dist');
 
-const { render, CONTENT, PAGES, pagePath } = await import(pathToFileURL(path.join(clientRoot, 'dist-server/entry-server.js')));
+const { render, CONTENT, PAGES, pagePath, buildSitemap, buildLlmsTxt } = await import(pathToFileURL(path.join(clientRoot, 'dist-server/entry-server.js')));
 
 // dist/index.html as Vite built it: the page shell with the real script and stylesheet names
 const template = await readFile(path.join(dist, 'index.html'), 'utf8');
@@ -77,3 +77,9 @@ for (const page of PAGES) {
 // Vercel shows dist/404.html (with a 404 status) for any address that isn't a file.
 // '/404' isn't a page, so the router lands on the not-found view
 await save('404.html', buildPage('/404', CONTENT.en.htmlLang));
+
+// two files for crawlers, built from the same data as the pages so they never go stale:
+//   sitemap.xml  every public page in every language, for search engines
+//   llms.txt     a short plain-language summary of GradientV, for AI tools
+await save('sitemap.xml', buildSitemap());
+await save('llms.txt', buildLlmsTxt());

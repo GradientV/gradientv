@@ -51,6 +51,22 @@ export const TEAM = [
         links: [
             { kind: 'linkedin', href: 'https://www.linkedin.com/in/emilyfisherman/' }
         ]
+    },
+    {
+        id: 'brian',
+        name: 'Brian Huang',
+        initials: 'BH',
+        size: 'small',
+        photo: null,
+        links: []
+    },
+    {
+        id: 'katie',
+        name: 'Katie Jun',
+        initials: 'KJ',
+        size: 'small',
+        photo: null,
+        links: []
     }
 ];
 

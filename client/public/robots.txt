@@ -1,4 +1,24 @@
+# gradientv.com
+#
+# Everything public is open to search engines and AI assistants, on purpose:
+# we want GradientV to come up when people ask ChatGPT, Claude, Perplexity,
+# Gemini or Copilot who builds software for small businesses.
+#
+#   search and answers:  Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User,
+#                        Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User
+#   model training:      GPTBot, ClaudeBot, Google-Extended. also allowed, so the
+#                        models themselves learn who GradientV is
+#
+# One group covers all of them. A bot named in a group of its own would skip
+# this one, so don't add per-bot groups without copying these rules into them.
+#
+# A short plain-language summary for AI tools: https://gradientv.com/llms.txt
+
 User-agent: *
 Allow: /
+Disallow: /api/
+
+# Cloudflare's content signals: yes to search, to answering questions, and to training
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 Sitemap: https://gradientv.com/sitemap.xml

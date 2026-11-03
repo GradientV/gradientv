@@ -38,7 +38,7 @@ export default {
 
     home: {
         seo: {
-            title: 'GradientV',
+            title: 'GradientV - 为小企业打造网站与软件',
             description: 'GradientV 为小企业打造网站、内部工具和自动化流程。告诉我们是什么在拖慢您，我们会帮您想清楚该做什么。'
         },
         tagline: '围绕您的工作方式打造的软件。',
@@ -48,7 +48,38 @@ export default {
         buildLabel: '我们打造什么',
         builds: ['网站', '内部工具', 'AI 智能仪表盘', '工作流自动化'],
         clientsLabel: '部分客户',
-        visit: '访问网站'
+        visit: '访问网站',
+        faqLabel: '常见问题',
+        faq: [
+            {
+                question: 'GradientV 打造什么？',
+                answer: '我们为小企业打造网站、内部工具、AI 智能仪表盘和工作流自动化。一切都围绕您现有的工作方式来做，您不必去迁就别人的产品。'
+            },
+            {
+                question: '你们和哪些企业合作？',
+                answer: '小企业。我们的客户包括 Bukas Cafe、Swabe Food Truck，以及税务咨询公司 InfoReporting Solutions。'
+            },
+            {
+                question: '项目是怎么开始的？',
+                answer: '从一次对话开始，聊聊哪些工作耗时太久或总是出错。我们会和您一起梳理，包括软件到底是不是合适的解决办法，然后才开始动手。'
+            },
+            {
+                question: '为什么不直接招一名工程师，或者买现成的软件？',
+                answer: '全职工程师意味着六位数的投入，而且要在确定是否有一整年工作量之前就先承诺；现成软件一旦遇到开发商没考虑到的需求，就不再合用。我们为您的企业量身打造并持续运行软件，您无需组建工程团队。'
+            },
+            {
+                question: '上线之后你们还负责吗？',
+                answer: '负责。我们打造并持续运行自己做的东西，您不必为此另外招人。客户还有一个专属门户，可以查看网站的表现，并直接向我们提交修改需求。'
+            },
+            {
+                question: '你们怎么用 AI？',
+                answer: '用在真正能为您节省时间的地方。我们从最耗费您时间的瓶颈入手，用最小的方案解决它，并确保您清楚它能做什么、做不到什么。'
+            },
+            {
+                question: '我会和谁合作？',
+                answer: '和真正做事的人。您会有一位固定联系人，用通俗的语言解释一切，并在需要调整时负责到底。'
+            }
+        ]
     },
 
     contact: {
@@ -125,7 +156,6 @@ export default {
             description: '认识 GradientV 背后的团队。'
         },
         label: '团队',
-        heading: '认识我们的团队。',
         portraitAlt: (name) => `${name} 的肖像`,
         storyLink: '阅读完整故事',
         members: {
@@ -144,7 +174,10 @@ export default {
             emily: {
                 role: '市场与财务负责人',
                 bio: 'Emily Fisherman 负责 GradientV 的市场与财务，把公司的技术工作转化为清晰的信息传达和稳健的财务决策。'
-            }
+            },
+            // no role or bio yet. the row shows just the name until these are filled in
+            brian: { role: '', bio: '' },
+            katie: { role: '', bio: '' }
         }
     },
 

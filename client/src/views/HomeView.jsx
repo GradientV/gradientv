@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import ClientGrid from '../components/ClientGrid.jsx';
 import ContactBand from '../components/ContactBand.jsx';
 import Seo from '../components/Seo.jsx';
+import UnderBand from '../components/UnderBand.jsx';
 import ButtonLink from '../components/ui/ButtonLink.jsx';
 import Eyebrow from '../components/ui/Eyebrow.jsx';
 import { useLocale } from '../context/LocaleContext.jsx';
@@ -52,34 +53,45 @@ export default function HomeView() {
 
             {/* ---------- what we build ----------
                 the plain version, right after the logo. the pitch sits to the right and the list
-                is a small index on the left. on a phone it's the pitch first, then the list.
-                it tucks up under the hero's diagonal so its texture fills the corner the slant
-                cuts away, and the extra top padding keeps the text clear of the edge */}
-            <section className="relative -mt-(--slant) overflow-hidden">
-                <div className="tx tx-waves" aria-hidden="true" />
-                <div className="wrap relative grid gap-12 pt-[calc(4rem+var(--slant))] pb-20 md:grid-cols-12 md:gap-10 md:pt-[calc(6rem+var(--slant))] md:pb-28">
-                    <p className="max-w-[38ch] text-[1.2rem] leading-[1.55] text-ink md:col-span-7 md:col-start-6 md:row-start-1 md:text-[1.375rem]">
-                        {t.home.lead}
-                    </p>
+                is a small index on the left. on a phone it's the pitch first, then the list */}
+            <UnderBand className="grid gap-12 pb-20 md:grid-cols-12 md:gap-10 md:pb-28">
+                <p className="max-w-[38ch] text-[1.2rem] leading-[1.55] text-ink md:col-span-7 md:col-start-6 md:row-start-1 md:text-[1.375rem]">
+                    {t.home.lead}
+                </p>
 
-                    <div className="md:col-span-4 md:col-start-1 md:row-start-1 lg:col-span-3">
-                        <Eyebrow>{t.home.buildLabel}</Eyebrow>
-                        <ul className="mt-4 border-t border-ink/20">
-                            {t.home.builds.map((build) => (
-                                <li key={build} className="border-b border-ink/20 py-2.5 text-[0.95rem]">
-                                    {build}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                <div className="md:col-span-4 md:col-start-1 md:row-start-1 lg:col-span-3">
+                    <Eyebrow>{t.home.buildLabel}</Eyebrow>
+                    <ul className="mt-4 border-t border-ink/20">
+                        {t.home.builds.map((build) => (
+                            <li key={build} className="border-b border-ink/20 py-2.5 text-[0.95rem]">
+                                {build}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-            </section>
+            </UnderBand>
 
             {/* ---------- clients ---------- */}
             <section id="clients" className="wrap pt-4 pb-24 md:pb-32">
                 <Eyebrow>{t.home.clientsLabel}</Eyebrow>
                 <div className="mt-6">
                     <ClientGrid />
+                </div>
+            </section>
+
+            {/* ---------- common questions ----------
+                plain rows between thin rules, every answer showing (no accordion), so people
+                and AI tools can read them all. the answers sit in the same column as the pitch
+                at the top of the page. the same questions are in the structured data */}
+            <section id="questions" className="wrap pb-24 md:pb-32">
+                <Eyebrow as="h2">{t.home.faqLabel}</Eyebrow>
+                <div className="mt-6 border-t border-ink/20">
+                    {t.home.faq.map((item) => (
+                        <div key={item.question} className="grid gap-3 border-b border-ink/20 py-7 md:grid-cols-12 md:gap-10 md:py-8">
+                            <h3 className="font-display text-lg leading-snug font-medium md:col-span-5 md:text-xl">{item.question}</h3>
+                            <p className="max-w-[60ch] leading-relaxed text-ink-soft md:col-span-7">{item.answer}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 

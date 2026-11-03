@@ -18,7 +18,8 @@
         "add-client": "npm run add-client -w server --",
         "site-key": "npm run site-key -w server --",
         "import-site-data": "npm run import-site-data -w server --",
-        "check-analytics": "npm run check-analytics -w server --"
+        "check-analytics": "npm run check-analytics -w server --",
+        "indexnow": "npm run indexnow -w client"
     },
     "devDependencies": {
         "concurrently": "^9.2.1"
