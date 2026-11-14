@@ -21,6 +21,12 @@ export type AccountJSON = {
     siteSendsData: boolean;
 };
 
+/** one row of the admin's list of clients (GET /api/admin/clients), for the "view as" menu */
+export type ClientJSON = AccountJSON & {
+    /** false until they open their invite link and pick a password */
+    hasSignedUp: boolean;
+};
+
 /** whose login an invite link is for (POST /api/auth/invite) */
 export type InviteJSON = {
     businessName: string;

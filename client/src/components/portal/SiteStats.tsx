@@ -36,7 +36,8 @@ function BarList({ rows }: { rows: Row[] }) {
     );
 }
 
-export default function SiteStats() {
+// viewAs is only there when i'm looking at a client's portal from the admin login
+export default function SiteStats({ viewAs }: { viewAs?: string }) {
     const { t } = useLocale();
     const words = t.portal.stats;
 
@@ -48,7 +49,7 @@ export default function SiteStats() {
     useEffect(() => {
         let ignore = false;
         setError('');
-        api.getStats(days)
+        api.getStats(days, viewAs)
             .then((found) => {
                 if (!ignore) setStats(found);
             })
@@ -58,7 +59,7 @@ export default function SiteStats() {
                 setError(api.messageOf(problem));
             });
         return () => { ignore = true; };
-    }, [days]);
+    }, [days, viewAs]);
 
     // after switching period, the old numbers stay up (faded) until the new ones land, so nothing jumps
     const isStale = stats !== null && stats.days !== days;

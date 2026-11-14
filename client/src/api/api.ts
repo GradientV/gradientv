@@ -11,6 +11,7 @@
 import type {
     AccountJSON,
     AssessmentSummaryJSON,
+    ClientJSON,
     ErrorJSON,
     InboxJSON,
     InviteJSON,
@@ -93,11 +94,27 @@ export function setPassword(token: string, password: string): Promise<AccountJSO
     return send('POST', '/api/auth/set-password', { token, password });
 }
 
+// ---------- looking at a client's portal (admin only) ----------
+// the functions below that read things take an optional viewAs: a client's id.
+// with it the server answers as it would for that client. it only does that for the
+// admin login, and only for reading. anyone else who tries gets a 403
+
+/** every client login, by name */
+export function listClients(): Promise<ClientJSON[]> {
+    return send('GET', '/api/admin/clients');
+}
+
+/** puts ?as=<id> (or &as=<id>) on the end of a URL when there is a client to view as */
+function asClient(url: string, viewAs?: string): string {
+    if (!viewAs) return url;
+    return `${url}${url.includes('?') ? '&' : '?'}as=${encodeURIComponent(viewAs)}`;
+}
+
 // ---------- the request box ----------
 
 /** a client's own requests, newest first */
-export function listRequests(): Promise<RequestJSON[]> {
-    return send('GET', '/api/requests');
+export function listRequests(viewAs?: string): Promise<RequestJSON[]> {
+    return send('GET', asClient('/api/requests', viewAs));
 }
 
 /** the admin gets everyone's from the same address, each with whose it is */
@@ -118,19 +135,19 @@ export function setRequestStatus(id: string, status: RequestStatus): Promise<Inb
 // ---------- site stats ----------
 
 /** the signed-in client's own site, 7 or 30 days back. there's nothing to pass for which site, the server knows from the login */
-export function getStats(days: number): Promise<SiteStatsJSON> {
-    return send('GET', `/api/stats?days=${days}`);
+export function getStats(days: number, viewAs?: string): Promise<SiteStatsJSON> {
+    return send('GET', asClient(`/api/stats?days=${days}`, viewAs));
 }
 
 // ---------- what the client's own site collected ----------
 // only for clients whose website sends things to the portal (account.siteSendsData)
 
 /** the self-assessments finished on their site: { total, last30, byType, recent } */
-export function getAssessments(): Promise<AssessmentSummaryJSON> {
-    return send('GET', '/api/site-data/assessments');
+export function getAssessments(viewAs?: string): Promise<AssessmentSummaryJSON> {
+    return send('GET', asClient('/api/site-data/assessments', viewAs));
 }
 
 /** their newsletter signups, newest first: { total, subscribers } */
-export function getSubscribers(): Promise<SubscriberListJSON> {
-    return send('GET', '/api/site-data/subscribers');
+export function getSubscribers(viewAs?: string): Promise<SubscriberListJSON> {
+    return send('GET', asClient('/api/site-data/subscribers', viewAs));
 }

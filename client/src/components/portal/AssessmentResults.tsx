@@ -32,7 +32,8 @@ function nameFromType(type: string): string {
     return words.charAt(0).toUpperCase() + words.slice(1);
 }
 
-export default function AssessmentResults() {
+// viewAs is only there when i'm looking at a client's portal from the admin login
+export default function AssessmentResults({ viewAs }: { viewAs?: string }) {
     const { t } = useLocale();
     const words = t.portal.assessments;
 
@@ -42,7 +43,7 @@ export default function AssessmentResults() {
 
     useEffect(() => {
         let ignore = false;
-        api.getAssessments()
+        api.getAssessments(viewAs)
             .then((found) => {
                 if (!ignore) setSummary(found);
             })
@@ -50,7 +51,7 @@ export default function AssessmentResults() {
                 if (!ignore) setError(api.messageOf(problem));
             });
         return () => { ignore = true; };
-    }, []);
+    }, [viewAs]);
 
     // not every site that sends things here has assessments. so this card stays out of
     // the way until it knows there's something to put in it (or something went wrong)

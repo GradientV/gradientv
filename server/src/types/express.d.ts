@@ -6,6 +6,8 @@ declare global {
     namespace Express {
         interface Request {
             account?: AccountDocument;
+            /** only while the admin views a client's portal (viewAs): who is really signed in */
+            viewer?: AccountDocument;
         }
     }
 }

@@ -4,7 +4,8 @@
 //
 // this is also what keeps clients out of each other's things: a route never asks
 // the browser which client it is. it reads req.account (through accountOf below),
-// which only this file and requireSiteKey set
+// which only this file and requireSiteKey set. (one exception, for me only and only
+// for looking: viewAs.ts)
 import type { NextFunction, Request, Response } from 'express';
 import { Account, type AccountDocument } from '../models/Account.js';
 import { findSession } from '../services/sessions.js';
