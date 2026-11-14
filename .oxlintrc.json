@@ -1,0 +1,15 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "plugins": ["react", "typescript", "oxc", "jsx-a11y"],
+    "ignorePatterns": ["node_modules", "dist", "dist-server", ".vercel", "legacy"],
+    "rules": {
+        "react/rules-of-hooks": "error",
+        "react/only-export-components": ["warn", { "allowConstantExport": true, "allowExportNames": ["useLocale", "useAuth", "shortDate", "dayLabel"] }]
+    },
+    "overrides": [
+        {
+            "files": ["client/src/entry-server.tsx"],
+            "rules": { "react/only-export-components": "off" }
+        }
+    ]
+}

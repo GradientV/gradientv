@@ -1,0 +1,38 @@
+# Google Drive for Desktop temp folders
+.tmp.driveupload/
+.tmp.drivedownload/
+
+# Vercel CLI
+.vercel
+
+# Environment variables — never commit secrets
+.env
+.env.*
+!.env.example
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Node + the Vite build output (Vercel builds these itself)
+node_modules/
+dist/
+dist-server/
+
+# TypeScript's incremental build notes
+*.tsbuildinfo
+
+# kept on this computer, not part of the repo: the earlier hand-written
+# HTML site, and the original photos the site's textures were cut from
+/legacy/
+/design/
+
+# Notes, research and AI agent files: kept on this computer, never pushed
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+AGENTS-TEMPLATE/
+RESEARCH.md
+/context/
+/Context/

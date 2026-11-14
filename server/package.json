@@ -1,0 +1,28 @@
+{
+    "name": "server",
+    "version": "0.1.0",
+    "private": true,
+    "license": "UNLICENSED",
+    "type": "module",
+    "main": "src/server.ts",
+    "scripts": {
+        "start": "tsx src/server.ts",
+        "dev": "tsx watch --clear-screen=false src/server.ts",
+        "add-client": "tsx scripts/add-client.ts",
+        "site-key": "tsx scripts/site-key.ts",
+        "import-site-data": "tsx scripts/import-site-data.ts",
+        "check-analytics": "tsx scripts/check-analytics.ts"
+    },
+    "dependencies": {
+        "bcryptjs": "^3.0.3",
+        "cookie-parser": "^1.4.7",
+        "dotenv": "^17.2.3",
+        "express": "^5.1.0",
+        "mongoose": "^9.10.1"
+    },
+    "devDependencies": {
+        "@types/cookie-parser": "^1.4.10",
+        "@types/express": "^5.0.6",
+        "tsx": "^4.23.15"
+    }
+}

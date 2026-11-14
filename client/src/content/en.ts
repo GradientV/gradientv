@@ -1,0 +1,362 @@
+// every English word on the site, one object.
+// es.ts and zh.ts have the exact same shape, so a view just reads t.home.lead
+// and never needs to know which language it's showing.
+// the long legal documents are separate, in src/content/legal
+
+const en = {
+    code: 'en' as const,
+    htmlLang: 'en',       // <html lang>
+    hreflang: 'en',       // what search engines call this language
+    ogLocale: 'en_US',    // what link previews call it
+    languageName: 'English',
+
+    nav: {
+        label: 'Main',
+        home: 'GradientV home',
+        skip: 'Skip to content',
+        clients: 'Clients',
+        story: 'Story',
+        team: 'Team',
+        contact: 'Contact',
+        login: 'Client login',
+        openMenu: 'Open menu',
+        closeMenu: 'Close menu'
+    },
+
+    footer: {
+        site: 'Site',
+        legal: 'Legal',
+        language: 'Language',
+        privacy: 'Privacy Policy',
+        terms: 'Terms of Service',
+        accessibility: 'Accessibility',
+        copyright: '© 2026 GradientV LLC. All rights reserved.'
+    },
+
+    // the little link buttons under a person
+    links: {
+        website: 'Website',
+        linkedin: 'LinkedIn',
+        github: 'GitHub'
+    },
+
+    home: {
+        seo: {
+            title: 'GradientV - Websites and software for small businesses',
+            description: 'GradientV builds websites, internal tools, and automations for small businesses. Tell us what’s slowing you down, and we’ll help you figure out what to build.'
+        },
+        // the line under the big logo at the top of the page
+        tagline: 'Software built around how you work.',
+        lead: 'We build websites, internal tools, and automations for small businesses. Tell us what’s slowing you down, and we’ll help you figure out what to build.',
+        primaryCta: 'Tell us about your project',
+        secondaryCta: 'See our work',
+        buildLabel: 'What we build',
+        builds: ['Websites', 'Internal tools', 'AI-powered dashboards', 'Workflow automation'],
+        clientsLabel: 'Selected clients',
+        visit: 'Visit site',
+        // every answer here repeats something the site already says (Story, Contact,
+        // the client portal). the same questions go into the structured data and llms.txt
+        faqLabel: 'Common questions',
+        faq: [
+            {
+                question: 'What does GradientV build?',
+                answer: 'Websites, internal tools, AI-powered dashboards, and workflow automation for small businesses. Everything is built around how your business already works, so you don’t have to bend to someone else’s product.'
+            },
+            {
+                question: 'What kinds of businesses do you work with?',
+                answer: 'Small businesses. Our clients include Bukas Cafe, Swabe Food Truck, and InfoReporting Solutions, a tax advisory firm.'
+            },
+            {
+                question: 'How does a project start?',
+                answer: 'With a conversation about the work that takes too long or keeps going wrong. We go through it with you, including whether software is the right fix, before anything gets built.'
+            },
+            {
+                question: 'Why not hire a developer or buy off-the-shelf software?',
+                answer: 'A full-time engineer is a six-figure commitment before anyone knows whether there’s a year of work, and off-the-shelf software stops fitting the moment you need something its makers didn’t plan for. We build and run software made for your business, without you hiring an engineering team.'
+            },
+            {
+                question: 'Do you look after the software after launch?',
+                answer: 'Yes. We build and run what we make, so you don’t have to hire for it. Clients get a portal where they can see how their site is doing and send us change requests.'
+            },
+            {
+                question: 'How do you use AI?',
+                answer: 'Where it actually saves you time. We start with the bottleneck that’s costing you the most, apply the smallest thing that solves it, and make sure you understand what it does and where it stops.'
+            },
+            {
+                question: 'Who will I be working with?',
+                answer: 'The people doing the work. You get one point of contact who explains things in plain language and is accountable when something needs to change.'
+            }
+        ]
+    },
+
+    contact: {
+        seo: {
+            title: 'Contact - GradientV',
+            description: 'Call (917) 907-1034 or email contact@gradientv.com to tell us about your project. We build websites, internal tools, and automations for small businesses.'
+        },
+        label: 'Contact',
+        heading: 'Tell us how your business runs today.',
+        text: 'Start with the work that takes too long or keeps going wrong. We’ll go through it with you, including whether software is the right fix.',
+        phone: 'Phone',
+        email: 'Email',
+        linkedin: 'LinkedIn'
+    },
+
+    story: {
+        seo: {
+            title: 'Story - GradientV',
+            description: 'Why GradientV exists: small businesses are offered either a six-figure engineering hire or software they cannot control. We build the third option, and help them adopt AI along the way.'
+        },
+        label: 'Story',
+        heading: "Software shouldn't be a luxury.",
+        lead: "Most small businesses are handed two options: hire a software engineer at a salary they can't justify, or rent software they don't control. GradientV exists to offer a third.",
+        gap: {
+            heading: 'The gap.',
+            body: [
+                'Custom software has never been more capable, and for most small businesses it has never felt further out of reach. The companies that would benefit most from software built around how they actually work are the ones least able to get it.',
+                "That isn't because the technology is hard to come by. It's because of how it's sold."
+            ],
+            // the two choices a small business is normally left with
+            options: [
+                {
+                    title: 'Hire an engineer',
+                    cost: 'Six figures, before line one',
+                    text: 'A full-time salary, benefits, and a hiring process most owners have no time to run, all committed to before anyone knows whether the role is even a full year of work. For a company of fifteen people, that is not a hire. That is a bet on the whole budget.'
+                },
+                {
+                    title: 'Rent a SaaS product',
+                    cost: 'Fast to start, fixed forever',
+                    text: "Cheap to begin and genuinely useful, right up to the point where you need it to do something its makers didn't plan for. You end up adapting your business to the tool, and the parts you most want to change are exactly the parts you aren't allowed to touch."
+                }
+            ]
+        },
+        middle: {
+            label: 'What we do',
+            heading: "We're the middle path, and the middle man.",
+            body: [
+                "GradientV builds and runs the software so you don't have to hire for it, and builds it around how you already work so you aren't bending to someone else's product roadmap. You get systems that fit, without taking on an engineering department to keep them running.",
+                "We're also the face of the technical work. One person to call, who explains what's happening in plain language rather than in jargon, and who is accountable when something needs to change. You should never have to become technical to get software that works for you. That translation is our job, not yours."
+            ]
+        },
+        ai: {
+            heading: 'Adapting with AI.',
+            body: [
+                'AI is where this gap is widest right now. The tools are real and genuinely useful, and most small businesses still have no practical way in. The guidance available is either marketing copy or a research paper, and neither tells an owner what to actually do on Monday.',
+                "We approach it the way we approach everything else. Start with the bottleneck that's actually costing you time, apply the smallest thing that solves it, and make sure you understand what it does and where it stops. No rebuilding how you operate around a trend, and no dependence on something nobody at your company can explain.",
+                "Adopting AI well is mostly a matter of judgment about which problems are worth pointing it at. That judgment is the part we're here to supply."
+            ]
+        },
+        founder: {
+            heading: "Who you're working with.",
+            role: 'Founder & aspiring Software Engineer',
+            body: [
+                "I started GradientV because I kept running into the same gap from both sides. I'm a Computer Science and Applied Mathematics student at Stony Brook University, focused on data science, machine learning, and applied AI systems, and I kept meeting small business owners who needed exactly that kind of work and had nowhere sensible to get it.",
+                'My background includes coursework in data science, data mining, machine learning, and analytics. I will be joining CRIZM, an AI-powered platform built to support grading workflows, feedback systems, and academic outcomes reporting as an Undergraduate Researcher and hope to gain experience that I can further implement in my work at GradientV.',
+                "I call myself an aspiring software engineer on purpose. I'm early in my career, I'm still learning, and I would rather say that plainly than oversell it. What I can promise is that I'll be direct about what I can build, honest about what I can't, and that you'll always be talking to the person actually doing the work."
+            ],
+            teamLink: 'Meet the rest of the team'
+        }
+    },
+
+    team: {
+        seo: {
+            title: 'Team - GradientV',
+            description: 'Meet the people behind GradientV.'
+        },
+        label: 'Team',
+        portraitAlt: (name: string) => `Portrait of ${name}`,
+        storyLink: 'Read the full story',
+        // keyed by the person's id in src/data/team.ts
+        members: {
+            ashton: {
+                role: 'Founder',
+                bio: "I'm Ashton Reyes, founder of GradientV, with a background in Computer Science and Applied Mathematics and a focus on data science, machine learning, and applied AI systems."
+            },
+            jorel: {
+                role: 'Head of Strategy & Growth',
+                bio: 'Jorel Chan leads strategy and growth at GradientV, shaping how the company identifies opportunities and builds lasting relationships with clients and partners.'
+            },
+            bryce: {
+                role: 'Head of Engineering',
+                bio: "Bryce Whiteside leads engineering at GradientV, overseeing the technical architecture and execution behind the team's products and client work."
+            },
+            emily: {
+                role: 'Head of Marketing & Finance',
+                bio: "Emily Fisherman leads marketing and finance at GradientV, connecting the company's technical work to clear messaging and sound financial decisions."
+            },
+            // no role or bio yet. the row shows just the name until these are filled in
+            brian: { role: '', bio: '' },
+            katie: { role: '', bio: '' }
+        }
+    },
+
+    login: {
+        seo: {
+            title: 'Client login - GradientV',
+            description: 'Sign in to the GradientV client portal.'
+        },
+        label: 'Client portal',
+        heading: 'Sign in',
+        intro: 'For GradientV clients.',
+        email: 'Email',
+        password: 'Password',
+        submit: 'Sign in',
+        sending: 'Signing in…',
+        // shown after pressing Sign in when the server or its database can't be reached
+        unavailable: "The client portal can't be reached right now. Try again in a few minutes, or reach us directly.",
+        contact: 'Contact us',
+        pitchHeading: 'One place for everything we build for you.',
+        pitchText: 'See how your site is doing and send us change requests, all in one place.'
+    },
+
+    // the two pages behind the login are English only for now, like videos
+
+    // where an invite link lands
+    setPassword: {
+        seo: {
+            title: 'Choose your password - GradientV',
+            description: 'Choose a password for the GradientV client portal.'
+        },
+        label: 'Client portal',
+        heading: 'Choose your password',
+        checking: 'Checking your link…',
+        introFor: 'This sets up the login for',
+        email: 'Email',
+        password: 'New password',
+        confirm: 'Type it again',
+        hint: 'At least 10 characters.',
+        submit: 'Save and sign in',
+        sending: 'Saving…',
+        mismatch: 'Those two passwords are not the same.',
+        badLink: 'This link does not work anymore. It was already used, or it is more than 7 days old. Ask us for a new one.',
+        contact: 'Contact us'
+    },
+
+    portal: {
+        seo: {
+            title: 'Client portal - GradientV',
+            description: 'The GradientV client portal.'
+        },
+        label: 'Client portal',
+        checking: 'Checking who is signed in…',
+        signedInAs: 'Signed in as',
+        signOut: 'Sign out',
+        signingOut: 'Signing out…',
+        requests: {
+            heading: 'Requests',
+            intro: 'Tell us what you would like changed on your site.',
+            label: 'What would you like changed?',
+            placeholder: 'For example: we close at 9pm on Fridays now.',
+            submit: 'Send request',
+            sending: 'Sending…',
+            sent: 'Sent. We will take a look.',
+            loading: 'Loading requests…',
+            listHeading: 'What you have sent',
+            empty: 'Nothing sent yet.',
+            // the keys are the statuses the server uses (server/src/models/ChangeRequest.ts)
+            status: {
+                'new': 'New',
+                'in progress': 'In progress',
+                'done': 'Done'
+            },
+            // what the admin login sees instead of the box
+            inboxHeading: 'Requests from clients',
+            inboxEmpty: 'No requests yet.',
+            statusLabel: 'Status'
+        },
+        stats: {
+            heading: 'Site stats',
+            periodLabel: 'Time period',
+            // the keys are how many days the server gets asked for
+            periods: {
+                7: 'Last 7 days',
+                30: 'Last 30 days'
+            },
+            loading: 'Loading your stats…',
+            visitors: 'Visitors',
+            pageviews: 'Page views',
+            chartHeading: 'Visitors per day',
+            day: 'Day',
+            pagesHeading: 'Most viewed pages',
+            homePage: 'Home page',
+            sourcesHeading: 'Where visitors came from',
+            direct: 'Direct or unknown',
+            otherSources: 'Other sites',
+            none: 'Nothing to show for these days yet.',
+            note: 'Days are counted on UTC time, so each one starts in the evening in New York. The numbers refresh every 10 minutes.'
+        },
+        // the next two only show for a client whose own website sends things to the portal
+        assessments: {
+            heading: 'Assessments',
+            intro: 'Every self-assessment finished on your site. Results are anonymous: nothing here says who took one.',
+            loading: 'Loading your assessments…',
+            total: 'Completed',
+            last30: 'Last 30 days',
+            byTypeHeading: 'By assessment',
+            completed: 'completed',
+            averageScore: 'Average score',
+            // the keys are the risk levels the server uses (server/src/models/AssessmentResult.ts)
+            risk: {
+                low: 'Low risk',
+                medium: 'Medium risk',
+                high: 'High risk'
+            },
+            recentHeading: 'Latest results',
+            date: 'Date',
+            assessment: 'Assessment',
+            score: 'Score',
+            riskLevel: 'Risk level',
+            showAll: 'Show all',
+            showFewer: 'Show fewer',
+            latestOnly: 'These are the latest results. The numbers above count all of them.'
+        },
+        subscribers: {
+            heading: 'Newsletter signups',
+            intro: 'Everyone who signed up for updates on your site.',
+            loading: 'Loading your signups…',
+            total: 'Signed up',
+            empty: 'Nobody has signed up yet.',
+            copy: 'Copy all emails',
+            copied: 'Copied. Paste them wherever you send email from.',
+            copyFailed: 'Could not copy. Select them from the list below.',
+            listHeading: 'Newest first',
+            from: 'from',
+            showAll: 'Show all',
+            showFewer: 'Show fewer',
+            newestOnly: 'This list and the copy button stop at the newest 1,000.'
+        }
+    },
+
+    notFound: {
+        seo: {
+            title: 'Page Not Found - GradientV',
+            description: 'This page moved, or never existed.'
+        },
+        label: 'Error 404',
+        heading: 'This page moved, or never existed.',
+        body: 'The link you followed points somewhere we do not have a page. Nothing is broken on your end. Head back to the homepage, or tell us what you were looking for and we will point you to it.',
+        home: 'Back to home',
+        contact: 'Contact us',
+        work: 'See our work'
+    },
+
+    // English only. the page is not in the nav
+    videos: {
+        seo: {
+            title: 'Videos - GradientV',
+            description: 'A short introduction to GradientV, which builds websites, internal tools, and automations for small businesses.'
+        },
+        heading: 'Videos',
+        title: 'GradientV Introduction',
+        text: 'Meet the team behind GradientV and learn about our mission to help businesses adopt AI in practical, measurable ways.',
+        captions: 'English',
+        unsupported: "Your browser doesn't support HTML5 video. Please update your browser.",
+        summaryHeading: 'Video summary',
+        summary: [
+            'In this short introduction, the GradientV team shares who they are and how the studio helps growing businesses adopt AI in practical, measurable ways, from modern websites and workflow automation to AI-powered dashboards and internal assistants.',
+            'This video has no narration. Its only audio is an instrumental music track, so nothing spoken is missed by watching it without sound. Captions identifying the music are available through the player.'
+        ]
+    }
+};
+
+export default en;

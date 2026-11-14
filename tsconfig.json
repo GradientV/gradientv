@@ -1,0 +1,11 @@
+{
+    "files": [],
+    "references": [
+        { "path": "./client" },
+        { "path": "./server" }
+    ],
+    "compilerOptions": {
+        "target": "es2023",
+        "module": "nodenext"
+    }
+}

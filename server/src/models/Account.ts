@@ -1,0 +1,56 @@
+// one business that can sign in to the portal
+// it's one login per business, so the business and its login are the same document.
+// (if a client ever needs two people with their own passwords, the login fields
+// move out into their own collection and point back here)
+import mongoose, { type HydratedDocument } from 'mongoose';
+import type { Role } from '../../../shared/portal.js';
+
+export const ROLES: readonly Role[] = ['client', 'admin'];
+
+/** what an Account holds */
+export type AccountFields = {
+    businessName: string;
+    email: string;
+    role: Role;
+    vercelProject: string | null;
+    siteKeyHash: string | null;
+    passwordHash: string | null;
+    inviteHash: string | null;
+    inviteExpiresAt: Date | null;
+    failedLogins: number;
+    lockedUntil: Date | null;
+    createdAt: Date;
+    updatedAt: Date;
+};
+
+const accountSchema = new mongoose.Schema<AccountFields>({
+    businessName: { type: String, required: true, trim: true, maxlength: 120 },
+    email: { type: String, required: true, unique: true, lowercase: true, trim: true, maxlength: 254 },
+    // 'admin' is me. everyone else is a 'client' and only ever sees their own things
+    role: { type: String, enum: ROLES, default: 'client' },
+    // their site's project name on Vercel. the stats page asks Vercel about this project
+    vercelProject: { type: String, default: null, trim: true },
+
+    // the key their own website uses to send things here (assessment results, newsletter signups).
+    // like the invite link, only a hash of it is saved. null when their site doesn't send anything.
+    // every delivery looks the account up by this, so it gets an index
+    siteKeyHash: { type: String, default: null, index: true },
+
+    // never the password itself, only bcrypt's scrambled version of it.
+    // null until they open their invite link and pick one
+    passwordHash: { type: String, default: null },
+
+    // the one-time link that lets them pick a password. only a hash of it is saved,
+    // so reading the database isn't enough to use somebody's link
+    inviteHash: { type: String, default: null },
+    inviteExpiresAt: { type: Date, default: null },
+
+    // wrong passwords in a row, and until when signing in is paused because of them
+    failedLogins: { type: Number, default: 0 },
+    lockedUntil: { type: Date, default: null }
+}, { timestamps: true });
+
+export const Account = mongoose.model<AccountFields>('Account', accountSchema);
+
+/** one Account the way Mongoose hands it back: the fields, plus save() and the rest */
+export type AccountDocument = HydratedDocument<AccountFields>;

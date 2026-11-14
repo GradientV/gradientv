@@ -1,0 +1,108 @@
+// the Story page: why GradientV exists, in three chapters
+// with the dark "what we do" band in the middle
+import { Link } from 'react-router';
+import Chapter from '../components/Chapter';
+import NightBand from '../components/NightBand';
+import PageHero from '../components/PageHero';
+import { PersonLinks } from '../components/Person';
+import Seo from '../components/Seo';
+import UnderBand from '../components/UnderBand';
+import Eyebrow from '../components/ui/Eyebrow';
+import { ArrowRightIcon } from '../components/ui/Icons';
+import { useLocale } from '../context/LocaleContext';
+import { pageUrl } from '../data/pages';
+import { storySchema } from '../data/schema';
+import { FOUNDER } from '../data/team';
+
+const PROSE_CLASS = 'max-w-[62ch] space-y-5 text-[1.05rem] leading-relaxed';
+
+export default function StoryView() {
+    const { locale, t, to } = useLocale();
+    const { gap, middle, ai, founder } = t.story;
+
+    return (
+        <>
+            <Seo
+                pageId="story"
+                title={t.story.seo.title}
+                description={t.story.seo.description}
+                schema={storySchema(t, pageUrl('story', locale))}
+            />
+
+            <PageHero title={t.story.label} subtitle={t.story.heading} />
+
+            {/* ---------- the short version, lined up with the chapters' text column ---------- */}
+            <UnderBand className="grid pb-16 md:grid-cols-12 md:gap-10 md:pb-24">
+                <p className="max-w-[40ch] text-[1.2rem] leading-[1.55] md:col-span-8 md:col-start-5 md:text-[1.375rem]">{t.story.lead}</p>
+            </UnderBand>
+
+            {/* ---------- the gap, and the two options a small business gets ---------- */}
+            <Chapter heading={gap.heading}>
+                <div className={PROSE_CLASS}>
+                    {gap.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                </div>
+
+                <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                    {gap.options.map((option, index) => (
+                        <article key={option.title} className="relative overflow-hidden border border-line bg-paper-bright p-6 sm:p-7">
+                            {/* the second card flips its texture so the two don't look like copies */}
+                            <div className={`tx tx-card ${index === 1 ? 'tx-card-flip' : ''}`} aria-hidden="true" />
+                            <div className="relative">
+                                <h3 className="display-md">{option.title}</h3>
+                                <p className="eyebrow mt-2 text-xs font-medium uppercase tracking-[0.14em] text-ink-soft">{option.cost}</p>
+                                <p className="mt-5 text-[0.95rem] text-ink-soft">{option.text}</p>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </Chapter>
+
+            {/* ---------- the turn in the argument: what GradientV does about it ---------- */}
+            <NightBand>
+                <div className="max-w-[44rem]">
+                    <Eyebrow onNight>{middle.label}</Eyebrow>
+                    <h2 className="display-lg mt-5">{middle.heading}</h2>
+                    <div className="mt-7 space-y-5 text-[1.05rem] leading-relaxed text-chalk/80">
+                        {middle.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    </div>
+                </div>
+            </NightBand>
+
+            {/* ---------- AI ---------- */}
+            <Chapter heading={ai.heading}>
+                <div className={PROSE_CLASS}>
+                    {ai.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                </div>
+            </Chapter>
+
+            {/* ---------- the founder ---------- */}
+            <Chapter id="founder" heading={founder.heading}>
+                <div className="grid gap-8 sm:grid-cols-[minmax(0,15rem)_1fr]">
+                    <img
+                        src={FOUNDER.photo.src}
+                        alt={t.team.portraitAlt(FOUNDER.name)}
+                        width={FOUNDER.photo.width}
+                        height={FOUNDER.photo.height}
+                        loading="lazy"
+                        className="aspect-[4/5] w-full max-w-xs object-cover"
+                    />
+                    <div>
+                        <Eyebrow>{founder.role}</Eyebrow>
+                        <h3 className="display-md mt-3">{FOUNDER.name}</h3>
+                        <div className="mt-5 space-y-4 text-ink-soft">
+                            {founder.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                        </div>
+                        <PersonLinks person={FOUNDER} className="mt-6" />
+                        <Link
+                            to={to('team')}
+                            className="group mt-7 inline-flex items-center gap-2 font-medium underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
+                        >
+                            {founder.teamLink}
+                            <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </div>
+                </div>
+            </Chapter>
+        </>
+    );
+}

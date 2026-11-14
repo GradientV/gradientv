@@ -1,0 +1,32 @@
+{
+    "name": "client",
+    "version": "2.0.0",
+    "private": true,
+    "license": "UNLICENSED",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "npm run build:client && npm run build:server && npm run prerender",
+        "build:client": "vite build",
+        "build:server": "vite build --ssr src/entry-server.tsx --outDir dist-server",
+        "prerender": "node scripts/prerender.ts",
+        "preview": "vite preview",
+        "indexnow": "node scripts/indexnow.ts"
+    },
+    "dependencies": {
+        "@fontsource-variable/funnel-display": "^5.2.0",
+        "@fontsource-variable/funnel-sans": "^5.2.0",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+        "react-router": "^8.5.1",
+        "recharts": "^3.10.1"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.2",
+        "tailwindcss": "^4.3.3",
+        "vite": "^8.3.5"
+    }
+}

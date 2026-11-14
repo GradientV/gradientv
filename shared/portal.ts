@@ -1,0 +1,96 @@
+// the shapes the portal's API sends back as JSON, in one place both sides use:
+// the server's DTOs (server/src/dto/) promise to return exactly these, and the
+// client's pages read them. change a shape here and TypeScript points at every
+// place on either side that has to change with it.
+// types only: nothing in this file runs, so it adds nothing to the site or the server
+
+/** who a login belongs to: a client, or me */
+export type Role = 'client' | 'admin';
+/** where a change request stands. only i move them along */
+export type RequestStatus = 'new' | 'in progress' | 'done';
+/** how a finished self-assessment came out */
+export type RiskLevel = 'low' | 'medium' | 'high';
+
+/** whoever is signed in (GET /api/auth/me, and the answer to signing in) */
+export type AccountJSON = {
+    id: string;
+    businessName: string;
+    email: string;
+    role: Role;
+    /** true when their own website sends results and signups here */
+    siteSendsData: boolean;
+};
+
+/** whose login an invite link is for (POST /api/auth/invite) */
+export type InviteJSON = {
+    businessName: string;
+    email: string;
+};
+
+/** one change request, as its client sees it */
+export type RequestJSON = {
+    id: string;
+    message: string;
+    status: RequestStatus;
+    /** an ISO date */
+    createdAt: string;
+};
+
+/** one change request in my inbox: the same, plus whose it is */
+export type InboxJSON = RequestJSON & {
+    businessName: string;
+    email: string;
+};
+
+/** one finished self-assessment on a client's site. nothing on it says who took it */
+export type AssessmentJSON = {
+    id: string;
+    type: string;
+    score: number;
+    riskLevel: RiskLevel;
+    createdAt: string;
+};
+
+/** GET /api/site-data/assessments */
+export type AssessmentSummaryJSON = {
+    total: number;
+    last30: number;
+    byType: Array<{
+        type: string;
+        label: string | null;
+        count: number;
+        averageScore: number;
+        low: number;
+        medium: number;
+        high: number;
+    }>;
+    recent: AssessmentJSON[];
+};
+
+/** one newsletter signup on a client's site */
+export type SubscriberJSON = {
+    id: string;
+    email: string;
+    sourcePage: string | null;
+    createdAt: string;
+};
+
+/** GET /api/site-data/subscribers. subscribers stops at the newest 1,000 */
+export type SubscriberListJSON = {
+    total: number;
+    subscribers: SubscriberJSON[];
+};
+
+/** GET /api/stats?days=7 */
+export type SiteStatsJSON = {
+    days: number;
+    totals: { visitors: number; pageviews: number };
+    daily: Array<{ date: string; visitors: number; pageviews: number }>;
+    pages: Array<{ path: string; pageviews: number }>;
+    sources: Array<{ name: string; visitors: number }>;
+};
+
+/** what every error answer looks like */
+export type ErrorJSON = {
+    error: string;
+};

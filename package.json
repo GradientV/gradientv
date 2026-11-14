@@ -1,0 +1,36 @@
+{
+    "name": "gradientv-site",
+    "version": "2.0.0",
+    "description": "gradientv.com: the GradientV website (React + TypeScript) and the client portal behind it (Express + MongoDB).",
+    "private": true,
+    "license": "UNLICENSED",
+    "type": "module",
+    "engines": {
+        "node": "24.x"
+    },
+    "workspaces": [
+        "client",
+        "server"
+    ],
+    "scripts": {
+        "dev": "concurrently --names server,client --prefix-colors blue,magenta \"npm run dev -w server\" \"npm run dev -w client\"",
+        "build": "npm run typecheck && npm run build -w client",
+        "typecheck": "tsc -b",
+        "lint": "oxlint",
+        "preview": "npm run preview -w client",
+        "add-client": "npm run add-client -w server --",
+        "site-key": "npm run site-key -w server --",
+        "import-site-data": "npm run import-site-data -w server --",
+        "check-analytics": "npm run check-analytics -w server --",
+        "indexnow": "npm run indexnow -w client"
+    },
+    "devDependencies": {
+        "@types/node": "^24.19.2",
+        "concurrently": "^9.2.1",
+        "oxlint": "^1.93.0",
+        "typescript": "~6.0.3"
+    },
+    "allowScripts": {
+        "esbuild@0.28.2": true
+    }
+}
