@@ -178,9 +178,9 @@ const zh: Content = {
                 role: '市场与财务负责人',
                 bio: 'Emily Fisherman 负责 GradientV 的市场与财务，把公司的技术工作转化为清晰的信息传达和稳健的财务决策。'
             },
-            // no role or bio yet. the row shows just the name until these are filled in
-            brian: { role: '', bio: '' },
-            katie: { role: '', bio: '' }
+            // no bio yet. the card leaves it out until one is filled in
+            brian: { role: '软件工程师', bio: '' },
+            katie: { role: '客户解决方案与外联', bio: '' }
         }
     },
 

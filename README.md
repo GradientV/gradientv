@@ -24,6 +24,7 @@ server/             the API
   src/models/       the MongoDB collections
   src/dto/          what each answer sends back, and nothing more
   scripts/          command-line tools for making logins and site keys
+  test/             the API's tests, which run against a database of their own
 shared/portal.ts    the shape of every API answer, used by both the server and the client
 ```
 
@@ -35,6 +36,7 @@ shared/portal.ts    the shape of every API answer, used by both the server and t
 - Every portal route reads the client from the session, never from the request, so one client can't ask for another's data.
 - Request bodies are treated as untrusted (`unknown`) and checked before anything reaches MongoDB.
 - The types in `shared/portal.ts` are what the server's DTOs return and what the pages read. A change on one side that would break the other fails the type check.
+- The tests send real requests to the API to check these rules. See [Tests](#tests).
 
 ## Running it locally
 
@@ -60,12 +62,23 @@ It prints a one-time link for setting the password.
 | `npm run build` | Type-checks everything, builds the site, and prerenders every page into `client/dist` |
 | `npm run typecheck` | Type-checks the client, the server and the shared types |
 | `npm run lint` | Lints with oxlint |
+| `npm test` | Runs the tests once: the API's against a test database in the local MongoDB, then the website's |
 | `npm run add-client` | Makes a login and prints its invite link |
 | `npm run site-key` | Makes the key a client's own website uses to send results and signups to the portal |
 | `npm run import-site-data` | Imports a client's older results or signups from a CSV export |
 | `npm run check-analytics` | Checks that Vercel's Web Analytics API answers for a project |
 
 The scripts that touch the database use the local one unless `--live` is added, which reads `server/.env.production` instead.
+
+## Tests
+
+`npm test` runs every test once with Vitest.
+
+- **The API's tests** are in `server/test/`. Each one sends real requests to the Express app with supertest, then checks the answer and what was saved: signing in and the pause after wrong passwords, invite links, the session cookie, the request box, "view as", the admin's list of clients, what a client's website sends to `/api/collect`, and the summaries the portal shows.
+- They need MongoDB running on this computer and use a database of their own, `gradientv-test`, which is emptied before every test and dropped when the run ends. They never read `server/.env`, so they can't reach the database `npm run dev` uses, the live one, Slack or Vercel.
+- **The website's tests** sit next to the code they check, like `client/src/data/pages.test.ts`. They cover the page addresses in every language and the sitemap.
+
+The tests aren't part of `npm run build`, because Vercel has no MongoDB to run them against.
 
 ## Deployment
 

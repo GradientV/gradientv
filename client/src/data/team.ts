@@ -35,7 +35,7 @@ export const TEAM: Person[] = [
         name: 'Ashton Reyes',
         initials: 'AR',
         size: 'feature',
-        photo: { src: '/images/team/founder.jpg', width: 1179, height: 1457 },
+        photo: { src: '/images/team/founder.jpg', width: 937, height: 1186 },
         links: [
             { kind: 'website', href: 'https://ashtonreyes.com/' },
             { kind: 'linkedin', href: 'https://www.linkedin.com/in/ashton-reyes/' },
@@ -77,9 +77,11 @@ export const TEAM: Person[] = [
         id: 'brian',
         name: 'Brian Huang',
         initials: 'BH',
-        size: 'small',
-        photo: null,
-        links: []
+        size: 'card',
+        photo: { src: '/images/team/brian-huang.jpg', width: 400, height: 400 },
+        links: [
+            { kind: 'linkedin', href: 'https://www.linkedin.com/in/bbrihuang/' }
+        ]
     },
     {
         id: 'katie',
@@ -87,7 +89,9 @@ export const TEAM: Person[] = [
         initials: 'KJ',
         size: 'small',
         photo: null,
-        links: []
+        links: [
+            { kind: 'linkedin', href: 'https://www.linkedin.com/in/katie-jun/' }
+        ]
     }
 ];
 

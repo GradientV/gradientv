@@ -184,9 +184,9 @@ const en = {
                 role: 'Head of Marketing & Finance',
                 bio: "Emily Fisherman leads marketing and finance at GradientV, connecting the company's technical work to clear messaging and sound financial decisions."
             },
-            // no role or bio yet. the row shows just the name until these are filled in
-            brian: { role: '', bio: '' },
-            katie: { role: '', bio: '' }
+            // no bio yet. the card leaves it out until one is filled in
+            brian: { role: 'Software Engineer', bio: '' },
+            katie: { role: 'Customer Solutions & Outreach', bio: '' }
         }
     },
 

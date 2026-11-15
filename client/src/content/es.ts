@@ -178,9 +178,9 @@ const es: Content = {
                 role: 'Directora de Marketing y Finanzas',
                 bio: 'Emily Fisherman dirige el marketing y las finanzas en GradientV, y conecta el trabajo técnico de la empresa con mensajes claros y decisiones financieras sólidas.'
             },
-            // no role or bio yet. the row shows just the name until these are filled in
-            brian: { role: '', bio: '' },
-            katie: { role: '', bio: '' }
+            // no bio yet. the card leaves it out until one is filled in
+            brian: { role: 'Ingeniero de software', bio: '' },
+            katie: { role: 'Soluciones para clientes y alcance', bio: '' }
         }
     },
 

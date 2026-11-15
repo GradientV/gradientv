@@ -17,5 +17,5 @@
         "erasableSyntaxOnly": true,
         "noFallthroughCasesInSwitch": true
     },
-    "include": ["src", "scripts", "../api", "../shared"]
+    "include": ["src", "scripts", "test", "vitest.config.ts", "../api", "../shared"]
 }

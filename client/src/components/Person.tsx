@@ -74,7 +74,8 @@ export function PersonCard({ person }: { person: PersonWithPhoto }) {
             <div className="flex min-w-0 flex-col">
                 <Eyebrow>{words.role}</Eyebrow>
                 <h2 className="display-md mt-3">{person.name}</h2>
-                <p className="mt-3 text-[0.95rem] text-ink-soft">{words.bio}</p>
+                {/* left out until the person has a bio in src/content */}
+                {words.bio && <p className="mt-3 text-[0.95rem] text-ink-soft">{words.bio}</p>}
                 <PersonLinks person={person} className="mt-auto pt-5" />
             </div>
         </li>
