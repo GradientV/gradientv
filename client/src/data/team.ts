@@ -35,7 +35,7 @@ export const TEAM: Person[] = [
         name: 'Ashton Reyes',
         initials: 'AR',
         size: 'feature',
-        photo: { src: '/images/team/founder.jpg', width: 937, height: 1186 },
+        photo: { src: '/images/team/founder-2026-11.jpg', width: 937, height: 1186 },
         links: [
             { kind: 'website', href: 'https://ashtonreyes.com/' },
             { kind: 'linkedin', href: 'https://www.linkedin.com/in/ashton-reyes/' },
