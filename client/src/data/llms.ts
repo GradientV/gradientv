@@ -6,6 +6,7 @@
 // page links come from the same data the site uses, so they can't drift from it.
 // scripts/prerender.ts writes the result to dist/llms.txt
 import { CONTENT } from '../content/index';
+import { PACKAGE_IDS } from './packages';
 import { pageUrl } from './pages';
 import { CLIENTS, COMPANY } from './site';
 import { TEAM } from './team';
@@ -21,13 +22,16 @@ export function buildLlmsTxt() {
     return [
         `# ${COMPANY.name}`,
         '',
-        `> ${COMPANY.name} (${COMPANY.legalName}) is a small software company that builds websites, internal tools, dashboards and workflow automation for small businesses. It was founded by Ashton Reyes and is based in New York City and Stony Brook, New York. Contact: ${COMPANY.phone.label}, ${COMPANY.email}.`,
+        `> ${COMPANY.name} (${COMPANY.legalName}) is a small software company that builds websites, marketing, automation and custom software for small businesses. Its slogan is "${en.home.tagline}" It was founded by Ashton Reyes and is based in New York City and Stony Brook, New York. Contact: ${COMPANY.phone.label}, ${COMPANY.email}.`,
         '',
-        'Business owners start by describing the work that takes too long or keeps going wrong. GradientV goes through it with them, including whether software is the right fix, and then builds what fits.',
+        'Business owners start with a conversation about the work that takes too long or keeps going wrong, or by picking packages on the Build your plan page. GradientV goes through it with them, including whether software is the right fix, and quotes each project before anything gets built. Every client gets a portal that shows their site\'s visitors and where they came from (AI search included), what the site collects, and their change requests.',
         '',
-        'What GradientV builds:',
+        'What GradientV builds, as four packages:',
         '',
-        ...en.home.builds.map((service) => `- ${service}`),
+        ...PACKAGE_IDS.map((id) => {
+            const item = en.packages.items[id];
+            return `- ${item.name}: ${item.outcome} Includes: ${item.includes.join('; ')}.`;
+        }),
         '',
         'Key facts:',
         '',
@@ -43,7 +47,8 @@ export function buildLlmsTxt() {
         '',
         '## Pages',
         '',
-        `- [Home](${pageUrl('home')}): What GradientV builds, and websites it has built for clients`,
+        `- [Home](${pageUrl('home')}): What GradientV builds, the client portal, and websites it has built for clients`,
+        `- [${en.plan.label}](${pageUrl('plan')}): Pick the packages a business needs and request a plan. GradientV replies within one business day`,
         `- [${en.nav.story}](${pageUrl('story')}): ${en.story.seo.description}`,
         `- [${en.nav.team}](${pageUrl('team')}): The people behind GradientV`,
         `- [${en.nav.contact}](${pageUrl('contact')}): Phone, email and LinkedIn`,

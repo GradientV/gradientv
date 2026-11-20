@@ -14,11 +14,13 @@ const zh: Content = {
         label: '主导航',
         home: 'GradientV 首页',
         skip: '跳到主要内容',
+        services: '服务',
         clients: '客户',
         story: '故事',
         team: '团队',
         contact: '联系我们',
         login: '客户登录',
+        plan: '定制您的方案',
         openMenu: '打开菜单',
         closeMenu: '关闭菜单'
     },
@@ -41,22 +43,49 @@ const zh: Content = {
 
     home: {
         seo: {
-            title: 'GradientV - 为小企业打造网站与软件',
-            description: 'GradientV 为小企业打造网站、内部工具和自动化流程。告诉我们是什么在拖慢您，我们会帮您想清楚该做什么。'
+            title: 'GradientV - 为小企业打造网站、营销与软件',
+            description: 'GradientV 为小企业打造网站、营销、自动化和定制软件，并提供一个客户门户，让一切一目了然。每个项目都从一次对话开始。'
         },
-        tagline: '围绕您的工作方式打造的软件。',
-        lead: '我们为小企业打造网站、内部工具和自动化流程。告诉我们是什么在拖慢您，我们会帮您想清楚该做什么。',
-        primaryCta: '告诉我们您的项目',
+        tagline: '让 AI 有人情味。',
+        heroLead: '为小企业打造网站、营销和软件，从一次对话开始。',
+        primaryCta: '定制您的方案',
         secondaryCta: '看看我们的作品',
-        buildLabel: '我们打造什么',
-        builds: ['网站', '内部工具', 'AI 智能仪表盘', '工作流自动化'],
-        clientsLabel: '部分客户',
+        packagesHeading: '服务套餐',
+        addToPlan: '加入方案',
+        portal: {
+            label: '客户门户',
+            heading: '我们打造的一切，一个账号全看到。',
+            text: '每个方案都包含 GradientV 客户门户。查看网站表现和收集到的信息，并直接向我们提交修改需求，不用再来回发邮件。',
+            points: [
+                '访客数量及来源，包括 AI 搜索',
+                '网站收集到的潜在客户和订阅',
+                '修改需求，从提交到完成全程可见'
+            ],
+            login: '客户登录',
+            preview: {
+                caption: '客户门户示例。每位客户看到的都是自己的网站。',
+                title: '客户门户',
+                business: '示例咖啡馆',
+                visitors: '访客',
+                period: '最近 30 天',
+                sources: '访客来源',
+                direct: '直接访问',
+                requests: '修改需求',
+                requestDone: '添加节假日营业时间',
+                requestOpen: '更新午餐菜单照片',
+                done: '已完成',
+                inProgress: '进行中',
+                signups: '电子报订阅',
+                signupsValue: '本月 +23'
+            }
+        },
+        clientsLabel: '客户',
         visit: '访问网站',
         faqLabel: '常见问题',
         faq: [
             {
                 question: 'GradientV 打造什么？',
-                answer: '我们为小企业打造网站、内部工具、AI 智能仪表盘和工作流自动化。一切都围绕您现有的工作方式来做，您不必去迁就别人的产品。'
+                answer: '我们为小企业提供四个服务套餐：网站与品牌、增长（SEO、AI 搜索与评价）、自动化和定制软件。一切都围绕您现有的工作方式来做，并且都汇集在同一个客户门户里。'
             },
             {
                 question: '你们和哪些企业合作？',
@@ -64,7 +93,15 @@ const zh: Content = {
             },
             {
                 question: '项目是怎么开始的？',
-                answer: '从一次对话开始，聊聊哪些工作耗时太久或总是出错。我们会和您一起梳理，包括软件到底是不是合适的解决办法，然后才开始动手。'
+                answer: '从一次对话开始。您可以选好需要的套餐来定制方案，也可以直接给我们打电话。我们会和您一起梳理生意的运转方式，包括软件到底是不是合适的解决办法，然后才开始动手。'
+            },
+            {
+                question: '费用是多少？',
+                answer: '每个项目都会在第一次对话之后报价，因为没有两家企业的需求是一样的。在动手之前，您会先拿到清晰的价格。'
+            },
+            {
+                question: '什么是 GEO？我需要吗？',
+                answer: 'GEO 指的是当顾客向 ChatGPT、Gemini 或 Perplexity 等 AI 工具寻找像您这样的商家时，让 AI 推荐您。它属于增长套餐，您的客户门户会显示哪些访客来自 AI 搜索。'
             },
             {
                 question: '为什么不直接招一名工程师，或者买现成的软件？',
@@ -72,7 +109,7 @@ const zh: Content = {
             },
             {
                 question: '上线之后你们还负责吗？',
-                answer: '负责。我们打造并持续运行自己做的东西，您不必为此另外招人。客户还有一个专属门户，可以查看网站的表现，并直接向我们提交修改需求。'
+                answer: '负责。我们打造并持续运行自己做的东西，您不必为此另外招人。每位客户都有一个专属门户，可以查看网站表现和网站收集到的信息，并直接向我们提交修改需求。'
             },
             {
                 question: '你们怎么用 AI？',
@@ -85,17 +122,92 @@ const zh: Content = {
         ]
     },
 
+    packages: {
+        includesLabel: '包含',
+        portalIncluded: '每个方案都包含客户门户。',
+        items: {
+            website: {
+                name: '网站与品牌',
+                outcome: '把生意好好地搬到线上。',
+                includes: ['快速、完整的网站', '标志与品牌形象', '专属域名和企业邮箱', '联系、预约或下单表单']
+            },
+            growth: {
+                name: '增长',
+                outcome: '让更多顾客找到您。',
+                includes: ['SEO：出现在 Google 搜索中', 'GEO：获得 ChatGPT 等 AI 搜索的推荐', 'Google 商家资料与评价', '电子报和社交媒体内容']
+            },
+            automation: {
+                name: '自动化',
+                outcome: '每周省下好几个小时。',
+                includes: ['潜在客户跟进与预约确认', '邀请评价与提醒', '发票与付款提醒', '连接您已经在用的工具']
+            },
+            custom: {
+                name: '定制软件',
+                outcome: '按您的方式经营。',
+                includes: ['内部工具与数据仪表盘', '在线点单与客户门户', '基于您业务训练的 AI 助手', '围绕您现有的工作方式打造']
+            }
+        }
+    },
+
+    plan: {
+        seo: {
+            title: '定制您的方案 - GradientV',
+            description: '为您的小企业选择需要的服务套餐（网站与品牌、增长、自动化或定制软件），我们会在一个工作日内回复。'
+        },
+        label: '定制您的方案',
+        heading: '选出您的生意需要什么，剩下的交给我们。',
+        intro: '不用比价，也不用付款。每个方案都从一次对话开始。',
+        stepPackages: '您需要什么？',
+        stepPackagesHint: '可以选一个或多个，通话时也可以再改。',
+        stepBusiness: '关于您的生意',
+        stepContact: '我们怎么联系您？',
+        businessName: '商家名称',
+        businessType: '行业类型',
+        businessTypePlaceholder: '咖啡馆、美发店、律师事务所…',
+        message: '是什么在拖慢您？',
+        messagePlaceholder: '例如：我们整天都在回答同样的预约问题。',
+        name: '您的姓名',
+        email: '电子邮箱',
+        phone: '电话',
+        optional: '选填',
+        summaryHeading: '您的方案',
+        summaryEmpty: '还没有选择。',
+        portalLine: '客户门户',
+        portalIncluded: '已包含',
+        remove: (name) => `移除 ${name}`,
+        submit: '提交我的方案',
+        sending: '正在发送…',
+        pickOne: '请先至少选择一个套餐。',
+        reply: '我们会在一个工作日内回复。',
+        error: '发送方案时出了点问题。请再试一次，或致电 (917) 907-1034。',
+        tooMany: '今天收到的请求很多。请直接打电话或发邮件给我们，我们会尽快回复。',
+        honeypot: '请留空',
+        done: {
+            heading: (name) => `谢谢，${name}。我们已收到您的方案。`,
+            picked: '您选择了',
+            next: '接下来会这样进行',
+            steps: [
+                '我们会查看您选择的内容和您告诉我们的情况。',
+                '我们会在一个工作日内致电或发邮件给您。',
+                '我们和您一起确定方案，在动手之前您会先拿到清晰的报价。'
+            ],
+            home: '返回首页'
+        }
+    },
+
     contact: {
         seo: {
             title: '联系我们 - GradientV',
-            description: '致电 (917) 907-1034 或发送邮件至 contact@gradientv.com，告诉我们您的项目。GradientV 为小企业打造网站、内部工具和自动化流程。'
+            description: '致电 (917) 907-1034 或发送邮件至 contact@gradientv.com，告诉我们您的项目。GradientV 为小企业打造网站、营销、自动化和定制软件。'
         },
         label: '联系我们',
-        heading: '告诉我们您的业务现在是怎么运转的。',
+        heading: '告诉我们，您的业务现在是怎么运转的。',
         text: '从那些耗时太久或总是出错的工作说起。我们会和您一起梳理，也包括软件到底是不是合适的解决办法。',
         phone: '电话',
         email: '电子邮箱',
-        linkedin: '领英'
+        linkedin: '领英',
+        planHeading: '已经知道需要什么了？',
+        planText: '选好服务套餐，我们会在一个工作日内给您一份方案。'
     },
 
     story: {
@@ -159,6 +271,7 @@ const zh: Content = {
             description: '认识 GradientV 背后的团队。'
         },
         label: '团队',
+        heading: '真正和您一起工作的人。',
         portraitAlt: (name) => `${name} 的肖像`,
         storyLink: '阅读完整故事',
         members: {
@@ -199,7 +312,8 @@ const zh: Content = {
         unavailable: '客户门户暂时无法访问。请稍后再试，或直接联系我们。',
         contact: '联系我们',
         pitchHeading: '我们为您打造的一切，尽在一处。',
-        pitchText: '在这里查看网站的访问情况，并向我们提交修改需求。'
+        pitchText: '在这里查看网站的访问情况，并向我们提交修改需求。',
+        notClient: '还不是客户？'
     },
 
     notFound: {

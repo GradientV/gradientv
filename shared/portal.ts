@@ -96,6 +96,40 @@ export type SiteStatsJSON = {
     sources: Array<{ name: string; visitors: number }>;
 };
 
+/** the four packages a plan can be built from. the server checks against this, and the site draws a card for each */
+export type PackageId = 'website' | 'growth' | 'automation' | 'custom';
+
+/** what the "Build your plan" form sends (POST /api/plan). anyone can send it, so the server checks every field */
+export type PlanRequestBody = {
+    packages: PackageId[];
+    name: string;
+    email: string;
+    phone?: string;
+    businessName?: string;
+    businessType?: string;
+    message?: string;
+    /** the language the form was filled in, so i can answer in it */
+    locale?: string;
+    /** the hidden field people never see. only a bot fills it in */
+    homepage?: string;
+};
+
+/** one plan request in my inbox (GET /api/admin/plans). only the admin login ever gets these */
+export type PlanJSON = {
+    id: string;
+    packages: PackageId[];
+    name: string;
+    email: string;
+    phone: string | null;
+    businessName: string | null;
+    businessType: string | null;
+    message: string | null;
+    locale: string;
+    status: RequestStatus;
+    /** an ISO date */
+    createdAt: string;
+};
+
 /** what every error answer looks like */
 export type ErrorJSON = {
     error: string;

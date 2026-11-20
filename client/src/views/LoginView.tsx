@@ -109,6 +109,14 @@ export default function LoginView() {
                                     </div>
                                 )}
                             </form>
+
+                            {/* for someone who landed here looking for GradientV, not their portal */}
+                            <p className="mt-8 border-t border-line pt-6 text-sm text-ink-soft">
+                                {t.login.notClient}{' '}
+                                <Link to={to('plan')} className="font-medium text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink">
+                                    {t.nav.plan}
+                                </Link>
+                            </p>
                         </div>
 
                         {/* ---------- what the portal is ---------- */}

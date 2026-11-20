@@ -27,7 +27,7 @@ export default function TeamView() {
                 schema={teamSchema(t, pageUrl('team', locale))}
             />
 
-            <PageHero title={t.team.label} />
+            <PageHero label={t.team.label} title={t.team.heading} />
 
             <UnderBand className="pb-24 md:pb-32">
                 {featured.map((person) => (

@@ -15,6 +15,8 @@ import type {
     ErrorJSON,
     InboxJSON,
     InviteJSON,
+    PlanJSON,
+    PlanRequestBody,
     RequestJSON,
     RequestStatus,
     SiteStatsJSON,
@@ -131,6 +133,26 @@ export function createRequest(message: string): Promise<RequestJSON> {
 export function setRequestStatus(id: string, status: RequestStatus): Promise<InboxJSON> {
     return send('PATCH', `/api/requests/${id}`, { status });
 }
+
+// ---------- Build your plan ----------
+
+/** the form on the public site. anyone can send it, signed in or not */
+export function sendPlan(plan: PlanRequestBody): Promise<{ ok: true }> {
+    return send('POST', '/api/plan', plan);
+}
+
+/** admin only. every plan request, newest first */
+export function listPlans(): Promise<PlanJSON[]> {
+    return send('GET', '/api/admin/plans');
+}
+
+/** admin only. the plan request with its new status */
+export function setPlanStatus(id: string, status: RequestStatus): Promise<PlanJSON> {
+    return send('PATCH', `/api/admin/plans/${id}`, { status });
+}
+
+/** the status the server uses for "too many today", so the plan form can say it in the reader's language */
+export const TOO_MANY = 429;
 
 // ---------- site stats ----------
 

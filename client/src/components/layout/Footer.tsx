@@ -19,10 +19,12 @@ export default function Footer() {
     }
 
     const siteLinks = [
+        { label: t.nav.services, to: `${to('home')}#services` },
         { label: t.nav.clients, to: `${to('home')}#clients` },
         { label: t.nav.story, to: to('story') },
         { label: t.nav.team, to: to('team') },
         { label: t.nav.contact, to: to('contact') },
+        { label: t.nav.plan, to: to('plan') },
         { label: t.nav.login, to: to('login') }
     ];
 

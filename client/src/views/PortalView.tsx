@@ -2,8 +2,9 @@
 // the portal is for, the request box and the site's stats. a client whose own
 // website sends things here gets two more cards under those
 //
-// the admin login (me) gets something else: every client's requests in one list,
-// and a menu to look at any client's portal the way that client sees it
+// the admin login (me) gets something else: the plan requests from the public site,
+// every client's requests in one list, and a menu to look at any client's portal the
+// way that client sees it
 //
 // the real protection is on the server (requireAuth). this page just doesn't
 // bother drawing itself for someone who isn't signed in, it sends them to the form
@@ -14,6 +15,7 @@ import Seo from '../components/Seo';
 import AssessmentResults from '../components/portal/AssessmentResults';
 import ClientPicker from '../components/portal/ClientPicker';
 import NewsletterSignups from '../components/portal/NewsletterSignups';
+import PlanInbox from '../components/portal/PlanInbox';
 import RequestBox from '../components/portal/RequestBox';
 import RequestInbox from '../components/portal/RequestInbox';
 import { BUTTON_STYLES } from '../components/ui/ButtonLink';
@@ -119,7 +121,9 @@ export default function PortalView() {
                                         <ClientPicker client={viewing} onPick={setViewing} />
                                     </div>
                                     {viewing === null ? (
-                                        <div className="mt-5">
+                                        // new leads first, then what existing clients asked for
+                                        <div className="mt-5 space-y-5">
+                                            <PlanInbox />
                                             <RequestInbox />
                                         </div>
                                     ) : (

@@ -29,7 +29,7 @@ export default function StoryView() {
                 schema={storySchema(t, pageUrl('story', locale))}
             />
 
-            <PageHero title={t.story.label} subtitle={t.story.heading} />
+            <PageHero label={t.story.label} title={t.story.heading} />
 
             {/* ---------- the short version, lined up with the chapters' text column ---------- */}
             <UnderBand className="grid pb-16 md:grid-cols-12 md:gap-10 md:pb-24">

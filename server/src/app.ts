@@ -14,6 +14,7 @@
 //   /api/site-data   -> what a client's site collected, for the client to read (same three go first)
 //   /api/admin       -> things only i can do (requireDatabase, requireAuth, then requireAdmin)
 //   /api/collect     -> where a client's site sends those things (requireDatabase, then requireSiteKey)
+//   /api/plan        -> the "Build your plan" form on the public site (requireDatabase only: anyone can send it)
 //   notFound         -> only reached if nothing above answered
 //   errorHandler     -> reached whenever anything above threw
 //
@@ -31,6 +32,7 @@ import { viewAs } from './middleware/viewAs.js';
 import adminRoutes from './routes/adminRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import collectRoutes from './routes/collectRoutes.js';
+import planRoutes from './routes/planRoutes.js';
 import requestRoutes from './routes/requestRoutes.js';
 import siteDataRoutes from './routes/siteDataRoutes.js';
 import statsRoutes from './routes/statsRoutes.js';
@@ -60,6 +62,9 @@ export function createApp({ logRequests = true }: { logRequests?: boolean } = {}
     app.use('/api/admin', requireDatabase, requireAuth, requireAdmin, adminRoutes);
     // the one door that isn't for a signed-in browser: a client's website knocks here with its site key
     app.use('/api/collect', requireDatabase, requireSiteKey, collectRoutes);
+    // the other door open to anyone: someone who isn't a client yet, sending "Build your plan".
+    // the controller checks every field and caps how many a day can get in
+    app.use('/api/plan', requireDatabase, planRoutes);
 
     app.use(notFound);
     app.use(errorHandler);

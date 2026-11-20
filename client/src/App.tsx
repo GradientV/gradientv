@@ -14,6 +14,7 @@ import HomeView from './views/HomeView';
 import LegalView from './views/LegalView';
 import LoginView from './views/LoginView';
 import NotFoundView from './views/NotFoundView';
+import PlanView from './views/PlanView';
 import PortalView from './views/PortalView';
 import SetPasswordView from './views/SetPasswordView';
 import StoryView from './views/StoryView';
@@ -23,6 +24,7 @@ import VideosView from './views/VideosView';
 /** which view draws each page id. a page in PAGES without a view here is an error */
 const VIEWS: Record<PageId, ReactElement> = {
     home: <HomeView />,
+    plan: <PlanView />,
     story: <StoryView />,
     team: <TeamView />,
     contact: <ContactView />,

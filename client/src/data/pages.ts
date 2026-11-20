@@ -24,10 +24,12 @@ export const LOCALES: ReadonlyArray<{ code: LocaleCode; base: string }> = [
 const ALL = LOCALES.map((locale) => locale.code);
 
 const PAGE_LIST = [
-    { id: 'home', path: '', locales: ALL, updated: '2026-11-03' },
+    { id: 'home', path: '', locales: ALL, updated: '2026-11-20' },
+    // pick packages and send a plan request (POST /api/plan)
+    { id: 'plan', path: '/plan', locales: ALL, updated: '2026-11-20' },
     { id: 'story', path: '/story', locales: ALL, updated: '2026-10-04' },
-    { id: 'team', path: '/team', locales: ALL, updated: '2026-11-03' },
-    { id: 'contact', path: '/contact', locales: ALL, updated: '2026-11-03' },
+    { id: 'team', path: '/team', locales: ALL, updated: '2026-11-20' },
+    { id: 'contact', path: '/contact', locales: ALL, updated: '2026-11-20' },
     // nothing to find on a sign-in form, so it stays out of search results.
     // auth: the page needs to know who is signed in, so App.tsx puts it inside the AuthProvider
     { id: 'login', path: '/login', locales: ALL, noindex: true, auth: true },

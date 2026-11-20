@@ -1,7 +1,11 @@
 // every English word on the site, one object.
-// es.ts and zh.ts have the exact same shape, so a view just reads t.home.lead
+// es.ts and zh.ts have the exact same shape, so a view just reads t.home.tagline
 // and never needs to know which language it's showing.
 // the long legal documents are separate, in src/content/legal
+import type { PackageId } from '../../../shared/portal';
+
+/** the words for one package card (home page and Build your plan) */
+type PackageWords = { name: string; outcome: string; includes: string[] };
 
 const en = {
     code: 'en' as const,
@@ -14,11 +18,13 @@ const en = {
         label: 'Main',
         home: 'GradientV home',
         skip: 'Skip to content',
+        services: 'Services',
         clients: 'Clients',
         story: 'Story',
         team: 'Team',
         contact: 'Contact',
         login: 'Client login',
+        plan: 'Build your plan',
         openMenu: 'Open menu',
         closeMenu: 'Close menu'
     },
@@ -42,25 +48,55 @@ const en = {
 
     home: {
         seo: {
-            title: 'GradientV - Websites and software for small businesses',
-            description: 'GradientV builds websites, internal tools, and automations for small businesses. Tell us what’s slowing you down, and we’ll help you figure out what to build.'
+            title: 'GradientV - Websites, marketing and software for small businesses',
+            description: 'GradientV builds websites, marketing, automation and custom software for small businesses, with one client portal to see it all. Every project starts with a conversation.'
         },
         // the line under the big logo at the top of the page
-        tagline: 'Software built around how you work.',
-        lead: 'We build websites, internal tools, and automations for small businesses. Tell us what’s slowing you down, and we’ll help you figure out what to build.',
-        primaryCta: 'Tell us about your project',
+        tagline: 'The human side of AI.',
+        heroLead: 'Websites, marketing and software for small businesses, starting with a conversation.',
+        primaryCta: 'Build your plan',
         secondaryCta: 'See our work',
-        buildLabel: 'What we build',
-        builds: ['Websites', 'Internal tools', 'AI-powered dashboards', 'Workflow automation'],
-        clientsLabel: 'Selected clients',
+        // the heading over the four package cards (their words are in packages, below)
+        packagesHeading: 'Packages',
+        addToPlan: 'Add to your plan',
+        // the client portal, shown off on the home page
+        portal: {
+            label: 'The client portal',
+            heading: 'Everything we build, in one login.',
+            text: 'Every plan comes with the GradientV portal. See how your site is doing, read what it collects, and send us changes without chasing anyone over email.',
+            points: [
+                'Visitors, and where they came from, including AI search',
+                'The leads and signups your site collects',
+                'Change requests, tracked from new to done'
+            ],
+            login: 'Client login',
+            // the example portal drawn next to the text. every number on it is made up
+            preview: {
+                caption: 'An example of the client portal. Each client sees their own site.',
+                title: 'Client portal',
+                business: 'Example Cafe',
+                visitors: 'Visitors',
+                period: 'Last 30 days',
+                sources: 'Where they came from',
+                direct: 'Direct',
+                requests: 'Requests',
+                requestDone: 'Add our holiday hours',
+                requestOpen: 'New photos for the lunch menu',
+                done: 'Done',
+                inProgress: 'In progress',
+                signups: 'Newsletter signups',
+                signupsValue: '+23 this month'
+            }
+        },
+        clientsLabel: 'Clients',
         visit: 'Visit site',
         // every answer here repeats something the site already says (Story, Contact,
         // the client portal). the same questions go into the structured data and llms.txt
-        faqLabel: 'Common questions',
+        faqLabel: 'FAQ',
         faq: [
             {
                 question: 'What does GradientV build?',
-                answer: 'Websites, internal tools, AI-powered dashboards, and workflow automation for small businesses. Everything is built around how your business already works, so you don’t have to bend to someone else’s product.'
+                answer: 'Four packages for small businesses: Website & Brand, Growth (SEO, AI search and reviews), Automation, and Custom Software. Everything is built around how your business already works, and all of it shows up in one client portal.'
             },
             {
                 question: 'What kinds of businesses do you work with?',
@@ -68,7 +104,15 @@ const en = {
             },
             {
                 question: 'How does a project start?',
-                answer: 'With a conversation about the work that takes too long or keeps going wrong. We go through it with you, including whether software is the right fix, before anything gets built.'
+                answer: 'With a conversation. Build your plan by picking the packages you need, or just call us. We go through how your business runs, including whether software is the right fix, before anything gets built.'
+            },
+            {
+                question: 'How much does it cost?',
+                answer: 'Every project is quoted after the first conversation, because no two businesses need the same thing. You get a clear price before anything gets built.'
+            },
+            {
+                question: 'What is GEO, and do I need it?',
+                answer: 'GEO means getting recommended when customers ask AI tools like ChatGPT, Gemini or Perplexity for a business like yours. It’s part of the Growth package, and your client portal shows which visitors came from AI search.'
             },
             {
                 question: 'Why not hire a developer or buy off-the-shelf software?',
@@ -76,7 +120,7 @@ const en = {
             },
             {
                 question: 'Do you look after the software after launch?',
-                answer: 'Yes. We build and run what we make, so you don’t have to hire for it. Clients get a portal where they can see how their site is doing and send us change requests.'
+                answer: 'Yes. We build and run what we make, so you don’t have to hire for it. Every client gets a portal where they can see how their site is doing, read what it collects, and send us change requests.'
             },
             {
                 question: 'How do you use AI?',
@@ -89,17 +133,96 @@ const en = {
         ]
     },
 
+    // the four packages, on the home page and on Build your plan.
+    // keyed by the ids in shared/portal.ts, so a package can't be missing its words
+    packages: {
+        includesLabel: 'Includes',
+        portalIncluded: 'Every plan includes the client portal.',
+        items: {
+            website: {
+                name: 'Website & Brand',
+                outcome: 'Get online, properly.',
+                includes: ['A fast, full-stack website', 'Logo and brand identity', 'Your own domain and business email', 'Contact, booking or ordering forms']
+            },
+            growth: {
+                name: 'Growth',
+                outcome: 'Get found by more customers.',
+                includes: ['SEO: show up on Google', 'GEO: get recommended by ChatGPT and other AI search', 'Google Business profile and reviews', 'Email newsletters and social content']
+            },
+            automation: {
+                name: 'Automation',
+                outcome: 'Save hours every week.',
+                includes: ['Lead follow-ups and booking confirmations', 'Review requests and reminders', 'Invoices and payment reminders', 'Connects the tools you already use']
+            },
+            custom: {
+                name: 'Custom Software',
+                outcome: 'Run your business your way.',
+                includes: ['Internal tools and dashboards', 'Online ordering and client portals', 'AI assistants trained on your business', 'Built around how you already work']
+            }
+        } satisfies Record<PackageId, PackageWords>
+    },
+
+    // the Build your plan page: pick packages, say who you are, send it
+    plan: {
+        seo: {
+            title: 'Build your plan - GradientV',
+            description: 'Pick the packages your small business needs (website and brand, growth, automation or custom software) and we’ll reply within one business day.'
+        },
+        label: 'Build your plan',
+        heading: 'Pick what your business needs. We’ll take it from there.',
+        intro: 'No prices to compare and nothing to pay. Every plan starts with a conversation.',
+        stepPackages: 'What do you need?',
+        stepPackagesHint: 'Pick one or more. You can change your mind on the call.',
+        stepBusiness: 'About your business',
+        stepContact: 'How should we reach you?',
+        businessName: 'Business name',
+        businessType: 'Type of business',
+        businessTypePlaceholder: 'Cafe, salon, law office…',
+        message: 'What’s slowing you down?',
+        messagePlaceholder: 'For example: we answer the same booking questions all day.',
+        name: 'Your name',
+        email: 'Email',
+        phone: 'Phone',
+        optional: 'optional',
+        summaryHeading: 'Your plan',
+        summaryEmpty: 'Nothing picked yet.',
+        portalLine: 'Client portal',
+        portalIncluded: 'Included',
+        remove: (name: string) => `Remove ${name}`,
+        submit: 'Request my plan',
+        sending: 'Sending…',
+        pickOne: 'Pick at least one package first.',
+        reply: 'We reply within one business day.',
+        error: 'Something went wrong sending your plan. Try again, or call us at (917) 907-1034.',
+        tooMany: 'We’ve had a lot of requests today. Call or email us and we’ll get right back to you.',
+        // the hidden field only a bot fills in. a screen reader never reaches it, this is just in case
+        honeypot: 'Leave this empty',
+        done: {
+            heading: (name: string) => `Thanks, ${name}. Your plan is in.`,
+            picked: 'You picked',
+            next: 'What happens next',
+            steps: [
+                'We look over what you picked and what you told us.',
+                'We call or email you within one business day.',
+                'Together we shape the plan, and you get a clear quote before anything gets built.'
+            ],
+            home: 'Back to home'
+        }
+    },
+
     contact: {
         seo: {
             title: 'Contact - GradientV',
-            description: 'Call (917) 907-1034 or email contact@gradientv.com to tell us about your project. We build websites, internal tools, and automations for small businesses.'
+            description: 'Call (917) 907-1034 or email contact@gradientv.com to tell us about your project. We build websites, marketing, automation and custom software for small businesses.'
         },
         label: 'Contact',
         heading: 'Tell us how your business runs today.',
         text: 'Start with the work that takes too long or keeps going wrong. We’ll go through it with you, including whether software is the right fix.',
         phone: 'Phone',
         email: 'Email',
-        linkedin: 'LinkedIn'
+        linkedin: 'LinkedIn',
+        planHeading: 'Already know what you need?',
+        planText: 'Pick your packages and we’ll come back with a plan within one business day.'
     },
 
     story: {
@@ -164,6 +287,7 @@ const en = {
             description: 'Meet the people behind GradientV.'
         },
         label: 'Team',
+        heading: 'The people you’ll actually work with.',
         portraitAlt: (name: string) => `Portrait of ${name}`,
         storyLink: 'Read the full story',
         // keyed by the person's id in src/data/team.ts
@@ -206,7 +330,8 @@ const en = {
         unavailable: "The client portal can't be reached right now. Try again in a few minutes, or reach us directly.",
         contact: 'Contact us',
         pitchHeading: 'One place for everything we build for you.',
-        pitchText: 'See how your site is doing and send us change requests, all in one place.'
+        pitchText: 'See how your site is doing and send us change requests, all in one place.',
+        notClient: 'Not a client yet?'
     },
 
     // the two pages behind the login are English only for now, like videos
@@ -287,6 +412,17 @@ const en = {
             otherSources: 'Other sites',
             none: 'Nothing to show for these days yet.',
             note: 'Days are counted on UTC time, so each one starts in the evening in New York. The numbers refresh every 10 minutes.'
+        },
+        // admin only: what came in through Build your plan on the public site
+        plans: {
+            heading: 'Plan requests',
+            intro: 'Sent from Build your plan on the public site. Nobody here is a client yet.',
+            loading: 'Loading plan requests…',
+            empty: 'No plan requests yet.',
+            statusLabel: 'Status',
+            noBusiness: 'No business name given',
+            // the languages the form can be filled in, so i know which one to answer in
+            languages: { en: 'English', es: 'Spanish', zh: 'Chinese' } as Record<string, string>
         },
         // admin only: the menu for looking at a client's portal the way they see it
         viewAs: {

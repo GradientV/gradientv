@@ -14,7 +14,7 @@ export default function NotFoundView() {
         <>
             <Seo title={words.seo.title} description={words.seo.description} />
 
-            <PageHero title={words.label} subtitle={words.heading} />
+            <PageHero label={words.label} title={words.heading} />
 
             <UnderBand className="pb-24 md:pb-32">
                 <div className="mx-auto max-w-[52ch] text-center">

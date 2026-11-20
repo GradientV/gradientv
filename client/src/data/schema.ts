@@ -7,6 +7,7 @@
 // tool fetches, it gets the whole picture. Seo.tsx turns the result into the <script> tag
 
 import { CONTENT, type Content } from '../content/index';
+import { PACKAGE_IDS } from './packages';
 import { LOCALES, pageUrl } from './pages';
 import { CLIENTS, COMPANY, SHARE_IMAGE, SITE_URL } from './site';
 import { TEAM } from './team';
@@ -26,9 +27,11 @@ const personId = (id: string): string => `${SITE_URL}/team#${id}`;
 // kept to what the site itself says we build
 const KNOWS_ABOUT = [
     'Website design and development',
-    'Internal tools for small businesses',
-    'Business dashboards',
+    'Branding for small businesses',
+    'Search engine optimization (SEO)',
+    'Generative engine optimization (GEO)',
     'Workflow automation',
+    'Custom software for small businesses',
     'Applied AI for small businesses'
 ];
 
@@ -68,14 +71,25 @@ function organization(t: Content): JsonLd {
         founder: { '@id': personId('ashton') },
         employee: TEAM.map((person) => ({ '@id': personId(person.id) })),
         sameAs: [COMPANY.linkedin.href],
-        // the services, in the page's language
+        // the four packages, in the page's language. no prices: every plan is quoted
         hasOfferCatalog: {
             '@type': 'OfferCatalog',
-            name: t.home.buildLabel,
-            itemListElement: t.home.builds.map((service) => ({
-                '@type': 'Offer',
-                itemOffered: { '@type': 'Service', name: service, provider: { '@id': ORGANIZATION_ID } }
-            }))
+            name: t.home.packagesHeading,
+            itemListElement: PACKAGE_IDS.map((id) => {
+                const item = t.packages.items[id];
+                // Chinese lists its items with its own comma, not a Latin one
+                const includes = item.includes.join(t.code === 'zh' ? '；' : '; ');
+                return {
+                    '@type': 'Offer',
+                    url: `${pageUrl('plan', t.code)}?package=${id}`,
+                    itemOffered: {
+                        '@type': 'Service',
+                        name: item.name,
+                        description: `${item.outcome} ${includes}`,
+                        provider: { '@id': ORGANIZATION_ID }
+                    }
+                };
+            })
         }
     };
 }
@@ -204,6 +218,10 @@ export function teamSchema(t: Content, url: string): JsonLd {
 
 export function contactSchema(t: Content, url: string): JsonLd {
     return innerPage(t, url, 'ContactPage', t.contact.seo, t.contact.label);
+}
+
+export function planSchema(t: Content, url: string): JsonLd {
+    return innerPage(t, url, 'WebPage', t.plan.seo, t.plan.label);
 }
 
 /** privacy, terms and accessibility. meta is the document's own title, description and heading */
