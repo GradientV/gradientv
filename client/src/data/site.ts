@@ -37,7 +37,7 @@ export const CLIENTS = [
     },
     {
         name: 'Bukas Cafe',
-        href: 'https://bukascafe.vercel.app/',
+        href: 'https://www.bukascafe.com/',
         about: 'Website for a café',
         logo: '/images/clients/bukascafe.png',
         width: 825,

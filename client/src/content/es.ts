@@ -143,11 +143,11 @@ const es: Content = {
         },
         founder: {
             heading: 'Con quién trabaja.',
-            role: 'Fundador y aspirante a ingeniero de software',
+            role: 'Fundador',
             body: [
                 'Fundé GradientV porque me encontraba una y otra vez con la misma brecha, desde los dos lados. Soy estudiante de Ciencias de la Computación y Matemáticas Aplicadas en Stony Brook University, centrado en ciencia de datos, aprendizaje automático y sistemas de IA aplicada, y no dejaba de conocer a dueños de pequeños negocios que necesitaban exactamente ese tipo de trabajo y no tenían dónde conseguirlo de forma razonable.',
-                'Mi formación incluye cursos de ciencia de datos, minería de datos, aprendizaje automático y analítica. Me incorporaré a CRIZM, una plataforma impulsada por IA creada para apoyar flujos de calificación, sistemas de retroalimentación e informes de resultados académicos, como investigador de pregrado, con la intención de adquirir experiencia que pueda aplicar después en mi trabajo en GradientV.',
-                'Me llamo aspirante a ingeniero de software a propósito. Estoy al principio de mi carrera, sigo aprendiendo y prefiero decirlo con claridad antes que exagerar. Lo que sí puedo prometer es que seré directo sobre lo que puedo construir, honesto sobre lo que no, y que siempre hablará con la persona que realmente hace el trabajo.'
+                'Mi formación incluye cursos de ciencia de datos, minería de datos, aprendizaje automático y analítica. Soy investigador de pregrado en CRIZM, una plataforma impulsada por IA creada para apoyar flujos de calificación, sistemas de retroalimentación e informes de resultados académicos, y aplico esa experiencia en mi trabajo en GradientV.',
+                'Estoy al principio de mi carrera, sigo aprendiendo y prefiero decirlo con claridad antes que exagerar. Lo que sí puedo prometer es que seré directo sobre lo que puedo construir, honesto sobre lo que no, y que siempre hablará con la persona que realmente hace el trabajo.'
             ],
             teamLink: 'Conozca al resto del equipo'
         }

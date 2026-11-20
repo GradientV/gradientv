@@ -148,11 +148,11 @@ const en = {
         },
         founder: {
             heading: "Who you're working with.",
-            role: 'Founder & aspiring Software Engineer',
+            role: 'Founder',
             body: [
                 "I started GradientV because I kept running into the same gap from both sides. I'm a Computer Science and Applied Mathematics student at Stony Brook University, focused on data science, machine learning, and applied AI systems, and I kept meeting small business owners who needed exactly that kind of work and had nowhere sensible to get it.",
-                'My background includes coursework in data science, data mining, machine learning, and analytics. I will be joining CRIZM, an AI-powered platform built to support grading workflows, feedback systems, and academic outcomes reporting as an Undergraduate Researcher and hope to gain experience that I can further implement in my work at GradientV.',
-                "I call myself an aspiring software engineer on purpose. I'm early in my career, I'm still learning, and I would rather say that plainly than oversell it. What I can promise is that I'll be direct about what I can build, honest about what I can't, and that you'll always be talking to the person actually doing the work."
+                "My background includes coursework in data science, data mining, machine learning, and analytics. I'm an Undergraduate Researcher at CRIZM, an AI-powered platform built to support grading workflows, feedback systems, and academic outcomes reporting, and I bring that experience into my work at GradientV.",
+                "I'm early in my career, I'm still learning, and I would rather say that plainly than oversell it. What I can promise is that I'll be direct about what I can build, honest about what I can't, and that you'll always be talking to the person actually doing the work."
             ],
             teamLink: 'Meet the rest of the team'
         }
