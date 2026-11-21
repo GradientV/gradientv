@@ -1,5 +1,5 @@
-// the Videos page. English only and not in the nav, but the link still works.
-// to bring it back: add it to `links` in Header.tsx and take noindex off it in src/data/pages.ts
+// the Videos page, hidden for now (see src/data/pages.ts).
+// to bring it back: put introduction.mp4 and .vtt back in public/videos and set its locales to ['en']
 import PageHero from '../components/PageHero';
 import Seo from '../components/Seo';
 import UnderBand from '../components/UnderBand';

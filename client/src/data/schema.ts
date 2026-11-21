@@ -10,7 +10,7 @@ import { CONTENT, type Content } from '../content/index';
 import { PACKAGE_IDS } from './packages';
 import { LOCALES, pageUrl } from './pages';
 import { CLIENTS, COMPANY, SHARE_IMAGE, SITE_URL } from './site';
-import { TEAM } from './team';
+import { FOUNDER } from './team';
 
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -21,7 +21,7 @@ export type JsonLd = Record<string, unknown>;
 type PageSeo = { title: string; description: string };
 
 /** one @id per person, the same in every language */
-const personId = (id: string): string => `${SITE_URL}/team#${id}`;
+const personId = (id: string): string => `${SITE_URL}/story#${id}`;
 
 // the subjects AI tools match against when someone asks who does this kind of work.
 // kept to what the site itself says we build
@@ -32,6 +32,9 @@ const KNOWS_ABOUT = [
     'Generative engine optimization (GEO)',
     'Workflow automation',
     'Custom software for small businesses',
+    'AI chatbots and AI agents',
+    'Retrieval-augmented generation (RAG)',
+    'Model Context Protocol (MCP)',
     'Applied AI for small businesses'
 ];
 
@@ -62,16 +65,12 @@ function organization(t: Content): JsonLd {
             telephone: COMPANY.phone.schema,
             url: pageUrl('contact', t.code)
         },
-        // where the team is today. add a city here once we're taking clients there
-        areaServed: [
-            { '@type': 'Place', name: 'New York City, New York' },
-            { '@type': 'Place', name: 'Stony Brook, New York' }
-        ],
+        // where we work today. add a place here once we're taking clients there
+        areaServed: [{ '@type': 'Place', name: 'New York' }],
         knowsAbout: KNOWS_ABOUT,
         founder: { '@id': personId('ashton') },
-        employee: TEAM.map((person) => ({ '@id': personId(person.id) })),
         sameAs: [COMPANY.linkedin.href],
-        // the four packages, in the page's language. no prices: every plan is quoted
+        // the packages, in the page's language. no prices: every plan is quoted
         hasOfferCatalog: {
             '@type': 'OfferCatalog',
             name: t.home.packagesHeading,
@@ -108,9 +107,9 @@ function website(t: Content): JsonLd {
     };
 }
 
-/** everyone on the Team page. a role is left out until the Team page has one */
+/** the people the site names publicly: the founder, while the Team page is hidden */
 function people(t: Content): JsonLd[] {
-    return TEAM.map((person) => {
+    return [FOUNDER].map((person) => {
         const role = t.team.members[person.id].role;
         const website = person.links.find((link) => link.kind === 'website');
         const profiles = person.links.filter((link) => link.kind !== 'website').map((link) => link.href);

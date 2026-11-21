@@ -24,11 +24,14 @@ export const LOCALES: ReadonlyArray<{ code: LocaleCode; base: string }> = [
 const ALL = LOCALES.map((locale) => locale.code);
 
 const PAGE_LIST = [
-    { id: 'home', path: '', locales: ALL, updated: '2026-11-20' },
+    { id: 'home', path: '', locales: ALL, updated: '2026-11-21' },
     // pick packages and send a plan request (POST /api/plan)
-    { id: 'plan', path: '/plan', locales: ALL, updated: '2026-11-20' },
-    { id: 'story', path: '/story', locales: ALL, updated: '2026-10-04' },
-    { id: 'team', path: '/team', locales: ALL, updated: '2026-11-20' },
+    { id: 'plan', path: '/plan', locales: ALL, updated: '2026-11-21' },
+    { id: 'story', path: '/story', locales: ALL, updated: '2026-11-21' },
+    // hidden for now: with no languages it gets no route, no HTML file and no sitemap entry.
+    // to bring it back: set locales to ALL, restore the people (src/data/team.ts and team.members in src/content),
+    // their photos, and the links in Header.tsx, Footer.tsx and StoryView.tsx
+    { id: 'team', path: '/team', locales: [], noindex: true },
     { id: 'contact', path: '/contact', locales: ALL, updated: '2026-11-20' },
     // nothing to find on a sign-in form, so it stays out of search results.
     // auth: the page needs to know who is signed in, so App.tsx puts it inside the AuthProvider
@@ -36,11 +39,11 @@ const PAGE_LIST = [
     // where an invite link lands, and the portal itself. English only for now
     { id: 'setPassword', path: '/set-password', locales: ['en'], noindex: true, auth: true },
     { id: 'portal', path: '/portal', locales: ['en'], noindex: true, auth: true },
-    { id: 'privacy', path: '/privacy', locales: ALL, updated: '2026-10-04' },
+    { id: 'privacy', path: '/privacy', locales: ALL, updated: '2026-11-21' },
     { id: 'terms', path: '/terms', locales: ALL, updated: '2026-10-04' },
     { id: 'accessibility', path: '/accessibility', locales: ALL, updated: '2026-10-04' },
-    // not in the nav. the page still works if you know the link
-    { id: 'videos', path: '/videos', locales: ['en'], noindex: true }
+    // hidden for now, the same way as team. its video files are out of client/public too
+    { id: 'videos', path: '/videos', locales: [], noindex: true }
 ] as const;
 
 /** every page's id: 'home' | 'story' | ... a typo in a link is an error, not a dead page */

@@ -6,14 +6,15 @@ import type { PackageId, RequestStatus } from '../../../shared/portal.js';
 import { STATUSES } from './ChangeRequest.js';
 
 /** the packages a plan can include, in the order the site shows them */
-export const PACKAGE_IDS: readonly PackageId[] = ['website', 'growth', 'automation', 'custom'];
+export const PACKAGE_IDS: readonly PackageId[] = ['website', 'growth', 'automation', 'custom', 'ai'];
 
 /** their names, for the Slack message. the site has its own words for them in every language */
 export const PACKAGE_NAMES: Record<PackageId, string> = {
     website: 'Website & Brand',
     growth: 'Growth',
     automation: 'Automation',
-    custom: 'Custom Software'
+    custom: 'Custom Software',
+    ai: 'AI Upgrade'
 };
 
 /** the languages the form can be filled in */

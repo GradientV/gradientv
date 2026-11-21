@@ -1,6 +1,5 @@
-// the Story page: why GradientV exists, in three chapters
+// the Story page: why GradientV exists, in four chapters
 // with the dark "what we do" band in the middle
-import { Link } from 'react-router';
 import Chapter from '../components/Chapter';
 import NightBand from '../components/NightBand';
 import PageHero from '../components/PageHero';
@@ -8,7 +7,6 @@ import { PersonLinks } from '../components/Person';
 import Seo from '../components/Seo';
 import UnderBand from '../components/UnderBand';
 import Eyebrow from '../components/ui/Eyebrow';
-import { ArrowRightIcon } from '../components/ui/Icons';
 import { useLocale } from '../context/LocaleContext';
 import { pageUrl } from '../data/pages';
 import { storySchema } from '../data/schema';
@@ -17,8 +15,8 @@ import { FOUNDER } from '../data/team';
 const PROSE_CLASS = 'max-w-[62ch] space-y-5 text-[1.05rem] leading-relaxed';
 
 export default function StoryView() {
-    const { locale, t, to } = useLocale();
-    const { gap, middle, ai, founder } = t.story;
+    const { locale, t } = useLocale();
+    const { gap, middle, ai, next, founder } = t.story;
 
     return (
         <>
@@ -33,7 +31,7 @@ export default function StoryView() {
 
             {/* ---------- the short version, lined up with the chapters' text column ---------- */}
             <UnderBand className="grid pb-16 md:grid-cols-12 md:gap-10 md:pb-24">
-                <p className="max-w-[40ch] text-[1.2rem] leading-[1.55] md:col-span-8 md:col-start-5 md:text-[1.375rem]">{t.story.lead}</p>
+                <p className="max-w-[40ch] text-[1.2rem] leading-[1.55] text-pretty md:col-span-8 md:col-start-5 md:text-[1.375rem]">{t.story.lead}</p>
             </UnderBand>
 
             {/* ---------- the gap, and the two options a small business gets ---------- */}
@@ -75,6 +73,13 @@ export default function StoryView() {
                 </div>
             </Chapter>
 
+            {/* ---------- what the builds turn into ---------- */}
+            <Chapter heading={next.heading}>
+                <div className={PROSE_CLASS}>
+                    {next.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                </div>
+            </Chapter>
+
             {/* ---------- the founder ---------- */}
             <Chapter id="founder" heading={founder.heading}>
                 <div className="grid gap-8 sm:grid-cols-[minmax(0,15rem)_1fr]">
@@ -93,13 +98,6 @@ export default function StoryView() {
                             {founder.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                         </div>
                         <PersonLinks person={FOUNDER} className="mt-6" />
-                        <Link
-                            to={to('team')}
-                            className="group mt-7 inline-flex items-center gap-2 font-medium underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
-                        >
-                            {founder.teamLink}
-                            <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Link>
                     </div>
                 </div>
             </Chapter>

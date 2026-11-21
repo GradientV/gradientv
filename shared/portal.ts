@@ -96,8 +96,8 @@ export type SiteStatsJSON = {
     sources: Array<{ name: string; visitors: number }>;
 };
 
-/** the four packages a plan can be built from. the server checks against this, and the site draws a card for each */
-export type PackageId = 'website' | 'growth' | 'automation' | 'custom';
+/** the packages a plan can be built from. the server checks against this, and the site draws a card for each */
+export type PackageId = 'website' | 'growth' | 'automation' | 'custom' | 'ai';
 
 /** what the "Build your plan" form sends (POST /api/plan). anyone can send it, so the server checks every field */
 export type PlanRequestBody = {

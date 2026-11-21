@@ -1,5 +1,5 @@
-// the home page: the logo and the slogan up front, the four packages, the client
-// portal, the client tiles, the common questions, and the contact band
+// the home page: the logo and the slogan up front, the packages, the client
+// portal, the client tiles, what's coming next, the common questions, and the contact band
 import { Link } from 'react-router';
 import ClientGrid from '../components/ClientGrid';
 import ContactBand from '../components/ContactBand';
@@ -14,10 +14,11 @@ import Eyebrow from '../components/ui/Eyebrow';
 import { ArrowRightIcon, CheckIcon, PlusIcon } from '../components/ui/Icons';
 import { useLocale } from '../context/LocaleContext';
 import { homeSchema } from '../data/schema';
+import { COMPANY } from '../data/site';
 
 export default function HomeView() {
     const { t, to } = useLocale();
-    const { portal } = t.home;
+    const { portal, learn } = t.home;
 
     return (
         <>
@@ -62,7 +63,7 @@ export default function HomeView() {
                 </div>
             </section>
 
-            {/* ---------- the four packages ----------
+            {/* ---------- the packages ----------
                 the section header (title, the plan link, a rule), then the cards.
                 each card's link opens Build your plan with that package picked */}
             <UnderBand id="services" className="pb-24 md:pb-32">
@@ -127,6 +128,31 @@ export default function HomeView() {
                 <SectionHeader title={t.home.clientsLabel} />
                 <div className="mt-10">
                     <ClientGrid />
+                </div>
+            </section>
+
+            {/* ---------- coming next: the newsletter and courses ----------
+                no signup form until they exist. the link opens an email to us */}
+            <section id="learn" className="wrap pb-16 md:pb-20">
+                <SectionHeader
+                    title={learn.heading}
+                    action={(
+                        <a
+                            href={`mailto:${COMPANY.email}?subject=${encodeURIComponent(learn.emailSubject)}`}
+                            className="group inline-flex items-center gap-2 text-sm font-medium underline decoration-ink/30 underline-offset-4 transition-colors hover:decoration-ink"
+                        >
+                            {learn.cta}
+                            <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </a>
+                    )}
+                />
+                <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
+                    {learn.items.map((item) => (
+                        <div key={item.title}>
+                            <h3 className="font-display text-xl font-semibold">{item.title}</h3>
+                            <p className="mt-2 max-w-[46ch] leading-relaxed text-ink-soft">{item.text}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 

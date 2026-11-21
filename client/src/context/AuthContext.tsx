@@ -1,6 +1,7 @@
-// who is signed in, shared with the pages that care (login, set-password, the portal).
-// the browser can't read the session cookie, that's the point of it. so the only
-// way to know who is signed in is to ask the server, which this does once when it loads
+// who is signed in, shared with the header, the footer and the login, set-password and portal pages.
+// the browser can't read the session cookie, that's the point of it. so the only way to know
+// who is signed in is to ask the server. it asks once, the first time someone lands on one of
+// those three pages: someone reading the Story page shouldn't cost a trip to the server
 //
 // any component inside <AuthProvider> calls useAuth() and gets:
 //   status        'checking' | 'signedIn' | 'signedOut'
@@ -8,9 +9,11 @@
 //   signIn(email, password)
 //   setPassword(token, password)    for the invite link. it signs them in too
 //   signOut()
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useLocation } from 'react-router';
 import type { AccountJSON } from '../../../shared/portal';
 import * as api from '../api/api';
+import { pageFromPath } from '../data/pages';
 
 /** where things stand. an account only exists while signed in, so a page can't read one that isn't there */
 type AuthState =
@@ -35,20 +38,20 @@ export function useAuth(): AuthValue {
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [state, setState] = useState<AuthState>({ status: 'checking', account: null });
 
-    // at startup, ask the server who this is
-    // btw StrictMode runs effects twice in dev, the ignore flag makes the extra run harmless
+    const { pathname } = useLocation();
+    const needsAnswer = pageFromPath(pathname)?.auth === true;
+    // a ref so the question only goes out once, even with StrictMode running effects twice in dev
+    const hasAsked = useRef(false);
+
     useEffect(() => {
-        let ignore = false;
+        if (!needsAnswer || hasAsked.current) return;
+        hasAsked.current = true;
+        // both answers only count if it's still an open question: someone quick could have
+        // signed in or out before this came back
         api.getMe()
-            .then((found) => {
-                if (!ignore) welcome(found);
-            })
-            .catch(() => {
-                // only if it's still an open question. someone quick could have signed in before this answer came back
-                if (!ignore) setState((current) => (current.status === 'checking' ? { status: 'signedOut', account: null } : current));
-            });
-        return () => { ignore = true; };
-    }, []);
+            .then((found) => setState((current) => (current.status === 'checking' ? { status: 'signedIn', account: found } : current)))
+            .catch(() => setState((current) => (current.status === 'checking' ? { status: 'signedOut', account: null } : current)));
+    }, [needsAnswer]);
 
     function welcome(found: AccountJSON) {
         setState({ status: 'signedIn', account: found });

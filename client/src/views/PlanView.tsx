@@ -172,7 +172,8 @@ export default function PlanView() {
                                                 key={id}
                                                 // the card is the checkbox's label, so the whole card is the click target.
                                                 // the real checkbox is hidden, and the card shows its focus ring instead
-                                                className={`flex cursor-pointer flex-col border p-5 transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-[3px] has-[:focus-visible]:outline-accent ${
+                                                // AI Upgrade takes a full row, so five cards don't leave one alone
+                                                className={`flex cursor-pointer flex-col border p-5 transition-colors ${id === 'ai' ? 'sm:col-span-2' : ''} has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-[3px] has-[:focus-visible]:outline-accent ${
                                                     isOn ? 'border-ink bg-paper-bright' : 'border-line bg-paper-bright/60 hover:border-ink/40'
                                                 }`}
                                             >

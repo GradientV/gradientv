@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router';
 import { useLocale } from '../../context/LocaleContext';
 import { CONTENT } from '../../content/index';
 import { LOCALES, pageFromPath, pagePath, type LocaleCode } from '../../data/pages';
+import { useClientLink } from '../../hooks/useClientLink';
 
 const HEADING_CLASS = 'eyebrow text-xs font-medium uppercase tracking-[0.2em] text-chalk/50';
 const LINK_CLASS = 'text-[0.95rem] text-chalk/75 transition-colors hover:text-chalk';
@@ -12,6 +13,7 @@ export default function Footer() {
     const { locale, t, to } = useLocale();
     const { pathname } = useLocation();
     const page = pageFromPath(pathname);
+    const clientLink = useClientLink();
 
     /** the page you're on, in another language. if it isn't translated, that language's home page */
     function inLanguage(code: LocaleCode): string {
@@ -22,10 +24,9 @@ export default function Footer() {
         { label: t.nav.services, to: `${to('home')}#services` },
         { label: t.nav.clients, to: `${to('home')}#clients` },
         { label: t.nav.story, to: to('story') },
-        { label: t.nav.team, to: to('team') },
         { label: t.nav.contact, to: to('contact') },
         { label: t.nav.plan, to: to('plan') },
-        { label: t.nav.login, to: to('login') }
+        clientLink
     ];
 
     const legalLinks = [

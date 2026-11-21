@@ -4,7 +4,7 @@ The code behind [gradientv.com](https://gradientv.com): the website of GradientV
 
 - **The website** is a React app written in TypeScript. Every public page is prerendered to plain HTML at build time, in English, Spanish and Simplified Chinese, so link previews, search engines and AI tools see the whole page without running JavaScript.
 - **The client portal** is where clients sign in. They send change requests for their sites and see their visitor numbers. When their own website sends them, they also see the self-assessment results and newsletter signups it collected.
-- **Build your plan** (`/plan`) is where someone who isn't a client yet picks from the four packages (Website & Brand, Growth, Automation, Custom Software) and asks for a plan. It lands in the admin login's portal and in Slack. There are no prices: every plan is quoted after a conversation.
+- **Build your plan** (`/plan`) is where someone who isn't a client yet picks from the five packages (Website & Brand, Growth, Automation, Custom Software, AI Upgrade) and asks for a plan. It lands in the admin login's portal and in Slack. There are no prices: every plan is quoted after a conversation.
 - **The API** behind the portal is an Express server over MongoDB. It deploys with the site as a single Vercel Function.
 
 **Stack:** TypeScript in strict mode on both sides. React 19, React Router 8, Tailwind CSS 4 and Vite 8 for the website. Express 5 and MongoDB (Mongoose) for the server. Vercel for hosting.

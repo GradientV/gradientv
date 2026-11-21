@@ -7,13 +7,13 @@ export const meta = {
     description: 'Cómo GradientV recopila, usa y protege la información obtenida a través de este sitio web, todo explicado en lenguaje claro.',
     label: 'Legal',
     heading: 'Política de privacidad',
-    updated: 'Última actualización: 1 de septiembre de 2026'
+    updated: 'Última actualización: 21 de noviembre de 2026'
 };
 
 export default function PrivacyEs() {
     return (
         <>
-            <p>GradientV LLC, que opera comercialmente como GradientV, es una agencia de tecnología con sede en New York City y Stony Brook, New York. Esta política explica qué información recopilamos a través de este sitio web, cómo la usamos y las opciones que usted tiene. La mantenemos breve y clara a propósito.</p>
+            <p>GradientV LLC, que opera comercialmente como GradientV, es una agencia de tecnología con sede en New York. Esta política explica qué información recopilamos a través de este sitio web, cómo la usamos y las opciones que usted tiene. La mantenemos breve y clara a propósito.</p>
             <h2>Información que recopilamos</h2>
             <p>Solo recopilamos lo que necesitamos para responderle y mantener el sitio en funcionamiento:</p>
             <ul>

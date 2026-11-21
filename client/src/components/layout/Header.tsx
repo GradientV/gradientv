@@ -5,6 +5,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import { useLocale } from '../../context/LocaleContext';
+import { useClientLink } from '../../hooks/useClientLink';
 import ButtonLink from '../ui/ButtonLink';
 import { CloseIcon, MenuIcon } from '../ui/Icons';
 
@@ -12,6 +13,7 @@ export default function Header() {
     const { t, to } = useLocale();
     const { pathname, hash } = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const clientLink = useClientLink();
 
     // picking a link closes the phone menu
     useEffect(() => {
@@ -23,12 +25,11 @@ export default function Header() {
         { label: t.nav.services, to: `${to('home')}#services` },
         { label: t.nav.clients, to: `${to('home')}#clients` },
         { label: t.nav.story, to: to('story') },
-        { label: t.nav.team, to: to('team') },
         { label: t.nav.contact, to: to('contact') }
     ];
 
     const isCurrent = (link: { to: string }) => link.to === pathname;
-    const onLogin = pathname === to('login');
+    const onClientLink = pathname === clientLink.to;
     const onPlan = pathname === to('plan');
 
     return (
@@ -67,13 +68,13 @@ export default function Header() {
                     {/* clients know where they're going, so the login is a quiet link here.
                         on a phone it's the last item in the menu */}
                     <Link
-                        to={to('login')}
-                        aria-current={onLogin ? 'page' : undefined}
+                        to={clientLink.to}
+                        aria-current={onClientLink ? 'page' : undefined}
                         className={`hidden py-1.5 text-sm underline-offset-[7px] transition-colors lg:block ${
-                            onLogin ? 'font-medium text-ink underline decoration-ink decoration-1' : 'text-ink-soft hover:text-ink'
+                            onClientLink ? 'font-medium text-ink underline decoration-ink decoration-1' : 'text-ink-soft hover:text-ink'
                         }`}
                     >
-                        {t.nav.login}
+                        {clientLink.label}
                     </Link>
 
                     <ButtonLink to={to('plan')} variant="solid" size="sm" aria-current={onPlan ? 'page' : undefined}>
@@ -110,11 +111,11 @@ export default function Header() {
                         ))}
                         <li>
                             <Link
-                                to={to('login')}
-                                aria-current={onLogin ? 'page' : undefined}
+                                to={clientLink.to}
+                                aria-current={onClientLink ? 'page' : undefined}
                                 className="block py-3.5 text-base text-ink-soft"
                             >
-                                {t.nav.login}
+                                {clientLink.label}
                             </Link>
                         </li>
                     </ul>

@@ -6,6 +6,7 @@ describe('packagesFromQuery', () => {
     it('reads one package or several', () => {
         expect(packagesFromQuery('growth')).toEqual(['growth']);
         expect(packagesFromQuery('custom,website')).toEqual(['website', 'custom']);
+        expect(packagesFromQuery('ai,growth')).toEqual(['growth', 'ai']);
     });
 
     it('ignores what is not a package, repeats and spaces', () => {

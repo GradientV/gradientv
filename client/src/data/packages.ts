@@ -1,9 +1,9 @@
-// the four packages, in the order the site shows them. the words for each one are in
+// the packages, in the order the site shows them. the words for each one are in
 // src/content (packages.items), the ids in shared/portal.ts, and the server checks
 // against its own copy of this list (server/src/models/PlanRequest.ts)
 import type { PackageId } from '../../../shared/portal';
 
-export const PACKAGE_IDS: readonly PackageId[] = ['website', 'growth', 'automation', 'custom'];
+export const PACKAGE_IDS: readonly PackageId[] = ['website', 'growth', 'automation', 'custom', 'ai'];
 
 /**
  * the packages named in a link like /plan?package=growth,automation: only real ids,

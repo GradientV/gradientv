@@ -4,7 +4,7 @@
 // one for every page in every language it's translated into, so /story, /es/story
 // and /zh/story all land on the same <StoryView /> and it reads its words by language
 import type { ReactElement } from 'react';
-import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router';
+import { Navigate, Route, Routes, useLocation } from 'react-router';
 import Layout from './components/layout/Layout';
 import { AuthProvider } from './context/AuthContext';
 import { LocaleProvider } from './context/LocaleContext';
@@ -60,21 +60,16 @@ function UnknownPath() {
 export default function App() {
     return (
         <LocaleProvider>
-            <Routes>
-                <Route element={<Layout />}>
-                    {routesFor(PAGES.filter((page) => !page.auth))}
-
-                    {/* the pages that need to know who is signed in share one AuthProvider, so going
-                        from the login page to the portal doesn't ask the server all over again.
-                        everything else stays outside it: someone reading the Story page shouldn't
-                        cost a trip to the server to find out they aren't a client */}
-                    <Route element={<AuthProvider><Outlet /></AuthProvider>}>
-                        {routesFor(PAGES.filter((page) => page.auth))}
+            {/* around everything, so the header can tell a signed-in client from a visitor.
+                it only asks the server on the pages marked auth in src/data/pages.ts */}
+            <AuthProvider>
+                <Routes>
+                    <Route element={<Layout />}>
+                        {routesFor(PAGES)}
+                        <Route path="*" element={<UnknownPath />} />
                     </Route>
-
-                    <Route path="*" element={<UnknownPath />} />
-                </Route>
-            </Routes>
+                </Routes>
+            </AuthProvider>
         </LocaleProvider>
     );
 }

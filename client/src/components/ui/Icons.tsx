@@ -72,7 +72,9 @@ const PACKAGE_PATHS: Record<PackageId, string> = {
     // two arrows chasing each other
     automation: 'M19.5 12a7.5 7.5 0 0 1-13.3 4.7M4.5 12a7.5 7.5 0 0 1 13.3-4.7M18 3.5v4h-4M6 20.5v-4h4',
     // a pair of code brackets
-    custom: 'M8.5 7.5 4 12l4.5 4.5M15.5 7.5 20 12l-4.5 4.5M13.5 5.5l-3 13'
+    custom: 'M8.5 7.5 4 12l4.5 4.5M15.5 7.5 20 12l-4.5 4.5M13.5 5.5l-3 13',
+    // a computer chip
+    ai: 'M7.5 7.5h9v9h-9zM10 3.5v4M14 3.5v4M10 16.5v4M14 16.5v4M3.5 10h4M3.5 14h4M16.5 10h4M16.5 14h4'
 };
 
 export function PackageIcon({ id, className = '' }: { id: PackageId; className?: string }) {

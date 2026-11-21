@@ -24,6 +24,7 @@ const en = {
         team: 'Team',
         contact: 'Contact',
         login: 'Client login',
+        portal: 'Client portal',
         plan: 'Build your plan',
         openMenu: 'Open menu',
         closeMenu: 'Close menu'
@@ -49,14 +50,14 @@ const en = {
     home: {
         seo: {
             title: 'GradientV - Websites, marketing and software for small businesses',
-            description: 'GradientV builds websites, marketing, automation and custom software for small businesses, with one client portal to see it all. Every project starts with a conversation.'
+            description: 'GradientV builds websites, marketing, automation, custom software and AI tools for small businesses, with one client portal to see it all. Every project starts with a conversation.'
         },
         // the line under the big logo at the top of the page
         tagline: 'The human side of AI.',
         heroLead: 'Websites, marketing and software for small businesses, starting with a conversation.',
         primaryCta: 'Build your plan',
         secondaryCta: 'See our work',
-        // the heading over the four package cards (their words are in packages, below)
+        // the heading over the package cards (their words are in packages, below)
         packagesHeading: 'Packages',
         addToPlan: 'Add to your plan',
         // the client portal, shown off on the home page
@@ -89,6 +90,16 @@ const en = {
             }
         },
         clientsLabel: 'Clients',
+        // the small "coming next" section on the home page. the button opens an email to us
+        learn: {
+            heading: 'Coming next',
+            cta: 'Get early access',
+            emailSubject: 'Early access: newsletter and courses',
+            items: [
+                { title: 'AI newsletter', text: 'Short, practical updates on what’s new in AI and how a small business can use it.' },
+                { title: 'AI courses', text: 'Hands-on lessons that teach owners and their teams to use AI in their daily work.' }
+            ]
+        },
         visit: 'Visit site',
         // every answer here repeats something the site already says (Story, Contact,
         // the client portal). the same questions go into the structured data and llms.txt
@@ -96,7 +107,7 @@ const en = {
         faq: [
             {
                 question: 'What does GradientV build?',
-                answer: 'Four packages for small businesses: Website & Brand, Growth (SEO, AI search and reviews), Automation, and Custom Software. Everything is built around how your business already works, and all of it shows up in one client portal.'
+                answer: 'Five packages for small businesses: Website & Brand, Growth (SEO, AI search and reviews), Automation, Custom Software, and AI Upgrade (chatbots, RAG, MCP and AI agents). Everything is built around how your business already works, and all of it shows up in one client portal.'
             },
             {
                 question: 'What kinds of businesses do you work with?',
@@ -115,6 +126,10 @@ const en = {
                 answer: 'GEO means getting recommended when customers ask AI tools like ChatGPT, Gemini or Perplexity for a business like yours. It’s part of the Growth package, and your client portal shows which visitors came from AI search.'
             },
             {
+                question: 'What are RAG and MCP, and do I need them?',
+                answer: 'RAG lets an AI assistant answer from your own documents, like menus, policies or past work, and show where each answer came from. MCP is a standard way to connect AI tools like Claude and ChatGPT to the software you already use. We set up and build both as part of AI Upgrade, and we’ll tell you if your business doesn’t need them yet.'
+            },
+            {
                 question: 'Why not hire a developer or buy off-the-shelf software?',
                 answer: 'A full-time engineer is a six-figure commitment before anyone knows whether there’s a year of work, and off-the-shelf software stops fitting the moment you need something its makers didn’t plan for. We build and run software made for your business, without you hiring an engineering team.'
             },
@@ -128,12 +143,12 @@ const en = {
             },
             {
                 question: 'Who will I be working with?',
-                answer: 'The people doing the work. You get one point of contact who explains things in plain language and is accountable when something needs to change.'
+                answer: 'Ashton Reyes, GradientV’s founder. You get one point of contact who explains things in plain language and is accountable when something needs to change.'
             }
         ]
     },
 
-    // the four packages, on the home page and on Build your plan.
+    // the packages, on the home page and on Build your plan.
     // keyed by the ids in shared/portal.ts, so a package can't be missing its words
     packages: {
         includesLabel: 'Includes',
@@ -158,6 +173,12 @@ const en = {
                 name: 'Custom Software',
                 outcome: 'Run your business your way.',
                 includes: ['Internal tools and dashboards', 'Online ordering and client portals', 'AI assistants trained on your business', 'Built around how you already work']
+            },
+            // chatbots, RAG, MCP and the other AI work. it gets its own full-width card
+            ai: {
+                name: 'AI Upgrade',
+                outcome: 'Put AI to work in your business.',
+                includes: ['AI chatbot for your website', 'RAG: AI that answers from your own files', 'MCP: connect AI tools to your software', 'AI agents that handle multi-step tasks', 'Custom GPTs and Claude skills for your team', 'AI that reads invoices, receipts and forms']
             }
         } satisfies Record<PackageId, PackageWords>
     },
@@ -166,7 +187,7 @@ const en = {
     plan: {
         seo: {
             title: 'Build your plan - GradientV',
-            description: 'Pick the packages your small business needs (website and brand, growth, automation or custom software) and we’ll reply within one business day.'
+            description: 'Pick the packages your small business needs (website and brand, growth, automation, custom software or AI upgrades) and we’ll reply within one business day.'
         },
         label: 'Build your plan',
         heading: 'Pick what your business needs. We’ll take it from there.',
@@ -213,7 +234,7 @@ const en = {
     contact: {
         seo: {
             title: 'Contact - GradientV',
-            description: 'Call (917) 907-1034 or email contact@gradientv.com to tell us about your project. We build websites, marketing, automation and custom software for small businesses.'
+            description: 'Call (917) 907-1034 or email contact@gradientv.com to tell us about your project. We build websites, marketing, automation, custom software and AI tools for small businesses.'
         },
         label: 'Contact',
         heading: 'Tell us how your business runs today.',
@@ -228,45 +249,51 @@ const en = {
     story: {
         seo: {
             title: 'Story - GradientV',
-            description: 'Why GradientV exists: small businesses are offered either a six-figure engineering hire or software they cannot control. We build the third option, and help them adopt AI along the way.'
+            description: 'Why GradientV exists: small businesses know AI could help, but few have the time or staff to put it to work. We build the software and train their teams to use it.'
         },
         label: 'Story',
-        heading: "Software shouldn't be a luxury.",
-        lead: "Most small businesses are handed two options: hire a software engineer at a salary they can't justify, or rent software they don't control. GradientV exists to offer a third.",
+        heading: 'Making AI useful for small businesses.',
+        lead: 'Software is faster to build than ever, but most small business owners have no time to learn how to build it with AI. GradientV does that part for them, then teaches their teams to use what we build.',
         gap: {
             heading: 'The gap.',
             body: [
-                'Custom software has never been more capable, and for most small businesses it has never felt further out of reach. The companies that would benefit most from software built around how they actually work are the ones least able to get it.',
-                "That isn't because the technology is hard to come by. It's because of how it's sold."
+                'Small businesses know AI could change how they work. Few know where to start. In a May 2026 U.S. Census Bureau report, 37% of firms with 250 or more employees said they use AI. Among firms with four or fewer employees, it was under 20%.',
+                'Most owners are already running everything themselves, so learning a new technology falls to the bottom of the list. When they do look for help, they usually find two options.'
             ],
             // the two choices a small business is normally left with
             options: [
                 {
                     title: 'Hire an engineer',
-                    cost: 'Six figures, before line one',
-                    text: 'A full-time salary, benefits, and a hiring process most owners have no time to run, all committed to before anyone knows whether the role is even a full year of work. For a company of fifteen people, that is not a hire. That is a bet on the whole budget.'
+                    cost: 'Six figures a year',
+                    text: 'A full-time salary, benefits and a hiring process most owners have no time to run, all before anyone knows if there’s a full year of work. For a fifteen-person company, that can take up a big part of the budget.'
                 },
                 {
-                    title: 'Rent a SaaS product',
-                    cost: 'Fast to start, fixed forever',
-                    text: "Cheap to begin and genuinely useful, right up to the point where you need it to do something its makers didn't plan for. You end up adapting your business to the tool, and the parts you most want to change are exactly the parts you aren't allowed to touch."
+                    title: 'Buy a generic tool',
+                    cost: 'Fast to start, hard to change',
+                    text: 'Affordable and often useful, until you need something its makers didn’t plan for. From then on, your business has to work around the tool.'
                 }
             ]
         },
         middle: {
             label: 'What we do',
-            heading: "We're the middle path, and the middle man.",
+            heading: 'We’re the bridge between your business and AI.',
             body: [
-                "GradientV builds and runs the software so you don't have to hire for it, and builds it around how you already work so you aren't bending to someone else's product roadmap. You get systems that fit, without taking on an engineering department to keep them running.",
-                "We're also the face of the technical work. One person to call, who explains what's happening in plain language rather than in jargon, and who is accountable when something needs to change. You should never have to become technical to get software that works for you. That translation is our job, not yours."
+                'GradientV is a software company built around AI. AI lets us build custom software far faster than before, so a small business can get tools that once required hiring an engineer.',
+                'Every project starts with a conversation about how your business runs and where the time goes. Then we build what you need through five packages: Website & Brand, Growth, Automation, Custom Software and AI Upgrade. Everything connects to one client portal, where you can see results and send us changes.'
             ]
         },
         ai: {
-            heading: 'Adapting with AI.',
+            heading: 'How we use AI.',
             body: [
-                'AI is where this gap is widest right now. The tools are real and genuinely useful, and most small businesses still have no practical way in. The guidance available is either marketing copy or a research paper, and neither tells an owner what to actually do on Monday.',
-                "We approach it the way we approach everything else. Start with the bottleneck that's actually costing you time, apply the smallest thing that solves it, and make sure you understand what it does and where it stops. No rebuilding how you operate around a trend, and no dependence on something nobody at your company can explain.",
-                "Adopting AI well is mostly a matter of judgment about which problems are worth pointing it at. That judgment is the part we're here to supply."
+                'We start with the problem costing you the most time and use the smallest thing that solves it. That might be an automation, an assistant that answers from your own documents, or a connection that lets AI tools work with the software you already use.',
+                'If software isn’t the right fix, we’ll tell you. When it is, we train your team and explain what it does and where it stops, so you always know what you have and how to use it.'
+            ]
+        },
+        next: {
+            heading: 'Where this is going.',
+            body: [
+                'Every project leaves us with parts we can reuse, which makes the next one faster and more affordable. Over time, those builds will become a software platform for small and mid-size businesses.',
+                'We’re also working on a newsletter and courses, so owners and their teams can keep learning how to use AI on their own.'
             ]
         },
         founder: {
@@ -276,8 +303,7 @@ const en = {
                 "I started GradientV because I kept running into the same gap from both sides. I'm a Computer Science and Applied Mathematics student at Stony Brook University, focused on data science, machine learning, and applied AI systems, and I kept meeting small business owners who needed exactly that kind of work and had nowhere sensible to get it.",
                 "My background includes coursework in data science, data mining, machine learning, and analytics. I'm an Undergraduate Researcher at CRIZM, an AI-powered platform built to support grading workflows, feedback systems, and academic outcomes reporting, and I bring that experience into my work at GradientV.",
                 "I'm early in my career, I'm still learning, and I would rather say that plainly than oversell it. What I can promise is that I'll be direct about what I can build, honest about what I can't, and that you'll always be talking to the person actually doing the work."
-            ],
-            teamLink: 'Meet the rest of the team'
+            ]
         }
     },
 
@@ -295,22 +321,7 @@ const en = {
             ashton: {
                 role: 'Founder',
                 bio: "I'm Ashton Reyes, founder of GradientV, with a background in Computer Science and Applied Mathematics and a focus on data science, machine learning, and applied AI systems."
-            },
-            jorel: {
-                role: 'Head of Strategy & Growth',
-                bio: 'Jorel Chan leads strategy and growth at GradientV, shaping how the company identifies opportunities and builds lasting relationships with clients and partners.'
-            },
-            bryce: {
-                role: 'Head of Engineering',
-                bio: "Bryce Whiteside leads engineering at GradientV, overseeing the technical architecture and execution behind the team's products and client work."
-            },
-            emily: {
-                role: 'Head of Marketing & Finance',
-                bio: "Emily Fisherman leads marketing and finance at GradientV, connecting the company's technical work to clear messaging and sound financial decisions."
-            },
-            // no bio yet. the card leaves it out until one is filled in
-            brian: { role: 'Software Engineer', bio: '' },
-            katie: { role: 'Customer Solutions & Outreach', bio: '' }
+            }
         }
     },
 
@@ -496,12 +507,12 @@ const en = {
         },
         heading: 'Videos',
         title: 'GradientV Introduction',
-        text: 'Meet the team behind GradientV and learn about our mission to help businesses adopt AI in practical, measurable ways.',
+        text: 'Learn about GradientV and our mission to help businesses adopt AI in practical, measurable ways.',
         captions: 'English',
         unsupported: "Your browser doesn't support HTML5 video. Please update your browser.",
         summaryHeading: 'Video summary',
         summary: [
-            'In this short introduction, the GradientV team shares who they are and how the studio helps growing businesses adopt AI in practical, measurable ways, from modern websites and workflow automation to AI-powered dashboards and internal assistants.',
+            'This short introduction shows how GradientV helps growing businesses adopt AI in practical, measurable ways, from modern websites and workflow automation to AI-powered dashboards and internal assistants.',
             'This video has no narration. Its only audio is an instrumental music track, so nothing spoken is missed by watching it without sound. Captions identifying the music are available through the player.'
         ]
     }

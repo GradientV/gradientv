@@ -41,57 +41,6 @@ export const TEAM: Person[] = [
             { kind: 'linkedin', href: 'https://www.linkedin.com/in/ashton-reyes/' },
             { kind: 'github', href: 'https://github.com/ashton-reyes' }
         ]
-    },
-    {
-        id: 'jorel',
-        name: 'Jorel Chan',
-        initials: 'JC',
-        size: 'card',
-        photo: { src: '/images/team/jorel-chan.jpg', width: 400, height: 400 },
-        links: [
-            { kind: 'linkedin', href: 'https://www.linkedin.com/in/jorel-chan-755ba4350/' }
-        ]
-    },
-    {
-        id: 'bryce',
-        name: 'Bryce Whiteside',
-        initials: 'BW',
-        size: 'card',
-        photo: { src: '/images/team/bryce-whiteside.jpg', width: 400, height: 400 },
-        links: [
-            { kind: 'linkedin', href: 'https://www.linkedin.com/in/brycewhiteside/' },
-            { kind: 'github', href: 'https://github.com/Brycewhi' }
-        ]
-    },
-    {
-        id: 'emily',
-        name: 'Emily Fisherman',
-        initials: 'EF',
-        size: 'small',
-        photo: null,
-        links: [
-            { kind: 'linkedin', href: 'https://www.linkedin.com/in/emilyfisherman/' }
-        ]
-    },
-    {
-        id: 'brian',
-        name: 'Brian Huang',
-        initials: 'BH',
-        size: 'card',
-        photo: { src: '/images/team/brian-huang.jpg', width: 400, height: 400 },
-        links: [
-            { kind: 'linkedin', href: 'https://www.linkedin.com/in/bbrihuang/' }
-        ]
-    },
-    {
-        id: 'katie',
-        name: 'Katie Jun',
-        initials: 'KJ',
-        size: 'small',
-        photo: null,
-        links: [
-            { kind: 'linkedin', href: 'https://www.linkedin.com/in/katie-jun/' }
-        ]
     }
 ];
 

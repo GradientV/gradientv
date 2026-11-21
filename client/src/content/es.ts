@@ -20,6 +20,7 @@ const es: Content = {
         team: 'Equipo',
         contact: 'Contacto',
         login: 'Acceso clientes',
+        portal: 'Portal de clientes',
         plan: 'Arme su plan',
         openMenu: 'Abrir menú',
         closeMenu: 'Cerrar menú'
@@ -44,7 +45,7 @@ const es: Content = {
     home: {
         seo: {
             title: 'GradientV - Sitios web, marketing y software para pequeñas empresas',
-            description: 'GradientV crea sitios web, marketing, automatización y software a medida para pequeñas empresas, con un portal de clientes para verlo todo. Cada proyecto empieza con una conversación.'
+            description: 'GradientV crea sitios web, marketing, automatización, software a medida y herramientas de IA para pequeñas empresas, con un portal de clientes para verlo todo. Cada proyecto empieza con una conversación.'
         },
         tagline: 'El lado humano de la IA.',
         heroLead: 'Sitios web, marketing y software para pequeñas empresas, empezando por una conversación.',
@@ -80,12 +81,22 @@ const es: Content = {
             }
         },
         clientsLabel: 'Clientes',
+        // the small "coming next" section on the home page. the button opens an email to us
+        learn: {
+            heading: 'Próximamente',
+            cta: 'Reciba acceso anticipado',
+            emailSubject: 'Acceso anticipado: boletín y cursos',
+            items: [
+                { title: 'Boletín de IA', text: 'Novedades breves y prácticas sobre la IA y cómo puede usarla un pequeño negocio.' },
+                { title: 'Cursos de IA', text: 'Clases prácticas para que los dueños y sus equipos usen la IA en su trabajo diario.' }
+            ]
+        },
         visit: 'Visitar el sitio',
         faqLabel: 'Preguntas frecuentes',
         faq: [
             {
                 question: '¿Qué construye GradientV?',
-                answer: 'Cuatro paquetes para pequeñas empresas: Sitio web y marca, Crecimiento (SEO, búsqueda con IA y reseñas), Automatización y Software a medida. Todo se construye en torno a cómo ya funciona su negocio, y todo aparece en un solo portal de clientes.'
+                answer: 'Cinco paquetes para pequeñas empresas: Sitio web y marca, Crecimiento (SEO, búsqueda con IA y reseñas), Automatización, Software a medida y Mejora con IA (chatbots, RAG, MCP y agentes de IA). Todo se construye en torno a cómo ya funciona su negocio, y todo aparece en un solo portal de clientes.'
             },
             {
                 question: '¿Con qué tipo de negocios trabajan?',
@@ -104,6 +115,10 @@ const es: Content = {
                 answer: 'GEO significa lograr que herramientas de IA como ChatGPT, Gemini o Perplexity lo recomienden cuando un cliente busca un negocio como el suyo. Es parte del paquete Crecimiento, y su portal de clientes muestra qué visitas llegaron desde la búsqueda con IA.'
             },
             {
+                question: '¿Qué son RAG y MCP, y los necesito?',
+                answer: 'RAG permite que un asistente de IA responda a partir de sus propios documentos, como menús, políticas o trabajos anteriores, y muestre de dónde salió cada respuesta. MCP es un estándar para conectar herramientas de IA como Claude y ChatGPT con el software que ya usa. Configuramos y construimos ambos dentro de Mejora con IA, y le diremos si su negocio todavía no los necesita.'
+            },
+            {
                 question: '¿Por qué no contratar a un programador o comprar un software ya hecho?',
                 answer: 'Un ingeniero a tiempo completo es un compromiso de seis cifras antes de saber si hay un año entero de trabajo, y el software ya hecho deja de servir en cuanto necesita algo que sus creadores no previeron. Nosotros construimos y mantenemos software hecho para su negocio, sin que tenga que contratar a un equipo de ingeniería.'
             },
@@ -117,7 +132,7 @@ const es: Content = {
             },
             {
                 question: '¿Con quién voy a trabajar?',
-                answer: 'Con las personas que hacen el trabajo. Tendrá un único contacto que le explica todo en lenguaje claro y que responde cuando algo tiene que cambiar.'
+                answer: 'Con Ashton Reyes, fundador de GradientV. Tendrá un único contacto que le explica todo en lenguaje claro y que responde cuando algo tiene que cambiar.'
             }
         ]
     },
@@ -145,6 +160,12 @@ const es: Content = {
                 name: 'Software a medida',
                 outcome: 'Lleve su negocio a su manera.',
                 includes: ['Herramientas internas y paneles', 'Pedidos en línea y portales para clientes', 'Asistentes de IA entrenados con su negocio', 'Construido en torno a cómo ya trabaja']
+            },
+            // chatbots, RAG, MCP and the other AI work. it gets its own full-width card
+            ai: {
+                name: 'Mejora con IA',
+                outcome: 'Ponga la IA a trabajar en su negocio.',
+                includes: ['Chatbot de IA para su sitio web', 'RAG: IA que responde con sus propios archivos', 'MCP: conecte herramientas de IA con su software', 'Agentes de IA para tareas de varios pasos', 'GPT personalizados y skills de Claude para su equipo', 'IA que lee facturas, recibos y formularios']
             }
         }
     },
@@ -152,7 +173,7 @@ const es: Content = {
     plan: {
         seo: {
             title: 'Arme su plan - GradientV',
-            description: 'Elija los paquetes que necesita su pequeña empresa (sitio web y marca, crecimiento, automatización o software a medida) y le respondemos en un día hábil.'
+            description: 'Elija los paquetes que necesita su pequeña empresa (sitio web y marca, crecimiento, automatización, software a medida o mejoras con IA) y le respondemos en un día hábil.'
         },
         label: 'Arme su plan',
         heading: 'Elija lo que necesita su negocio. Nosotros nos encargamos del resto.',
@@ -198,7 +219,7 @@ const es: Content = {
     contact: {
         seo: {
             title: 'Contacto - GradientV',
-            description: 'Llame al (917) 907-1034 o escriba a contact@gradientv.com para contarnos sobre su proyecto. Creamos sitios web, marketing, automatización y software a medida para pequeñas empresas.'
+            description: 'Llame al (917) 907-1034 o escriba a contact@gradientv.com para contarnos sobre su proyecto. Creamos sitios web, marketing, automatización, software a medida y herramientas de IA para pequeñas empresas.'
         },
         label: 'Contacto',
         heading: 'Cuéntenos cómo funciona hoy su negocio.',
@@ -213,44 +234,51 @@ const es: Content = {
     story: {
         seo: {
             title: 'Historia - GradientV',
-            description: 'Por qué existe GradientV: a los pequeños negocios se les ofrece o contratar a un ingeniero por seis cifras o alquilar un software que no controlan. Nosotros construimos la tercera opción y les ayudamos a adoptar la IA.'
+            description: 'Por qué existe GradientV: los pequeños negocios saben que la IA podría ayudarles, pero pocos tienen el tiempo o el personal para ponerla a trabajar. Nosotros construimos el software y capacitamos a sus equipos para usarlo.'
         },
         label: 'Historia',
-        heading: 'El software no debería ser un lujo.',
-        lead: 'A la mayoría de los pequeños negocios se les ofrecen dos opciones: contratar a un ingeniero de software con un sueldo que no pueden justificar, o alquilar un software que no controlan. GradientV existe para ofrecer una tercera.',
+        heading: 'Hacer que la IA sea útil para los pequeños negocios.',
+        lead: 'Hoy es más rápido que nunca crear software, pero la mayoría de los dueños de pequeños negocios no tiene tiempo para aprender a hacerlo con IA. GradientV se encarga de esa parte y luego enseña a sus equipos a usar lo que construimos.',
         gap: {
             heading: 'La brecha.',
             body: [
-                'El software a medida nunca ha sido tan capaz y, para la mayoría de los pequeños negocios, nunca ha parecido tan fuera de su alcance. Las empresas que más se beneficiarían de un software construido en torno a su forma real de trabajar son justamente las que menos posibilidades tienen de conseguirlo.',
-                'No es porque la tecnología sea difícil de conseguir. Es por la forma en que se vende.'
+                'Los pequeños negocios saben que la IA podría cambiar su forma de trabajar, pero pocos saben por dónde empezar. En un informe de mayo de 2026 de la Oficina del Censo de EE. UU., el 37 % de las empresas con 250 empleados o más dijo usar IA. Entre las empresas con cuatro empleados o menos, la cifra fue inferior al 20 %.',
+                'La mayoría de los dueños ya se encarga de todo, así que aprender una tecnología nueva queda al final de la lista. Cuando buscan ayuda, suelen encontrar dos opciones.'
             ],
+            // the two choices a small business is normally left with
             options: [
                 {
                     title: 'Contratar a un ingeniero',
-                    cost: 'Seis cifras, antes de la primera línea',
-                    text: 'Un sueldo a tiempo completo, prestaciones y un proceso de selección que casi ningún dueño tiene tiempo de gestionar, comprometido antes de saber siquiera si el puesto da para un año entero de trabajo. Para una empresa de quince personas, eso no es una contratación. Es apostar el presupuesto completo.'
+                    cost: 'Seis cifras al año',
+                    text: 'Un sueldo a tiempo completo, prestaciones y un proceso de selección que casi ningún dueño tiene tiempo de gestionar, todo antes de saber si hay trabajo para un año entero. Para una empresa de quince personas, puede consumir una gran parte del presupuesto.'
                 },
                 {
-                    title: 'Alquilar un producto SaaS',
-                    cost: 'Rápido de arrancar, rígido para siempre',
-                    text: 'Barato al principio y realmente útil, justo hasta el momento en que necesita que haga algo que sus creadores no previeron. Termina adaptando su negocio a la herramienta, y las partes que más quiere cambiar son precisamente las que no puede tocar.'
+                    title: 'Comprar software estándar',
+                    cost: 'Rápido de empezar, difícil de cambiar',
+                    text: 'Asequible y a menudo útil, hasta que necesita algo que sus creadores no previeron. Desde ese momento, su negocio tiene que adaptarse a la herramienta.'
                 }
             ]
         },
         middle: {
             label: 'Lo que hacemos',
-            heading: 'Somos la vía intermedia, y el intermediario.',
+            heading: 'Somos el puente entre su negocio y la IA.',
             body: [
-                'GradientV construye y opera el software para que usted no tenga que contratar a nadie que lo haga, y lo construye en torno a su forma actual de trabajar para que no tenga que amoldarse a la hoja de ruta de otro. Obtiene sistemas que encajan, sin montar un departamento de ingeniería para mantenerlos en marcha.',
-                'También somos la cara del trabajo técnico. Una sola persona a quien llamar, que explica lo que ocurre en lenguaje claro y no en jerga, y que responde cuando algo tiene que cambiar. Usted nunca debería tener que volverse técnico para conseguir un software que le funcione: esa traducción es nuestro trabajo, no el suyo.'
+                'GradientV es una empresa de software construida en torno a la IA. La IA nos permite crear software a medida mucho más rápido que antes, para que un pequeño negocio pueda tener herramientas que antes exigían contratar a un ingeniero.',
+                'Cada proyecto empieza con una conversación sobre cómo funciona su negocio y en qué se le va el tiempo. Luego construimos lo que necesita con cinco paquetes: Sitio web y marca, Crecimiento, Automatización, Software a medida y Mejora con IA. Todo se conecta a un solo portal de clientes, donde puede ver los resultados y enviarnos cambios.'
             ]
         },
         ai: {
-            heading: 'Adaptarse con la IA.',
+            heading: 'Cómo usamos la IA.',
             body: [
-                'La IA es donde esa brecha es hoy más ancha. Las herramientas son reales y verdaderamente útiles, y la mayoría de los pequeños negocios todavía no tiene una vía práctica de entrada: la orientación disponible es o material de marketing o un artículo académico, y ninguno le dice a un dueño qué hacer el lunes por la mañana.',
-                'Lo abordamos igual que todo lo demás. Empezamos por el cuello de botella que de verdad le cuesta tiempo, aplicamos lo mínimo que lo resuelva y nos aseguramos de que usted entienda qué hace y dónde se detiene. Sin rehacer su operación alrededor de una moda, y sin dependencias que nadie en su empresa sepa explicar.',
-                'Adoptar bien la IA es, sobre todo, una cuestión de criterio sobre a qué problemas conviene apuntarla. Ese criterio es justamente lo que venimos a aportar.'
+                'Empezamos por el problema que más tiempo le cuesta y usamos lo mínimo que lo resuelva. Puede ser una automatización, un asistente que responde a partir de sus propios documentos o una conexión que permite a las herramientas de IA trabajar con el software que ya usa.',
+                'Si el software no es la solución adecuada, se lo diremos. Cuando lo es, capacitamos a su equipo y le explicamos qué hace y dónde se detiene, para que siempre sepa qué tiene y cómo usarlo.'
+            ]
+        },
+        next: {
+            heading: 'Hacia dónde vamos.',
+            body: [
+                'Cada proyecto nos deja piezas que podemos reutilizar, lo que hace que el siguiente sea más rápido y más asequible. Con el tiempo, esas piezas se convertirán en una plataforma de software para pequeñas y medianas empresas.',
+                'También estamos preparando un boletín y cursos, para que los dueños y sus equipos sigan aprendiendo a usar la IA por su cuenta.'
             ]
         },
         founder: {
@@ -260,8 +288,7 @@ const es: Content = {
                 'Fundé GradientV porque me encontraba una y otra vez con la misma brecha, desde los dos lados. Soy estudiante de Ciencias de la Computación y Matemáticas Aplicadas en Stony Brook University, centrado en ciencia de datos, aprendizaje automático y sistemas de IA aplicada, y no dejaba de conocer a dueños de pequeños negocios que necesitaban exactamente ese tipo de trabajo y no tenían dónde conseguirlo de forma razonable.',
                 'Mi formación incluye cursos de ciencia de datos, minería de datos, aprendizaje automático y analítica. Soy investigador de pregrado en CRIZM, una plataforma impulsada por IA creada para apoyar flujos de calificación, sistemas de retroalimentación e informes de resultados académicos, y aplico esa experiencia en mi trabajo en GradientV.',
                 'Estoy al principio de mi carrera, sigo aprendiendo y prefiero decirlo con claridad antes que exagerar. Lo que sí puedo prometer es que seré directo sobre lo que puedo construir, honesto sobre lo que no, y que siempre hablará con la persona que realmente hace el trabajo.'
-            ],
-            teamLink: 'Conozca al resto del equipo'
+            ]
         }
     },
 
@@ -278,22 +305,7 @@ const es: Content = {
             ashton: {
                 role: 'Fundador',
                 bio: 'Soy Ashton Reyes, fundador de GradientV, con formación en Ciencias de la Computación y Matemáticas Aplicadas y un enfoque en ciencia de datos, aprendizaje automático y sistemas de IA aplicada.'
-            },
-            jorel: {
-                role: 'Director de Estrategia y Crecimiento',
-                bio: 'Jorel Chan dirige la estrategia y el crecimiento en GradientV, y define cómo la empresa identifica oportunidades y construye relaciones duraderas con clientes y socios.'
-            },
-            bryce: {
-                role: 'Director de Ingeniería',
-                bio: 'Bryce Whiteside dirige la ingeniería en GradientV y supervisa la arquitectura técnica y la ejecución detrás de los productos del equipo y del trabajo para clientes.'
-            },
-            emily: {
-                role: 'Directora de Marketing y Finanzas',
-                bio: 'Emily Fisherman dirige el marketing y las finanzas en GradientV, y conecta el trabajo técnico de la empresa con mensajes claros y decisiones financieras sólidas.'
-            },
-            // no bio yet. the card leaves it out until one is filled in
-            brian: { role: 'Ingeniero de software', bio: '' },
-            katie: { role: 'Soluciones para clientes y alcance', bio: '' }
+            }
         }
     },
 

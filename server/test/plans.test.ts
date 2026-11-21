@@ -54,6 +54,11 @@ describe('POST /api/plan', () => {
         expect(saved).not.toHaveProperty('message');
     });
 
+    it('takes the AI Upgrade package, after the others', async () => {
+        await send({ ...PLAN, packages: ['ai', 'custom'] }).expect(201);
+        expect((await PlanRequest.findOne().lean())?.packages).toEqual(['custom', 'ai']);
+    });
+
     it('takes each package once', async () => {
         await send({ ...PLAN, packages: ['automation', 'automation', 'website'] }).expect(201);
         expect((await PlanRequest.findOne().lean())?.packages).toEqual(['website', 'automation']);
@@ -67,8 +72,8 @@ describe('POST /api/plan', () => {
     it.each([
         ['no packages', { packages: [] }, 'Pick at least one package.'],
         ['packages that are not a list', { packages: 'website' }, 'Pick at least one package.'],
-        ['a package that does not exist', { packages: ['website', 'seo'] }, 'packages can only be: website, growth, automation, custom.'],
-        ['an operator object for a package', { packages: [{ $ne: null }] }, 'packages can only be: website, growth, automation, custom.'],
+        ['a package that does not exist', { packages: ['website', 'seo'] }, 'packages can only be: website, growth, automation, custom, ai.'],
+        ['an operator object for a package', { packages: [{ $ne: null }] }, 'packages can only be: website, growth, automation, custom, ai.'],
         ['no name', { name: '  ' }, 'name is missing.'],
         ['no email', { email: undefined }, 'email is missing.'],
         ['an email that is not one', { email: 'maria at example' }, 'email has to be an email address.'],

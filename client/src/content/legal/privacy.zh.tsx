@@ -7,13 +7,13 @@ export const meta = {
     description: '以通俗易懂的语言说明 GradientV 如何收集、使用和保护通过本网站获取的信息。',
     label: '法律信息',
     heading: '隐私政策',
-    updated: '最后更新：2026年9月1日'
+    updated: '最后更新：2026年11月21日'
 };
 
 export default function PrivacyZh() {
     return (
         <>
-            <p>GradientV LLC，以 GradientV 为商业名称开展经营，是一家位于 New York 州 New York City 与 Stony Brook 的技术服务公司。本政策说明我们通过本网站收集哪些信息、如何使用这些信息，以及您拥有哪些选择。我们有意让内容保持简短、直白。</p>
+            <p>GradientV LLC，以 GradientV 为商业名称开展经营，是一家位于 New York 的技术服务公司。本政策说明我们通过本网站收集哪些信息、如何使用这些信息，以及您拥有哪些选择。我们有意让内容保持简短、直白。</p>
             <h2>我们收集的信息</h2>
             <p>我们只收集为回复您并维持网站运行所必需的信息：</p>
             <ul>
